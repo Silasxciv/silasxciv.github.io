@@ -1,12 +1,12 @@
 ---
 layout: post
-title: OECT-Turbo上装的CASAOS应用库里的HA接入国家电网
+title: 【已失效】OECT-Turbo上装的CASAOS应用库里的HA接入国家电网
 comments: true
 tags:
   - Home Assistant
 date: 2025-08-31 23:00:31
 ---
-国家电网插件用的是[sgcc_electricity_new](https://github.com/ARC-MX/sgcc_electricity_new)，流程稍微有点麻烦。
+国家电网插件用的是[sgcc_electricity_new](https://github.com/ARC-MX/sgcc_electricity_new)，流程稍微有点麻烦。目前已失效，失效原因是国网登录验证从滑块变成了其他。
 <!--more-->
 装好CASAOS后，安装软件库里的Home Assistant，安装完常用插件后之后，参考上述教程接入国家电网。
 ### 准备
