@@ -11,9 +11,9 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: Silas Blog
+  title: Silas
   # Site subtitle
-  subtitle: 
+  subtitle: Blog
   # Author name
   author: Silas
   # Site URL
@@ -134,7 +134,7 @@ home_banner:
     light: /images/wallhaven-wqery6-light.webp # light mode
     dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  title: It's wrong to think that just being full is enough.
+  title: Fullness alone is insufficient.
   # Home banner subtitle
   subtitle:
     text: [] # subtitle text, array
@@ -269,9 +269,9 @@ home:
   # Article excerpt length
   excerpt_length: 200 # Max length of article excerpt
   # Article categories visibility
-  #categories:
-  #  enable: false  # Whether to enable
-  #  limit: 3 # Max number of categories to display
+  categories:
+    enable: false  # Whether to enable
+    limit: 3 # Max number of categories to display
   # Article tags visibility
   tags:
     enable: true  # Whether to enable
