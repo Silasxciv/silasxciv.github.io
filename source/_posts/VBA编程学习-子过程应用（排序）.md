@@ -4,6 +4,8 @@ title: VBA编程学习-子过程应用（排序）
 comments: true
 tags:
   - VBA
+categories: 
+  - 教程
 date: 2022-03-02 11:20:02
 ---
 过程指的就是VBA模块中的代码，或者宏。通过教程的学习，记录实现以下应用的过程：

@@ -4,6 +4,8 @@ title: Excel函数-OFFSET
 comments: true
 tags:
   - EXCEL
+categories: 
+  - 教程
 date: 2022-04-23 16:00:52
 ---
 OFFSET函数在[Microsoft说明](https://support.microsoft.com/zh-cn/office/offset-%E5%87%BD%E6%95%B0-c8de19ae-dd79-4b9b-a14e-b4d906d11b66)中的描述为：

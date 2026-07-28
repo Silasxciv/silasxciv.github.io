@@ -4,6 +4,8 @@ title: 系统托管McAfee小图标消失的处理
 comments: true
 tags:
   - McAfee
+categories: 
+  - 教程
 date: 2020-06-30 20:09:54
 ---
 McAfee的小图标不见了，但任务管理器能看到相关进程，那就重新让它显示吧。

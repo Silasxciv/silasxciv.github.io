@@ -4,6 +4,8 @@ title: OEC-Turbo搭建家庭小型NAS
 comments: true
 tags:
   - NAS
+categories: 
+  - 教程
 date: 2025-08-02 21:48:46
 ---
 在B站上看到有篇用[OEC-Turbo搭建NAS](https://www.bilibili.com/video/BV1UAuuzyEZe/?spm_id_from=333.788.top_right_bar_window_history.content.click&vd_source=3e3e11c3c2bdba291315b78beb1be740)的教程，参考着搭建家庭个人影音库。

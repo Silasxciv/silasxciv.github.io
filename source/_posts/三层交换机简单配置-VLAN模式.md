@@ -4,6 +4,8 @@ title: 三层交换机简单配置-VLAN模式
 comments: true
 tags:
   - 交换机
+categories: 
+  - 教程
 date: 2021-11-28 21:06:15
 ---
 三层交换机的配置除了网关外，还有一种VLAN的方法；

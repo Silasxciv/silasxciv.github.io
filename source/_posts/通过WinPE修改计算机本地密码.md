@@ -4,6 +4,8 @@ title: 通过WinPE修改计算机本地密码
 comments: true
 tags: 
   - Windows
+categories: 
+  - 教程
 date: 2020-01-02 19:56:11
 ---
 早上刚修改的Windows本地登陆密码，过了一个小时就忘记了，记忆力告急，还好能通过WinPE重置本地密码，不然就完犊子了。

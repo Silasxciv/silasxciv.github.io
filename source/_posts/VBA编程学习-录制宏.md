@@ -4,6 +4,8 @@ title: VBA编程学习-录制宏
 comments: true
 tags:
   - VBA
+categories: 
+  - 教程
 date: 2022-02-25 10:27:43
 ---
 Excel中的**宏**指可以通过调用，执行多个动作的VBA（Visual Basic for Applocation）代码；英文全称为macro-assemblers，指可以将一系列计算机指令作为一个能实现复杂要求程序;简写为macro，由宏观（macroscopical）引申翻译为宏。

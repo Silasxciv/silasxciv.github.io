@@ -4,6 +4,8 @@ title: Hexo博客搭建
 comments: true
 tags:
   - Hexo
+categories: 
+  - 教程
 date: 2020-06-29 21:57:19
 ---
 半年多没更新博客，突然忘记如何推送文本，太可怕了，特意找到之前教程，重新记录一下。原作者是[CrazyMilk](https://www.zhihu.com/question/21193762/answer/79109280)。

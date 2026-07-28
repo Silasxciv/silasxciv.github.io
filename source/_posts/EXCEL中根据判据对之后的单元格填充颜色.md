@@ -4,6 +4,8 @@ title: EXCEL中根据判据对之后的单元格填充颜色
 comments: true
 tags:
   - EXCEL
+categories: 
+  - 教程
 date: 2025-03-25 08:22:13
 ---
 EXCEL中G55到G44单元格填有判据，I5到CN44单元格填有数据，根据判据，对数据单元格进行颜色填充。

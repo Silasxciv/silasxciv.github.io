@@ -5,6 +5,8 @@ comments: true
 date: 2018-03-16 08:46:40
 tags:
 - GitHub
+categories: 
+  - 教程
 ---
 ![](/assets/images/180316.jpg)
 前几天知名帅哥stormzhang在其公众号共享了一份程序员大礼包，
