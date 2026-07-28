@@ -254,12 +254,12 @@ home:
     announcement: # Announcement text
     show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
     links:
-       Archives: 
-         path: /archives 
-         icon: fa-regular fa-archive # can be empty
-       Tags: 
-         path: /tags 
-         icon: fa-regular fa-tags # can be empty
+      # Archives: 
+      #   path: /archives 
+      #   icon: fa-regular fa-archive # can be empty
+      # Tags: 
+      #   path: /tags 
+      #   icon: fa-regular fa-tags # can be empty
       # Categories: 
       #   path: /categories 
       #   icon: fa-regular fa-folder # can be empty
@@ -271,7 +271,7 @@ home:
   # Article categories visibility
   categories:
     enable: false  # Whether to enable
-    limit: 3 # Max number of categories to display
+    limit: 2 # Max number of categories to display
   # Article tags visibility
   tags:
     enable: true  # Whether to enable
