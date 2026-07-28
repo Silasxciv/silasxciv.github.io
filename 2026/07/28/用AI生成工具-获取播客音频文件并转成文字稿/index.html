@@ -80,7 +80,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://silasxciv.github.io/2025/08/31/【已失效】oect-turbo上装的casaos应用库里的ha接入国家电网/"/>
+    <link rel="canonical" href="http://silasxciv.github.io/2026/07/28/用ai生成工具-获取播客音频文件并转成文字稿/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -106,7 +106,7 @@
     
     <title>
         
-            【已失效】OECT-Turbo上装的CASAOS应用库里的HA接入国家电网 | Silas Blog
+            用AI生成工具-获取播客音频文件并转成文字稿 | Silas Blog
         
     </title>
 
@@ -295,7 +295,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【已失效】OECT-Turbo上装的CASAOS应用库里的HA接入国家电网</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">用AI生成工具-获取播客音频文件并转成文字稿</h1>
 			</div>
 			
 		</div>
@@ -314,35 +314,19 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-08-31 23:31</span>
-        <span class="mobile">2025-08-31 23:31</span>
+        <span class="desktop">2026-07-28 23:01:14</span>
+        <span class="mobile">2026-07-28 23:01:14</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2026-07-28 15:11:19</span>
-            <span class="mobile">2026-07-28 15:11:19</span>
+            <span class="desktop">2026-07-28 23:02:41</span>
+            <span class="mobile">2026-07-28 23:02:41</span>
             <span class="hover-info">更新</span>
         </span>
     
 
-    
-        <span class="article-categories article-meta-item">
-            <i class="fa-regular fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -350,7 +334,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Home-Assistant/">Home Assistant</a>&nbsp;
+                        <a href="/tags/%E6%95%99%E7%A8%8B/">教程</a>&nbsp;
                     </li>
                 
             </ul>
@@ -360,12 +344,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>650 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.6k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
         </span>
     
     
@@ -384,34 +368,86 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>国家电网插件用的是<a class="link"   target="_blank" rel="noopener" href="https://github.com/ARC-MX/sgcc_electricity_new" >sgcc_electricity_new<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>，流程稍微有点麻烦。目前已失效，失效原因是国网登录验证从滑块变成了其他。</p>
+			<p>播客如今是我获取信息的重要途经，有很多高质量的播客，谈论的内容听一遍比较难懂，有些播客没做时间轴，重复听某一段内容还是较为困难的，所以打算用AI生成一个工具，我给它一个播客链接，它能自动获取播客的音频文件，并转换为文字稿，方便我后期再用AI工具整理。</p>
 <span id="more"></span>
-<p>装好CASAOS后，安装软件库里的Home Assistant，安装完常用插件后之后，参考上述教程接入国家电网。</p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ol>
-<li>在github上下载sgcc_electricity_new的zip程序</li>
-<li>通过MobaXterm登录OECT-Turbo后台</li>
-<li>将解压后的sgcc_electricity_new-master文件夹放到存放HA插件的路径下，可根据文件夹内是否存在已有的插件名来判断</li>
-<li>复制文件夹中的example.env文件，起名.env</li>
-<li>修改.evn文件，主要是里面的登录账户、登录密码、homeassistant的长期令牌</li>
+<h2 id="1-先用AI帮我生成prompt"><a href="#1-先用AI帮我生成prompt" class="headerlink" title="1. 先用AI帮我生成prompt"></a>1. 先用AI帮我生成prompt</h2><p>在DeepSeek上键入如下内容</p>
+<blockquote>
+<p>我是个编程小白，我打算用python做一个程序，我给这个程序一个小宇宙播客的链接，它会自己扒这个播客的音频文件，之后自己转成逐字稿，给我输出这个音频和逐字稿就行，以播客单集名称命名，请帮我写一个prompt</p>
+</blockquote>
+<p>这样就能得到AI帮我写的prompt</p>
+<blockquote>
+<p>角色：你是一个精通 Python 的爬虫与音频处理专家。<br>背景：我是一个完全不懂编程的小白，使用 Windows&#x2F;Mac 系统。<br>任务：请为我生成一个完整的 Python 脚本。<br>输入：用户复制粘贴的一个“小宇宙”播客单集链接（例如：<a class="link"   target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/episode/xxxxx%EF%BC%89%E3%80%82" >https://www.xiaoyuzhoufm.com/episode/xxxxx）。<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>核心功能要求：</p>
+<p>防屏蔽下载：小宇宙有反爬机制，必须使用 yt-dlp 库，并携带 Referer 请求头来下载音频（MP3&#x2F;M4A 格式）。<br>智能命名：自动从网页标题中提取该播客的单集名称，下载的音频文件和输出的逐字稿必须都用这个名字命名（例如：《故事FM第100期.mp3和故事FM第100期.txt&#96;）。<br>离线转写：使用本地 OpenAI Whisper 模型（加载 small 或 base 模型）将音频转成带时间戳的逐字稿（纯文本即可）。<br>输出位置：所有文件保存在代码所在的目录下。<br>依赖清单：请明确列出我需要安装的 Python 库，以及电脑必须安装的 ffmpeg 程序。<br>容错：添加简单的报错暂停逻辑，如果下载失败，提示我检查网络，不要直接闪退。</p>
+</blockquote>
+<h2 id="2-把AI帮我生成prompt输入到AI里"><a href="#2-把AI帮我生成prompt输入到AI里" class="headerlink" title="2. 把AI帮我生成prompt输入到AI里"></a>2. 把AI帮我生成prompt输入到AI里</h2><p>在Gmini里键入上面的prompy，AI就会按依次生成步骤，参照AI的步骤进行操作就可以，如果哪一步执行错误，将报错再粘贴给AI，它就会告诉你解决方法</p>
+<h3 id="2-1-安装-ffmpeg"><a href="#2-1-安装-ffmpeg" class="headerlink" title="2.1. 安装 ffmpeg"></a>2.1. 安装 ffmpeg</h3><p>Windows 系统：<br>最简单的安装方式是打开“命令提示符”（CMD），输入以下命令按回车（Windows 10&#x2F;11 适用）：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install Gyan.FFmpeg</span><br></pre></td></tr></table></figure></div>
+
+<p>事实上Gmini第一次告诉我键入上面的命令即可，但我执行时报错winget无法识别，告诉它后，它重新给我下面的方法</p>
+<ol>
+<li>下载 ffmpeg 压缩包<br>打开浏览器，访问 ffmpeg 官方推荐的 Windows 下载地址：<br>👉 <a class="link"   target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/" >https://www.gyan.dev/ffmpeg/builds/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
 </ol>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><ol>
-<li>cd到设备sgcc_electricity_new-master文件夹下</li>
-<li>键入docker-compose up -d，第一次会提示安装docker-compose，根据提示安装即可（注意一天最多登录5次）</li>
-<li>再次cd到设备sgcc_electricity_new-master文件夹下</li>
-<li>重复的键入docker-compose logs sgcc_electricity_app，日志刷新可能会比较慢，直到出现User xxxx state-refresh task run successfully!，或者出现报错，就等第二天继续</li>
-<li>记录上述出现的xxxx</li>
+<p>在网页中找到 ffmpeg-git-full.7z 或 ffmpeg-release-full.7z 链接点击下载（如果你的电脑解压不了 .7z 格式，可以下载 ffmpeg-release-essentials.zip）。</p>
+<ol start="2">
+<li>解压并提取文件<br>下载完成后，把压缩包解压出来。</li>
 </ol>
-<h3 id="添加集成"><a href="#添加集成" class="headerlink" title="添加集成"></a>添加集成</h3><ol>
-<li>打开HA的config文件夹</li>
-<li>编辑configuration.yaml文件，在现有内容后添加，xxxx修改为上述记录的xxxx<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">template:</span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.electricity_charge_balance_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: electricity_charge_balance_xxxx</span><br><span class="line">        unique_id: electricity_charge_balance_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.electricity_charge_balance_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: total</span><br><span class="line">        unit_of_measurement: &quot;CNY&quot;</span><br><span class="line">        device_class: monetary</span><br><span class="line"></span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.last_electricity_usage_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: last_electricity_usage_xxxx</span><br><span class="line">        unique_id: last_electricity_usage_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.last_electricity_usage_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: measurement</span><br><span class="line">        unit_of_measurement: &quot;kWh&quot;</span><br><span class="line">        device_class: energy</span><br><span class="line"></span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.month_electricity_usage_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: month_electricity_usage_xxxx</span><br><span class="line">        unique_id: month_electricity_usage_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.month_electricity_usage_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: measurement</span><br><span class="line">        unit_of_measurement: &quot;kWh&quot;</span><br><span class="line">        device_class: energy</span><br><span class="line"></span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.month_electricity_charge_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: month_electricity_charge_xxxx</span><br><span class="line">        unique_id: month_electricity_charge_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.month_electricity_charge_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: measurement</span><br><span class="line">        unit_of_measurement: &quot;CNY&quot;</span><br><span class="line">        device_class: monetary</span><br><span class="line"></span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.yearly_electricity_usage_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: yearly_electricity_usage_xxxx</span><br><span class="line">        unique_id: yearly_electricity_usage_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.yearly_electricity_usage_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: total_increasing</span><br><span class="line">        unit_of_measurement: &quot;kWh&quot;</span><br><span class="line">        device_class: energy</span><br><span class="line"></span><br><span class="line">  - trigger:</span><br><span class="line">      - platform: event</span><br><span class="line">        event_type: state_changed</span><br><span class="line">        event_data:</span><br><span class="line">          entity_id: sensor.yearly_electricity_charge_xxxx</span><br><span class="line">    sensor:</span><br><span class="line">      - name: yearly_electricity_charge_xxxx</span><br><span class="line">        unique_id: yearly_electricity_charge_xxxx</span><br><span class="line">        state: &quot;&#123;&#123; states(&#x27;sensor.yearly_electricity_charge_xxxx&#x27;) &#125;&#125;&quot;</span><br><span class="line">        state_class: total_increasing</span><br><span class="line">        unit_of_measurement: &quot;CNY&quot;</span><br><span class="line">        device_class: monetary</span><br></pre></td></tr></table></figure></div></li>
-<li>重启HA</li>
+<p>进入解压后的文件夹，找到名为 bin 的文件夹。</p>
+<p>进入 bin 文件夹，你会看到里面有 ffmpeg.exe、ffplay.exe 和 ffprobe.exe 这三个文件。</p>
+<ol start="3">
+<li>将 ffmpeg 放到脚本同一个目录下（最省事的招数！）<br>直接把 bin 文件夹里的 ffmpeg.exe 复制一份，粘贴到你存放 Python 脚本（xyz_transcribe.py）的同一个文件夹里。</li>
 </ol>
-<h3 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h3><ol>
-<li>在概述中随便新建一个实体</li>
-<li>打开这个实体的代码编辑器</li>
-<li>替换其中的entity，注意替换xxxx<br>   每日用电量的entity: sensor.last_electricity_usage_xxxx<br>   电费余额的entity: sensor.electricity_charge_balance_xxxx<br>   上月电费的entity: sensor.month_electricity_charge_xxxx<br>   上月用电量的entity: sensor.month_electricity_usage_xxxx<br>   今年总用电量的entity: sensor.yearly_electricity_usage_xxxx<br>   今年总用电费用的entity: sensor.yearly_electricity_charge_xxxx</li>
-<li>后续可根据需求，复制一个已有的实体，再通过修改其中entity的方式进行界面部署和美化。</li>
-</ol>
+<p>原因：Python 在执行程序时，会自动优先检查当前文件夹。只要 ffmpeg.exe 和你的 Python 脚本在同一个目录下，Whisper 和 yt-dlp 就能直接识别并使用它，不需要配置任何复杂的系统环境变量！</p>
+<h3 id="2-2-安装-Python-依赖库"><a href="#2-2-安装-Python-依赖库" class="headerlink" title="2.2. 安装 Python 依赖库"></a>2.2. 安装 Python 依赖库</h3><p>打开你的终端（Mac）或命令提示符（Windows CMD），依次运行以下两条命令来安装所需的 Python 扩展库：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install yt-dlp openai-whisper</span><br></pre></td></tr></table></figure></div>
+
+<p>提示：openai-whisper 在第一次运行转写时，会自动下载需要的 PyTorch 依赖和 Whisper 模型库（约几百兆到 1 GB），请确保网络稳定。</p>
+<h3 id="2-2-完整的-Python-脚本代码"><a href="#2-2-完整的-Python-脚本代码" class="headerlink" title="2.2. 完整的 Python 脚本代码"></a>2.2. 完整的 Python 脚本代码</h3><p>将下面的完整代码保存为一个名为 xyz_transcribe.py 的文件，放在你喜欢的任意文件夹中。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line">import re</span><br><span class="line">import yt_dlp</span><br><span class="line">import whisper</span><br><span class="line"></span><br><span class="line">def sanitize_filename(name):</span><br><span class="line">    &quot;&quot;&quot;清理文件名中的非法字符，防止保存失败&quot;&quot;&quot;</span><br><span class="line">    return re.sub(r&#x27;[\\/*?:&quot;&lt;&gt;|]&#x27;, &#x27;_&#x27;, name)</span><br><span class="line"></span><br><span class="line">def download_audio(url):</span><br><span class="line">    &quot;&quot;&quot;使用 yt-dlp 下载小宇宙播客音频，并添加 Referer 防屏蔽&quot;&quot;&quot;</span><br><span class="line">    print(&quot;正在解析并下载音频，请稍候...&quot;)</span><br><span class="line">    </span><br><span class="line">    # 配置 yt-dlp 下载选项</span><br><span class="line">    ydl_opts = &#123;</span><br><span class="line">        # 强制设置 Referer 请求头以应对反爬</span><br><span class="line">        &#x27;http_headers&#x27;: &#123;</span><br><span class="line">            &#x27;Referer&#x27;: &#x27;https://www.xiaoyuzhoufm.com/&#x27;,</span><br><span class="line">            &#x27;User-Agent&#x27;: &#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36&#x27;,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#x27;format&#x27;: &#x27;m4a/bestaudio/best&#x27;,  # 优先下载高质量音频</span><br><span class="line">        &#x27;outtmpl&#x27;: &#x27;%(title)s.%(ext)s&#x27;,  # 默认使用单集标题命名文件</span><br><span class="line">        &#x27;quiet&#x27;: False,</span><br><span class="line">        &#x27;no_warnings&#x27;: True,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line">        with yt_dlp.YoutubeDL(ydl_opts) as ydl:</span><br><span class="line">            # 获取单集元信息</span><br><span class="line">            info = ydl.extract_info(url, download=True)</span><br><span class="line">            # 提取原始标题并清理非法字符</span><br><span class="line">            raw_title = info.get(&#x27;title&#x27;, &#x27;podcast_episode&#x27;)</span><br><span class="line">            clean_title = sanitize_filename(raw_title)</span><br><span class="line">            </span><br><span class="line">            # 获取实际下载的文件扩展名</span><br><span class="line">            ext = info.get(&#x27;ext&#x27;, &#x27;m4a&#x27;)</span><br><span class="line">            downloaded_file = f&quot;&#123;clean_title&#125;.&#123;ext&#125;&quot;</span><br><span class="line"></span><br><span class="line">            # 兼容处理：如果文件名有细微差异，寻找最新生成的音频文件</span><br><span class="line">            if not os.path.exists(downloaded_file):</span><br><span class="line">                # 尝试寻找包含标题的文件</span><br><span class="line">                for f in os.listdir(&#x27;.&#x27;):</span><br><span class="line">                    if clean_title in f and f.endswith((&#x27;.m4a&#x27;, &#x27;.mp3&#x27;, &#x27;.aac&#x27;)):</span><br><span class="line">                        downloaded_file = f</span><br><span class="line">                        break</span><br><span class="line"></span><br><span class="line">            print(f&quot;✅ 音频下载成功：&#123;downloaded_file&#125;&quot;)</span><br><span class="line">            return downloaded_file, clean_title</span><br><span class="line"></span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(&quot;\n❌ 音频下载失败！&quot;)</span><br><span class="line">        print(f&quot;错误信息: &#123;e&#125;&quot;)</span><br><span class="line">        print(&quot;💡 建议排查：1. 检查输入的链接是否正确；2. 检查网络连接是否正常。&quot;)</span><br><span class="line">        return None, None</span><br><span class="line"></span><br><span class="line">def transcribe_audio(audio_path, output_title, model_size=&quot;base&quot;):</span><br><span class="line">    &quot;&quot;&quot;使用本地 OpenAI Whisper 模型转写音频并生成带时间戳的 txt 文件&quot;&quot;&quot;</span><br><span class="line">    if not audio_path or not os.path.exists(audio_path):</span><br><span class="line">        print(&quot;未找到可用的音频文件，跳过转写步骤。&quot;)</span><br><span class="line">        return</span><br><span class="line"></span><br><span class="line">    print(f&quot;\n正在加载 Whisper (&#123;model_size&#125;) 模型（首次运行需下载模型文件，请保持网络畅通）...&quot;)</span><br><span class="line">    try:</span><br><span class="line">        model = whisper.load_model(model_size)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(f&quot;❌ Whisper 模型加载失败: &#123;e&#125;&quot;)</span><br><span class="line">        return</span><br><span class="line"></span><br><span class="line">    print(&quot;🎙️ 开始转写音频，这可能需要几分钟（取决于电脑配置与音频时长）...&quot;)</span><br><span class="line">    try:</span><br><span class="line">        # 执行转写</span><br><span class="line">        result = model.transcribe(audio_path, verbose=False)</span><br><span class="line"></span><br><span class="line">        # 构造输出的文本文件名</span><br><span class="line">        txt_filename = f&quot;&#123;output_title&#125;.txt&quot;</span><br><span class="line"></span><br><span class="line">        print(f&quot;正在保存逐字稿到：&#123;txt_filename&#125;&quot;)</span><br><span class="line">        with open(txt_filename, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">            for segment in result.get(&quot;segments&quot;, []):</span><br><span class="line">                # 格式化时间戳 (例如 00:01:23)</span><br><span class="line">                start_sec = int(segment[&#x27;start&#x27;])</span><br><span class="line">                start_time = f&quot;&#123;start_sec // 3600:02d&#125;:&#123;(start_sec % 3600) // 60:02d&#125;:&#123;start_sec % 60:02d&#125;&quot;</span><br><span class="line">                text = segment[&#x27;text&#x27;].strip()</span><br><span class="line">                </span><br><span class="line">                # 写入 [HH:MM:SS] 内容 格式</span><br><span class="line">                f.write(f&quot;[&#123;start_time&#125;] &#123;text&#125;\n&quot;)</span><br><span class="line"></span><br><span class="line">        print(f&quot;🎉 转写完成！逐字稿已保存为：《&#123;txt_filename&#125;》&quot;)</span><br><span class="line"></span><br><span class="line">    except Exception as e:</span><br><span class="line">        print(f&quot;❌ 音频转写过程中出错: &#123;e&#125;&quot;)</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    print(&quot;=&quot; * 50)</span><br><span class="line">    print(&quot;      小宇宙播客单集音频下载与离线转写工具      &quot;)</span><br><span class="line">    print(&quot;=&quot; * 50)</span><br><span class="line"></span><br><span class="line">    # 提示用户粘贴链接</span><br><span class="line">    url = input(&quot;请输入小宇宙单集链接 (例如 https://www.xiaoyuzhoufm.com/episode/xxxxx):\n&quot;).strip()</span><br><span class="line"></span><br><span class="line">    if not url:</span><br><span class="line">        print(&quot;⚠️ 输入链接为空，程序退出。&quot;)</span><br><span class="line">        input(&quot;\n按回车键退出...&quot;)</span><br><span class="line">        sys.exit()</span><br><span class="line"></span><br><span class="line">    # 1. 下载音频</span><br><span class="line">    audio_file, clean_title = download_audio(url)</span><br><span class="line"></span><br><span class="line">    # 2. 如果下载成功，开始离线转写</span><br><span class="line">    if audio_file and clean_title:</span><br><span class="line">        # 可选模型大小: &quot;tiny&quot;, &quot;base&quot;, &quot;small&quot;, &quot;medium&quot;, &quot;large&quot;</span><br><span class="line">        # 推荐使用 &quot;base&quot; 或 &quot;small&quot;，在速度与准确率之间取得平衡</span><br><span class="line">        transcribe_audio(audio_file, clean_title, model_size=&quot;base&quot;)</span><br><span class="line"></span><br><span class="line">    print(&quot;\n任务已结束。&quot;)</span><br><span class="line">    # 防闪退逻辑：等用户按回车键后再关闭窗口</span><br><span class="line">    input(&quot;按回车键退出程序...&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="2-3-运行程序"><a href="#2-3-运行程序" class="headerlink" title="2.3. 运行程序"></a>2.3. 运行程序</h3><p>Windows：在保存 xyz_transcribe.py 的文件夹空白处按住 Shift 键点击鼠标右键，选择 “在此处打开 PowerShell 窗口” 或 “在终端中打开”。</p>
+<p>输入以下命令并按回车：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python xyz_transcribe.py</span><br></pre></td></tr></table></figure></div>
+
+<p>操作流程：<br>按照提示粘贴你的小宇宙单集 URL，例如：<a class="link"   target="_blank" rel="noopener" href="https://www.xiaoyuzhoufm.com/episode/606c3a" >https://www.xiaoyuzhoufm.com/episode/606c3a<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>…</p>
+<p>程序会自动开始下载音频。</p>
+<p>下载完成后， Whisper 模型会自动开始离线转写。</p>
+<p>处理结束后，同级目录下会生成两个文件：</p>
+<p>播客单集名称.m4a（或 .mp3）</p>
+<p>播客单集名称.txt（包含 [00:01:23] 逐字稿内容… 带时间戳的文件）</p>
+<h2 id="3-试用代码"><a href="#3-试用代码" class="headerlink" title="3. 试用代码"></a>3. 试用代码</h2><p>我在Hyper V虚拟机里，参照AI给的步骤，尝试AI给我的步骤</p>
+<p>在命令行里，用Python运行这段代码，随意复制一段小宇宙播客的链接给到命令行，程序正常开始执行音频下载和转写</p>
+<p>命令行界面:<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/260728_1.jpg"
+                      alt="插入图片" title="命令行界面"
+                ></p>
+<p>程序执行的结果：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/260728_2.jpg"
+                      alt="插入图片" title="程序执行的结果"
+                ></p>
+<h2 id="4-把代码转成非Python环境可执行的程序"><a href="#4-把代码转成非Python环境可执行的程序" class="headerlink" title="4. 把代码转成非Python环境可执行的程序"></a>4. 把代码转成非Python环境可执行的程序</h2><p>事实证明AI生成的工具有效，之后我通过下面的指令，打算把py转换成exe程序</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller --onefile your_script.py</span><br></pre></td></tr></table></figure></div>
+
+<p>在外面宿主计算机里新建文件夹，单独放置ffmpeg.exe和生成的xyz_transcribe.exe，在没有安装Python环境的计算机里测试程序，程序报错<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/260728_3.jpg"
+                      alt="插入图片" title="程序执行报错"
+                ></p>
+<p>把报错粘贴给AI，描述情况，AI给了答案和新方法，因为Whisper 库在转写音频时，需要用到它内部自带的一个音频滤镜文件 mel_filters.npz。<br>当使用 PyInstaller 打包成 EXE 时，PyInstaller 默认只打包了 .py 代码，忽略了这个非 Python 代码的数据资源文件。所以软件解压运行到临时目录（_MEI221882）时，找不到这个文件就报错了。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F --add-data &quot;C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\whisper;whisper&quot; xyz_transcribe.py</span><br></pre></td></tr></table></figure></div>
+
+<p>执行前需要手动先确认下路径，因为AI不知道当前Python版本，路径可能不匹配</p>
+<p>重新执行的效果<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/260728_4.jpg"
+                      alt="插入图片" title="程序执行正常"
+                ></p>
+<p>程序可以正常执行，那么之后听到需要重复收听的播客，再通过AI整理文字稿的时候，在没有配置Python环境的宿主计算机上处理也会比较方便。</p>
 
 		</div>
 
@@ -421,7 +457,7 @@
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/Home-Assistant/">#Home Assistant</a>&nbsp;
+				<a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -432,23 +468,11 @@
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/01/05/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E5%8D%97%E6%B8%B8%EF%BC%9A%E6%B3%89%E5%B7%9E%E4%B8%8E%E5%8E%A6%E9%97%A8/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">一个人的南游：泉州与厦门</span>
-						<span class="post-nav-item">上一篇</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/08/02/OEC-Turbo%E6%90%AD%E5%BB%BA%E5%AE%B6%E5%BA%AD%E5%B0%8F%E5%9E%8BNAS/">
+				<a class="next" rel="next" href="/2026/07/24/%E4%B9%A6%E5%86%99%E5%92%8C%E5%8F%A3%E8%AF%AD/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">OEC-Turbo搭建家庭小型NAS</span>
+						<span class="post-nav-title-item truncate max-w-48">书写和口语</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -469,8 +493,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">【已失效】OECT-Turbo上装的CASAOS应用库里的HA接入国家电网</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E5%A4%87"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-text">运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%9B%86%E6%88%90"><span class="nav-text">添加集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%95%E7%A4%BA"><span class="nav-text">展示</span></a></li></ol>
+		<div class="page-title">用AI生成工具-获取播客音频文件并转成文字稿</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%85%88%E7%94%A8AI%E5%B8%AE%E6%88%91%E7%94%9F%E6%88%90prompt"><span class="nav-text">1. 先用AI帮我生成prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8A%8AAI%E5%B8%AE%E6%88%91%E7%94%9F%E6%88%90prompt%E8%BE%93%E5%85%A5%E5%88%B0AI%E9%87%8C"><span class="nav-text">2. 把AI帮我生成prompt输入到AI里</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AE%89%E8%A3%85-ffmpeg"><span class="nav-text">2.1. 安装 ffmpeg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%AE%89%E8%A3%85-Python-%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="nav-text">2.2. 安装 Python 依赖库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%AE%8C%E6%95%B4%E7%9A%84-Python-%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%A0%81"><span class="nav-text">2.2. 完整的 Python 脚本代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="nav-text">2.3. 运行程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AF%95%E7%94%A8%E4%BB%A3%E7%A0%81"><span class="nav-text">3. 试用代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%8A%8A%E4%BB%A3%E7%A0%81%E8%BD%AC%E6%88%90%E9%9D%9EPython%E7%8E%AF%E5%A2%83%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-text">4. 把代码转成非Python环境可执行的程序</span></a></li></ol>
 
 	</div>
 </div>
