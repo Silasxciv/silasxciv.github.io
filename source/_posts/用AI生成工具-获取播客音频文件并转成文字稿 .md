@@ -252,4 +252,4 @@ pyinstaller -F --add-data "C:\Users\Administrator\AppData\Local\Programs\Python\
 重新执行的效果
 ![插入图片](/assets/images/260728_4.jpg "程序执行正常")
 
-程序可以正常执行，那么之后听到需要重复收听的播客，再通过AI整理文字稿的时候就不需要Python环境，在宿主计算机上处理也会比较方便。
+程序可以正常执行，那么之后听到需要重复收听的播客，再通过AI整理文字稿的时候，在没有配置Python环境的宿主计算机上处理也会比较方便。
