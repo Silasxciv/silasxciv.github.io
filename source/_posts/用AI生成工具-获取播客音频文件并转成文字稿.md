@@ -3,10 +3,8 @@ layout: post
 title: 用AI生成工具-获取播客音频文件并转成文字稿
 comments: true
 tags:
-  - 播客
-categories: 
   - 教程
-date: 2026-07-28 22:41:15
+date: 2026-07-28 23:01:14
 ---
 播客如今是我获取信息的重要途经，有很多高质量的播客，谈论的内容听一遍比较难懂，有些播客没做时间轴，重复听某一段内容还是较为困难的，所以打算用AI生成一个工具，我给它一个播客链接，它能自动获取播客的音频文件，并转换为文字稿，方便我后期再用AI工具整理。
 <!--more-->
@@ -37,9 +35,9 @@ date: 2026-07-28 22:41:15
 Windows 系统：
 最简单的安装方式是打开“命令提示符”（CMD），输入以下命令按回车（Windows 10/11 适用）：
 
-'''
+```
 winget install Gyan.FFmpeg
-'''
+```
 
 事实上Gmini第一次告诉我键入上面的命令即可，但我执行时报错winget无法识别，告诉它后，它重新给我下面的方法
 
@@ -64,16 +62,16 @@ winget install Gyan.FFmpeg
 ### 2.2. 安装 Python 依赖库
 打开你的终端（Mac）或命令提示符（Windows CMD），依次运行以下两条命令来安装所需的 Python 扩展库：
 
-'''
+```
 pip install yt-dlp openai-whisper
-'''
+```
 
 提示：openai-whisper 在第一次运行转写时，会自动下载需要的 PyTorch 依赖和 Whisper 模型库（约几百兆到 1 GB），请确保网络稳定。
 
 ### 2.2. 完整的 Python 脚本代码
 将下面的完整代码保存为一个名为 xyz_transcribe.py 的文件，放在你喜欢的任意文件夹中。
 
-'''
+```
 import os
 import sys
 import re
@@ -195,16 +193,16 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''
+```
 
 ### 2.3. 运行程序
 Windows：在保存 xyz_transcribe.py 的文件夹空白处按住 Shift 键点击鼠标右键，选择 “在此处打开 PowerShell 窗口” 或 “在终端中打开”。
 
 输入以下命令并按回车：
 
-'''
+```
 python xyz_transcribe.py
-'''
+```
 
 操作流程：
 按照提示粘贴你的小宇宙单集 URL，例如：[https://www.xiaoyuzhoufm.com/episode/606c3a](https://www.xiaoyuzhoufm.com/episode/606c3a)...
@@ -233,9 +231,9 @@ python xyz_transcribe.py
 ## 4. 把代码转成非Python环境可执行的程序
 事实证明AI生成的工具有效，之后我通过下面的指令，打算把py转换成exe程序
 
-'''
+```
 pyinstaller --onefile your_script.py
-'''
+```
 
 在外面宿主计算机里新建文件夹，单独放置ffmpeg.exe和生成的xyz_transcribe.exe，在没有安装Python环境的计算机里测试程序，程序报错
 ![插入图片](/assets/images/260728_3.jpg "程序执行报错")
@@ -243,9 +241,9 @@ pyinstaller --onefile your_script.py
 把报错粘贴给AI，描述情况，AI给了答案和新方法，因为Whisper 库在转写音频时，需要用到它内部自带的一个音频滤镜文件 mel_filters.npz。
 当使用 PyInstaller 打包成 EXE 时，PyInstaller 默认只打包了 .py 代码，忽略了这个非 Python 代码的数据资源文件。所以软件解压运行到临时目录（_MEI221882）时，找不到这个文件就报错了。
 
-'''
+```
 pyinstaller -F --add-data "C:\Users\Administrator\AppData\Local\Programs\Python\Python314\Lib\site-packages\whisper;whisper" xyz_transcribe.py
-'''
+```
 
 执行前需要手动先确认下路径，因为AI不知道当前Python版本，路径可能不匹配
 
