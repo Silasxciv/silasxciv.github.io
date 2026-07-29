@@ -3,6 +3,8 @@ layout: post
 title: 用AI生成工具-获取播客音频文件并转成文字稿
 comments: true
 tags:
+  - 音频
+categories: 
   - 教程
 date: 2026-07-28 23:01:14
 ---
