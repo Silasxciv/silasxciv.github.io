@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+        <meta name="description" content="吃饱就行，是不对的。">
+    
+    <meta name="author" content="Silas">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://silasxciv.github.io/2026/08/13/读「近代中国社会的新陈代谢」/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-B35V9XEXF4"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-B35V9XEXF4');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon-32x32.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            读 | Silas Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"silasxciv.github.io","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, open_graph."},"google_analytics":{"enable":true,"id":"G-B35V9XEXF4"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Fullness alone is insufficient.","subtitle":{"text":[],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-solid fa-at","url":"mailto:silasxciv@gmail.com"}],"qrs":null}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":false,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Silas Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">25</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">读</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/head1.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Silas</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-08-13 11:46:33</span>
+        <span class="mobile">2026-08-13 11:46:33</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-08-13 11:54:54</span>
+            <span class="mobile">2026-08-13 11:54:54</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E9%98%85%E8%AF%BB/">阅读</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%BF%91%E4%BB%A3%E5%8F%B2/">近代史</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>6.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>22 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p><strong>作者</strong>：陈旭麓（1918—1988），湖南湘乡人，华东师范大学历史系教授。本书被誉为“中国本土史学的标志性文本”。<br><strong>核心史观</strong>：与西方从中世纪到近代通过自我更新机制实现社会变革不同，中国近代社会的新陈代谢在很大程度上是由于接踵而至的外来冲击，又通过独特的社会机制由外来变为内在，迂回曲折地推陈出新。<br><strong>时间范围</strong>：主要论述1840—1919年前80年的历史。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>历史是古老的，又永远是新陈代谢的。</p>
+<p>任何生命都不是永恒的，只有新陈代谢是永恒的。</p>
+</blockquote>
+<h2 id="第一章-漫长的封建社会"><a href="#第一章-漫长的封建社会" class="headerlink" title="第一章 漫长的封建社会"></a>第一章 漫长的封建社会</h2><h3 id="五个核心特征"><a href="#五个核心特征" class="headerlink" title="五个核心特征"></a>五个核心特征</h3><p><strong>1. 时间漫长</strong></p>
+<p>中国封建社会从春秋战国之交算起，前后长达两千多年，是西方封建社会时间跨度的近两倍。</p>
+<p><strong>2. 土地私有和买卖</strong></p>
+<p>以一家一户的个体农民为基本单位。土地不断集中又不断因分家析产而分散。</p>
+<p><strong>3. 官僚政治</strong></p>
+<p>秦始皇设职授官是官僚政治的开始。科举制提供了“政治上的社会对流”的可能性。</p>
+<p><strong>4. 宗族和行会</strong></p>
+<p>农村以宗族（血缘纽带）为核心，城市以行会（行业纽带）为核心。</p>
+<p><strong>5. 儒学定于一尊</strong></p>
+<p>天道观念、大一统思想、纲常伦理构成封建社会的意识形态。</p>
+<h3 id="对比一：中国封建社会-vs-西方封建社会"><a href="#对比一：中国封建社会-vs-西方封建社会" class="headerlink" title="对比一：中国封建社会 vs 西方封建社会"></a>对比一：中国封建社会 vs 西方封建社会</h3><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>中国封建社会</th>
+<th>西方封建社会</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间跨度</td>
+<td>约公元前476—1840年，逾2300年</td>
+<td>公元476—1640年，1164年</td>
+</tr>
+<tr>
+<td>中央集权</td>
+<td>高度集权的官僚政治</td>
+<td>封建领主分权</td>
+</tr>
+<tr>
+<td>社会流动</td>
+<td>科举制提供阶层流动</td>
+<td>等级制度较为固化</td>
+</tr>
+<tr>
+<td>社会组织</td>
+<td>宗族（血缘）+行会（业缘）</td>
+<td>教会+庄园</td>
+</tr>
+<tr>
+<td>意识形态</td>
+<td>儒学定于一尊</td>
+<td>宗教与世俗二元</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：中国封建社会的内部张力"><a href="#对比二：中国封建社会的内部张力" class="headerlink" title="对比二：中国封建社会的内部张力"></a>对比二：中国封建社会的内部张力</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>集中趋势</th>
+<th>分散趋势</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>土地</td>
+<td>地主兼并</td>
+<td>分家析产</td>
+</tr>
+<tr>
+<td>权力</td>
+<td>皇权专制</td>
+<td>宗族自治</td>
+</tr>
+<tr>
+<td>思想</td>
+<td>儒学定于一尊</td>
+<td>民间信仰多元</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>官僚体系</td>
+<td>宗族、行会</td>
+</tr>
+</tbody></table>
+<p>无为而治，恰恰是旧王朝有为过头的结果。在这种转化背后，起作用的是历史辩证法。秦始皇实现了大一统，但他并不急于找到一种合适的理论来说明大一统的合理性和必然性。历史的分期存在于历史的延续之中。</p>
+<hr>
+<h2 id="第二章-东方与西方"><a href="#第二章-东方与西方" class="headerlink" title="第二章 东方与西方"></a>第二章 东方与西方</h2><h3 id="东西对视——“隔雾看花”"><a href="#东西对视——“隔雾看花”" class="headerlink" title="东西对视——“隔雾看花”"></a>东西对视——“隔雾看花”</h3><p>在很长的时期里，中国把西方叫做泰西，西方把中国叫做远东。双方对彼此的了解都是模糊的、隔膜的。</p>
+<h3 id="对比一：郑和下西洋-vs-西方地理大发现"><a href="#对比一：郑和下西洋-vs-西方地理大发现" class="headerlink" title="对比一：郑和下西洋 vs 西方地理大发现"></a>对比一：郑和下西洋 vs 西方地理大发现</h3><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>郑和下西洋</th>
+<th>西方地理大发现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间</td>
+<td>1405—1433年</td>
+<td>15世纪末—16世纪初</td>
+</tr>
+<tr>
+<td>首次出海</td>
+<td>比哥伦布早87年</td>
+<td>晚于郑和</td>
+</tr>
+<tr>
+<td>船队规模</td>
+<td>人数多半在2.7万以上</td>
+<td>哥伦布87人、达·伽马140多人</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>寻找建文帝、宣扬国威</td>
+<td>寻找财富、证明新兴地理学</td>
+</tr>
+<tr>
+<td>理论依据</td>
+<td>天圆地方</td>
+<td>文艺复兴的天文学和地理学</td>
+</tr>
+<tr>
+<td>对外态度</td>
+<td>猜忌保守、厚往薄来</td>
+<td>积极进取、殖民扩张</td>
+</tr>
+<tr>
+<td>后续影响</td>
+<td>戛然而止，海禁强化</td>
+<td>持续扩张，开启全球时代</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：东西方对外交往模式"><a href="#对比二：东西方对外交往模式" class="headerlink" title="对比二：东西方对外交往模式"></a>对比二：东西方对外交往模式</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>东方（中国）</th>
+<th>西方</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>交往动力</td>
+<td>宣扬国威、朝贡体系</td>
+<td>商业利润、殖民扩张</td>
+</tr>
+<tr>
+<td>技术态度</td>
+<td>保守防范</td>
+<td>积极进取</td>
+</tr>
+<tr>
+<td>世界观</td>
+<td>天朝中心、华夷之辨</td>
+<td>开放探索、全球视野</td>
+</tr>
+</tbody></table>
+<p>以保守的对策来对付进取的政策，这种中西之间的态势就是鸦片战争后一系列变化的基础和原因。任何一个国家、地区，它同外国和外部地区的交通发达程度往往同其文化经济的发展程度成正比。中国在世界民族之林中所处的被动局面，不是开始于鸦片战争，而是从郑和航海以来已见端倪了。在航海者背后有着生产力的要求和经济的动力。</p>
+<hr>
+<h2 id="第三章-由盛转衰的清王朝"><a href="#第三章-由盛转衰的清王朝" class="headerlink" title="第三章 由盛转衰的清王朝"></a>第三章 由盛转衰的清王朝</h2><h3 id="康乾盛世——“晚秋晴日”"><a href="#康乾盛世——“晚秋晴日”" class="headerlink" title="康乾盛世——“晚秋晴日”"></a>康乾盛世——“晚秋晴日”</h3><p>康雍乾是历史上公认的盛世，但隐患也已经埋下。作者将其比作封建社会的“晚秋晴日”。</p>
+<h3 id="三大社会问题"><a href="#三大社会问题" class="headerlink" title="三大社会问题"></a>三大社会问题</h3><p><strong>1. 人口激增</strong>：1651年至1834年，人口从6000万激增到4亿。</p>
+<p><strong>2. 官场腐败</strong>：清朝制度下官吏的贪腐问题日益深重。</p>
+<p><strong>3. 鸦片泛滥</strong>：从1839年到1840年，每年输入鸦片达3.5万箱。白银外流每年约1000余万两，占清廷年财政的六分之一；烟民200万。</p>
+<h3 id="对比：康乾盛世-vs-鸦片战争前夜"><a href="#对比：康乾盛世-vs-鸦片战争前夜" class="headerlink" title="对比：康乾盛世 vs 鸦片战争前夜"></a>对比：康乾盛世 vs 鸦片战争前夜</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>康乾盛世</th>
+<th>鸦片战争前夜</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>人口</td>
+<td>约1亿</td>
+<td>约4亿</td>
+</tr>
+<tr>
+<td>吏治</td>
+<td>相对清明</td>
+<td>贪腐深重</td>
+</tr>
+<tr>
+<td>财政</td>
+<td>国库充盈</td>
+<td>白银外流、亏空严重</td>
+</tr>
+<tr>
+<td>鸦片输入</td>
+<td>极少</td>
+<td>每年3.5万箱</td>
+</tr>
+<tr>
+<td>对外</td>
+<td>自信封闭</td>
+<td>虚弱防范</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>相对稳定</td>
+<td>会党丛生、矛盾激化</td>
+</tr>
+</tbody></table>
+<p>西方资本主义东来使中国历史改变了轨道。在炮口的逼迫下，中国社会蹒跚地走入了近代。走这条路不是民族选择的结果，而是外国影响造成的。</p>
+<hr>
+<h2 id="第四章-炮口下的震撼"><a href="#第四章-炮口下的震撼" class="headerlink" title="第四章 炮口下的震撼"></a>第四章 炮口下的震撼</h2><h3 id="战争概况"><a href="#战争概况" class="headerlink" title="战争概况"></a>战争概况</h3><p>在两年多时间里，中国调动十多万军队，先后有一名总督（裕谦）、两名提督（关天培、陈化成）、七名总兵及数千名士兵战死；而英军战死不足百人。</p>
+<h3 id="历史意义——“一块界碑”"><a href="#历史意义——“一块界碑”" class="headerlink" title="历史意义——“一块界碑”"></a>历史意义——“一块界碑”</h3><p>对于中国来说，这场战争是一块界碑，它铭刻了中世纪古老的社会在炮口逼迫下走入近代的最初一步。</p>
+<h3 id="对比一：战前-vs-战后中国社会"><a href="#对比一：战前-vs-战后中国社会" class="headerlink" title="对比一：战前 vs 战后中国社会"></a>对比一：战前 vs 战后中国社会</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>战前</th>
+<th>战后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对外认知</td>
+<td>天朝上国、闭目塞听</td>
+<td>开始“开眼看世界”</td>
+</tr>
+<tr>
+<td>主权状态</td>
+<td>完整</td>
+<td>开始丧失</td>
+</tr>
+<tr>
+<td>经济结构</td>
+<td>自然经济为主</td>
+<td>外来商品冲击</td>
+</tr>
+<tr>
+<td>社会结构</td>
+<td>士农工商</td>
+<td>出现买办、教士等新群体</td>
+</tr>
+<tr>
+<td>觉醒程度</td>
+<td>沉睡</td>
+<td>由直观而生羡慕，由羡慕而生比较，由比较而生追求</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：两次鸦片战争的冲击差异"><a href="#对比二：两次鸦片战争的冲击差异" class="headerlink" title="对比二：两次鸦片战争的冲击差异"></a>对比二：两次鸦片战争的冲击差异</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>第一次鸦片战争</th>
+<th>第二次鸦片战争</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>冲击范围</td>
+<td>沿海地区</td>
+<td>中国社会中枢</td>
+</tr>
+<tr>
+<td>观念影响</td>
+<td>少数先觉者开眼看世界</td>
+<td>中国领导阶层开始广泛回应</td>
+</tr>
+<tr>
+<td>历史定位</td>
+<td>打开国门</td>
+<td>社会观念新陈代谢的标界</td>
+</tr>
+</tbody></table>
+<p>人们多注意1840年的划时代意义，实际上1860年同样是一个重要年份，就社会观念的新陈代谢来说，它比1840年具有更加明显的标界意义。在资本主义的世界性扩张过程中，非正义的侵略者同时又往往是历史发展过程中的进步者；而正义的反侵略者则常常同时是落后者。以贪欲为动机的侵略过程常被历史借用，从而在客观上多少成为一个进步改造落后的过程。</p>
+<hr>
+<h2 id="第五章-天国的悲喜剧"><a href="#第五章-天国的悲喜剧" class="headerlink" title="第五章 天国的悲喜剧"></a>第五章 天国的悲喜剧</h2><h3 id="太平天国为何后来居上——各路造反力量对比"><a href="#太平天国为何后来居上——各路造反力量对比" class="headerlink" title="太平天国为何后来居上——各路造反力量对比"></a>太平天国为何后来居上——各路造反力量对比</h3><table>
+<thead>
+<tr>
+<th>力量</th>
+<th>特点</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>白莲教</td>
+<td>有末世论恐吓</td>
+<td>无现实政治目标</td>
+</tr>
+<tr>
+<td>天地会</td>
+<td>反清复明</td>
+<td>遗民不是可世代相传的职业</td>
+</tr>
+<tr>
+<td>捻军</td>
+<td>有战斗力</td>
+<td>近于打家劫舍，缺乏理想主义</td>
+</tr>
+<tr>
+<td>拜上帝教</td>
+<td>提出“讨胡、建立新朝、拜上帝”</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="对比一：太平天国-vs-历代农民起义"><a href="#对比一：太平天国-vs-历代农民起义" class="headerlink" title="对比一：太平天国 vs 历代农民起义"></a>对比一：太平天国 vs 历代农民起义</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>历代农民起义</th>
+<th>太平天国</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>指导思想</td>
+<td>均贫富、等贵贱</td>
+<td>拜上帝教+大同理想</td>
+</tr>
+<tr>
+<td>组织形式</td>
+<td>传统军事组织</td>
+<td>宗教+军事复合</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>改朝换代</td>
+<td>建立“新天新地”</td>
+</tr>
+<tr>
+<td>结局</td>
+<td>成功则建立新王朝</td>
+<td>未能取代封建制度</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：洪秀全-vs-曾国藩"><a href="#对比二：洪秀全-vs-曾国藩" class="headerlink" title="对比二：洪秀全 vs 曾国藩"></a>对比二：洪秀全 vs 曾国藩</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>洪秀全</th>
+<th>曾国藩</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>身份</td>
+<td>太平天国领袖</td>
+<td>湘军统帅、清廷重臣</td>
+</tr>
+<tr>
+<td>思想</td>
+<td>拜上帝教+大同理想</td>
+<td>传统儒学</td>
+</tr>
+<tr>
+<td>历史角色</td>
+<td>理想主义异端</td>
+<td>传统社会代表</td>
+</tr>
+<tr>
+<td>结局</td>
+<td>失败</td>
+<td>成功</td>
+</tr>
+</tbody></table>
+<p>反封建的人没有办法洗净自己身上的封建东西。因此，他们悲壮的事业中又有着一种历史的悲哀。时代的局限是真正的局限。无知从来不是一种护符。在新的生产方式出现之前，他们不可能单凭自己的力量找到一条取代封建制度的出路。</p>
+<hr>
+<h2 id="第六章-十二年之后"><a href="#第六章-十二年之后" class="headerlink" title="第六章 十二年之后"></a>第六章 十二年之后</h2><h3 id="第二次鸦片战争"><a href="#第二次鸦片战争" class="headerlink" title="第二次鸦片战争"></a>第二次鸦片战争</h3><p>1856年，英法提出修约被拒后发动战争。英法联军占领北京，皇帝外逃，彻底打破了清王朝的颜面。</p>
+<h3 id="对比：两次鸦片战争"><a href="#对比：两次鸦片战争" class="headerlink" title="对比：两次鸦片战争"></a>对比：两次鸦片战争</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>第一次鸦片战争</th>
+<th>第二次鸦片战争</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间</td>
+<td>1840—1842</td>
+<td>1856—1860</td>
+</tr>
+<tr>
+<td>参战国</td>
+<td>英国</td>
+<td>英法联军</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>签订《南京条约》</td>
+<td>签订《天津条约》《北京条约》</td>
+</tr>
+<tr>
+<td>对清廷冲击</td>
+<td>局部震动</td>
+<td>皇帝外逃，颜面尽失</td>
+</tr>
+<tr>
+<td>历史定位</td>
+<td>打开国门</td>
+<td>中国新陈代谢的开始</td>
+</tr>
+</tbody></table>
+<p>百年中国所受到的纷至沓来的压力，本质上就是资本主义按自己的面貌改造世界，改造落后民族。因此，只有在实现自身近代化的过程中，中国才能真正抵抗一个近代化了的侵略者。</p>
+<hr>
+<h2 id="第七章-近代化一小步"><a href="#第七章-近代化一小步" class="headerlink" title="第七章 近代化一小步"></a>第七章 近代化一小步</h2><h3 id="洋务运动"><a href="#洋务运动" class="headerlink" title="洋务运动"></a>洋务运动</h3><p>洋务运动始终坚持“中体西用”——布新而不除旧。</p>
+<h3 id="对比一：“中体中用”-vs-“中体西用”-vs-“西体西用”"><a href="#对比一：“中体中用”-vs-“中体西用”-vs-“西体西用”" class="headerlink" title="对比一：“中体中用” vs “中体西用” vs “西体西用”"></a>对比一：“中体中用” vs “中体西用” vs “西体西用”</h3><table>
+<thead>
+<tr>
+<th>主张</th>
+<th>代表</th>
+<th>核心</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中体中用</td>
+<td>顽固派</td>
+<td>固守传统文化，排斥一切西学</td>
+<td>抗拒一切变革</td>
+</tr>
+<tr>
+<td>中体西用</td>
+<td>洋务派</td>
+<td>以儒家文化为根本，应用西方科技</td>
+<td>布新不除旧</td>
+</tr>
+<tr>
+<td>西体西用</td>
+<td>胡适等</td>
+<td>全盘西化</td>
+<td>忽视传统价值</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：洋务运动-vs-戊戌维新-vs-清末新政"><a href="#对比二：洋务运动-vs-戊戌维新-vs-清末新政" class="headerlink" title="对比二：洋务运动 vs 戊戌维新 vs 清末新政"></a>对比二：洋务运动 vs 戊戌维新 vs 清末新政</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>洋务运动</th>
+<th>戊戌维新</th>
+<th>清末新政</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>时间</td>
+<td>1860s—1890s</td>
+<td>1898</td>
+<td>1901—1911</td>
+</tr>
+<tr>
+<td>变革层面</td>
+<td>技术、军事</td>
+<td>制度</td>
+<td>制度+社会</td>
+</tr>
+<tr>
+<td>对旧体制态度</td>
+<td>维护</td>
+<td>有限批判</td>
+<td>部分改革</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>布新不除旧</td>
+<td>失败</td>
+<td>加速王朝灭亡</td>
+</tr>
+</tbody></table>
+<p>比之欧西各国资产阶级革命完成之后实现的产业革命，洋务运动像是在缺乏产业革命条件的情况下出现的产业革命迹象。它因模仿一部分西方器物而异于传统，又因其主其事者以新卫旧的本来意愿而难以挣脱传统。结果是“东一块西一块的进步。零零碎碎的。是零买的，不是批发的”。比之布新，除旧更难。</p>
+<hr>
+<h2 id="第八章-城乡社会在演变"><a href="#第八章-城乡社会在演变" class="headerlink" title="第八章 城乡社会在演变"></a>第八章 城乡社会在演变</h2><h3 id="新的社会力量"><a href="#新的社会力量" class="headerlink" title="新的社会力量"></a>新的社会力量</h3><p>西方冲击下，中国城乡社会开始出现新的变化：买办、近代商人、新式知识分子开始形成。农村从属于城市，这是资本主义体系的一个特点。自然经济在万般磨难中一点一点被撕裂；教会与会党成为农村社会中的两种特殊力量。</p>
+<h3 id="对比：传统城乡社会-vs-演变中的社会"><a href="#对比：传统城乡社会-vs-演变中的社会" class="headerlink" title="对比：传统城乡社会 vs 演变中的社会"></a>对比：传统城乡社会 vs 演变中的社会</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>传统社会</th>
+<th>演变中的社会</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>农村组织</td>
+<td>宗族主导</td>
+<td>教会与会党介入</td>
+</tr>
+<tr>
+<td>城市力量</td>
+<td>行会主导</td>
+<td>新式商人、买办兴起</td>
+</tr>
+<tr>
+<td>经济基础</td>
+<td>自然经济</td>
+<td>商品经济渗入</td>
+</tr>
+<tr>
+<td>社会流动</td>
+<td>科举仕途</td>
+<td>多种出路出现</td>
+</tr>
+</tbody></table>
+<p>1840年以来，中国因外患而遭受的每一次失败都产生过体现警悟的先觉者。但他们的周围和身后没有社会意义上的群体，他们走得越远就越是孤独。</p>
+<hr>
+<h2 id="第九章-日本冲来了"><a href="#第九章-日本冲来了" class="headerlink" title="第九章 日本冲来了"></a>第九章 日本冲来了</h2><h3 id="甲午战争"><a href="#甲午战争" class="headerlink" title="甲午战争"></a>甲午战争</h3><p>甲午战争是中国历史上第一次在形式和内容两个方面带有近代意义的对外战争，其重要标志是海军的出场与角逐。</p>
+<h3 id="对比一：甲午战前-vs-战后"><a href="#对比一：甲午战前-vs-战后" class="headerlink" title="对比一：甲午战前 vs 战后"></a>对比一：甲午战前 vs 战后</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>战前</th>
+<th>战后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对日认知</td>
+<td>轻视“蕞尔小国”</td>
+<td>开始研究日本</td>
+</tr>
+<tr>
+<td>民族意识</td>
+<td>少数先觉者觉醒</td>
+<td>群体意义的民族觉醒</td>
+</tr>
+<tr>
+<td>改革动力</td>
+<td>洋务派主导</td>
+<td>维新派登上舞台</td>
+</tr>
+<tr>
+<td>反思深度</td>
+<td>技术层面</td>
+<td>制度层面</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：三种反思"><a href="#对比二：三种反思" class="headerlink" title="对比二：三种反思"></a>对比二：三种反思</h3><table>
+<thead>
+<tr>
+<th>群体</th>
+<th>代表</th>
+<th>主张</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>洋务派</td>
+<td>李鸿章</td>
+<td>“取新卫旧”</td>
+<td>以彼邦之长技守护中国</td>
+</tr>
+<tr>
+<td>维新派</td>
+<td>康有为</td>
+<td>“除旧布新”</td>
+<td>价值变了，本位变了</td>
+</tr>
+<tr>
+<td>亲历海战者</td>
+<td>—</td>
+<td>力言“西化”</td>
+<td>生死血战之后的心得</td>
+</tr>
+</tbody></table>
+<p>先进的人们之所以为先进，就因为他们深浅不同地体会和理解了这一历史趋势；顽固的人们之所以为顽固，就因为他们抱残守缺，一厢情愿地指望用封建主义来打败资本主义。人们认识“穷”往往是从头破血流的失败开始的。</p>
+<hr>
+<h2 id="第十章-变与不变的哲学"><a href="#第十章-变与不变的哲学" class="headerlink" title="第十章 变与不变的哲学"></a>第十章 变与不变的哲学</h2><h3 id="核心问题"><a href="#核心问题" class="headerlink" title="核心问题"></a>核心问题</h3><p>变与不变之争，归根到底无非是两个问题：一、怎么看待孔子；二、怎么看待学习西方。前者说的是传统；后者说的是革新。</p>
+<h3 id="“新旧如环”——螺旋式的新旧嬗替"><a href="#“新旧如环”——螺旋式的新旧嬗替" class="headerlink" title="“新旧如环”——螺旋式的新旧嬗替"></a>“新旧如环”——螺旋式的新旧嬗替</h3><p>陈旭麓讲“新旧如环”——环者圆圈也，但它不是循环的圆圈，乃是新旧不断地起承转合的圆圈。晚清这个剧变时代，每十年都不一样。“新”往往是“旧”衍生的。</p>
+<h3 id="对比：变的哲学-vs-不变的哲学"><a href="#对比：变的哲学-vs-不变的哲学" class="headerlink" title="对比：变的哲学 vs 不变的哲学"></a>对比：变的哲学 vs 不变的哲学</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>变的哲学（维新派）</th>
+<th>不变的哲学（守旧派）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>对变化的态度</td>
+<td>拥抱变化、主动求变</td>
+<td>维护传统、抗拒变革</td>
+</tr>
+<tr>
+<td>对孔子的态度</td>
+<td>重新审视</td>
+<td>视为万世师表</td>
+</tr>
+<tr>
+<td>对西方的态度</td>
+<td>学习借鉴</td>
+<td>视为异端</td>
+</tr>
+<tr>
+<td>历史观</td>
+<td>进化论</td>
+<td>循环论</td>
+</tr>
+</tbody></table>
+<p>变亦变，不变亦变。一切新观念都是在一片反对声中取代旧观念的。生活在现代的人不一定就是现代人，可能还是个过去式。近代中国社会的新陈代谢突出地表现为两个方面：一是新的取代旧的；一是新与新的递嬗。辛亥之与戊戌是这样，“五四”之与辛亥是这样，戊戌之与洋务也有这种迹象。</p>
+<hr>
+<h2 id="第十一章-庚子与辛丑"><a href="#第十一章-庚子与辛丑" class="headerlink" title="第十一章 庚子与辛丑"></a>第十一章 庚子与辛丑</h2><h3 id="义和团的社会相"><a href="#义和团的社会相" class="headerlink" title="义和团的社会相"></a>义和团的社会相</h3><p>深沉的爱国主义情感是同植根于自然经济的保守意识连在一起的；抵御外侮的强烈愿望是同陈旧的天朝观念和华夷之见连在一起的。</p>
+<h3 id="对比一：义和团-vs-太平天国"><a href="#对比一：义和团-vs-太平天国" class="headerlink" title="对比一：义和团 vs 太平天国"></a>对比一：义和团 vs 太平天国</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>太平天国</th>
+<th>义和团</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要矛盾</td>
+<td>阶级矛盾（反清）</td>
+<td>民族矛盾（反帝）</td>
+</tr>
+<tr>
+<td>思想武器</td>
+<td>拜上帝教（外来宗教）</td>
+<td>民间迷信+传统儒学</td>
+</tr>
+<tr>
+<td>对外态度</td>
+<td>一定程度上接受西学</td>
+<td>排外、仇教</td>
+</tr>
+<tr>
+<td>组织形式</td>
+<td>有较严密组织</td>
+<td>分散的坛口</td>
+</tr>
+<tr>
+<td>结局</td>
+<td>被清军+洋枪队镇压</td>
+<td>被八国联军+清廷镇压</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：天地会-vs-义和团的精神食粮"><a href="#对比二：天地会-vs-义和团的精神食粮" class="headerlink" title="对比二：天地会 vs 义和团的精神食粮"></a>对比二：天地会 vs 义和团的精神食粮</h3><table>
+<thead>
+<tr>
+<th>组织</th>
+<th>精神食粮</th>
+<th>崇拜对象</th>
+<th>迷信程度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>天地会</td>
+<td>《三国演义》《水浒传》</td>
+<td>桃园三结义、一百零八条好汉</td>
+<td>崇信超人</td>
+</tr>
+<tr>
+<td>义和团</td>
+<td>《西游记》《封神演义》</td>
+<td>孙悟空、哪吒等神怪</td>
+<td>崇信神妖</td>
+</tr>
+</tbody></table>
+<p>庚子（1900年）是19世纪的最后一年，辛丑（1901年）是20世纪的最初一年。时人称为“自有国家以来未有之奇变”。义和团运动代表民族感情，并不代表时代的脚步。当道义的愤怒仍然同旧时代连在一起的时候，正义并不能战胜邪恶。义和团不是民族觉醒，它促进了民族觉醒。</p>
+<hr>
+<h2 id="第十二章-欧风美雨驰而东"><a href="#第十二章-欧风美雨驰而东" class="headerlink" title="第十二章 欧风美雨驰而东"></a>第十二章 欧风美雨驰而东</h2><h3 id="商品的力量"><a href="#商品的力量" class="headerlink" title="商品的力量"></a>商品的力量</h3><p>来自西方的商品改变了中国社会的面貌。它没有大炮那么可怕，但比大炮更有力量；它不像思想那么感染人心，但却比思想更广泛地走到每一个人的生活里去。</p>
+<h3 id="对比：三种应对欧风美雨的态度"><a href="#对比：三种应对欧风美雨的态度" class="headerlink" title="对比：三种应对欧风美雨的态度"></a>对比：三种应对欧风美雨的态度</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>态度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>排外守旧</td>
+<td>固守国粹、抵制西化</td>
+<td>把民族复兴希望寄托于“古学”复兴</td>
+</tr>
+<tr>
+<td>全盘西化</td>
+<td>醉心欧化</td>
+<td>盲目崇拜西方一切</td>
+</tr>
+<tr>
+<td>折中创新</td>
+<td>吸收西方、创造新文明</td>
+<td>把民族振兴寄托于民族近代化</td>
+</tr>
+</tbody></table>
+<p>优秀的古代文化如果害怕污染而不汲取外来文化的养料，也是会枯萎的。神圣的法宝不一定都是神圣，罪恶的东西未必全是罪恶。</p>
+<hr>
+<h2 id="第十三章-假维新中的真改革"><a href="#第十三章-假维新中的真改革" class="headerlink" title="第十三章 假维新中的真改革"></a>第十三章 假维新中的真改革</h2><h3 id="背景——“残局与变法”"><a href="#背景——“残局与变法”" class="headerlink" title="背景——“残局与变法”"></a>背景——“残局与变法”</h3><p>20世纪的头一个月，在八国联军炮口下逃出北京的西太后以皇帝的名义下诏变法。一个扑杀过变法维新志士的人物侈口昌言“变法”，像是一种历史的嘲讽。</p>
+<h3 id="对比：戊戌维新-vs-清末新政"><a href="#对比：戊戌维新-vs-清末新政" class="headerlink" title="对比：戊戌维新 vs 清末新政"></a>对比：戊戌维新 vs 清末新政</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>戊戌维新（1898）</th>
+<th>清末新政（1901—1911）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>发起者</td>
+<td>光绪帝+维新派</td>
+<td>西太后+保守派</td>
+</tr>
+<tr>
+<td>动力</td>
+<td>自上而下</td>
+<td>双向互动</td>
+</tr>
+<tr>
+<td>实质</td>
+<td>真维新</td>
+<td>假维新中有真改革</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>百日而亡</td>
+<td>加速王朝灭亡</td>
+</tr>
+</tbody></table>
+<p>改革不可能没有权力之争，因为它将触动一部分人的既得权利。新的制度必须有新的价值观念、思想和行为模式与之相适应。诠释这一时期的维新的真义，不仅在于指出假维新，更重要的在于从假维新中剥绎出真改革。</p>
+<hr>
+<h2 id="第十四章-“中等社会”"><a href="#第十四章-“中等社会”" class="headerlink" title="第十四章 “中等社会”"></a>第十四章 “中等社会”</h2><h3 id="概念内涵"><a href="#概念内涵" class="headerlink" title="概念内涵"></a>概念内涵</h3><p>“中等社会”一词于古无征，是中西社会冲撞、交错与融合的产物。主要指民族资产阶级。革命党人出自“中等社会”，又代表了“中等社会”。</p>
+<h3 id="“中等社会”的构成"><a href="#“中等社会”的构成" class="headerlink" title="“中等社会”的构成"></a>“中等社会”的构成</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>构成</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“自居于士类者”</td>
+<td>小士绅、新式学堂培养的近代知识分子</td>
+<td>—</td>
+</tr>
+<tr>
+<td>“出入于商与士之间者”</td>
+<td>旧式商业向近代工商业转化</td>
+<td>士与商从道不同不相为谋到相互渗透</td>
+</tr>
+<tr>
+<td>“出入于方术技击与士类之间者”</td>
+<td>投身新军的旧式知识分子等</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="对比一：上、中、下三等社会"><a href="#对比一：上、中、下三等社会" class="headerlink" title="对比一：上、中、下三等社会"></a>对比一：上、中、下三等社会</h3><table>
+<thead>
+<tr>
+<th>等级</th>
+<th>构成</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上等社会</td>
+<td>政府诸公、鸿儒硕彦、各地疆臣、领兵大员等</td>
+<td>代表既得利益的统治集团</td>
+</tr>
+<tr>
+<td>中等社会</td>
+<td>民族资产阶级、新式知识分子</td>
+<td>破坏上等社会，提挈下等社会</td>
+</tr>
+<tr>
+<td>下等社会</td>
+<td>以农工为主体的劳动者阶级</td>
+<td>被压迫的底层民众</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：中国中等社会-vs-法国第三等级"><a href="#对比二：中国中等社会-vs-法国第三等级" class="headerlink" title="对比二：中国中等社会 vs 法国第三等级"></a>对比二：中国中等社会 vs 法国第三等级</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>法国第三等级（1789）</th>
+<th>中国中等社会（20世纪初）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>经济基础</td>
+<td>资本主义已有相当充分发展</td>
+<td>社会变革基础不成熟、薄弱</td>
+</tr>
+<tr>
+<td>思想来源</td>
+<td>本土启蒙思想</td>
+<td>西方资产阶级革命理论</td>
+</tr>
+<tr>
+<td>与社会关系</td>
+<td>代表成熟的社会变革要求</td>
+<td>与社会有某种程度的脱节</td>
+</tr>
+</tbody></table>
+<p>会党是社会的游离分子的集结，它不代表新的生产因素，而是在旧的生产体系崩溃中找不到出路的人群。</p>
+<hr>
+<h2 id="第十五章-变革中的两大动力"><a href="#第十五章-变革中的两大动力" class="headerlink" title="第十五章 变革中的两大动力"></a>第十五章 变革中的两大动力</h2><h3 id="两大动力：改良派与革命派"><a href="#两大动力：改良派与革命派" class="headerlink" title="两大动力：改良派与革命派"></a>两大动力：改良派与革命派</h3><p>革命与改良之于社会，如燕鹊之有双翼，舟车之有两轮。</p>
+<h3 id="对比：改良派-vs-革命派"><a href="#对比：改良派-vs-革命派" class="headerlink" title="对比：改良派 vs 革命派"></a>对比：改良派 vs 革命派</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>改良派（立宪派）</th>
+<th>革命派</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代表人物</td>
+<td>康有为、梁启超</td>
+<td>孙中山、黄兴</td>
+</tr>
+<tr>
+<td>政治目标</td>
+<td>君主立宪</td>
+<td>民主共和</td>
+</tr>
+<tr>
+<td>手段</td>
+<td>渐进改良</td>
+<td>暴力革命</td>
+</tr>
+<tr>
+<td>同一性</td>
+<td>都要求建立近代化国家制度</td>
+<td>都要求改变半殖民地半封建地位</td>
+</tr>
+</tbody></table>
+<p>革命是变异的断裂，改良是传承的渐变。但在近代中国，革命与改良是互为交错、相互促进的，它们共同推进着社会的新陈代谢。我们的革命是在改造社会，但社会也在改造我们的革命。迂回的革命来自迂回的社会。</p>
+<hr>
+<h2 id="第十六章-民变与革命"><a href="#第十六章-民变与革命" class="headerlink" title="第十六章 民变与革命"></a>第十六章 民变与革命</h2><h3 id="对比：民变-vs-革命"><a href="#对比：民变-vs-革命" class="headerlink" title="对比：民变 vs 革命"></a>对比：民变 vs 革命</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>民变</th>
+<th>革命</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>组织性</td>
+<td>自发性、分散性</td>
+<td>有组织、有纲领</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>具体利益诉求</td>
+<td>根本制度变革</td>
+</tr>
+<tr>
+<td>持续性</td>
+<td>旋生旋灭</td>
+<td>持续斗争</td>
+</tr>
+<tr>
+<td>历史作用</td>
+<td>促成统治秩序瓦解</td>
+<td>建立新制度</td>
+</tr>
+</tbody></table>
+<p>清末的会党，是商品经济在逐步破坏自然经济中被抛出来的人群。对于一个不可救药的社会来说，动乱是另一种药石。</p>
+<hr>
+<h2 id="第十七章-“揖美追欧，旧邦新造”"><a href="#第十七章-“揖美追欧，旧邦新造”" class="headerlink" title="第十七章 “揖美追欧，旧邦新造”"></a>第十七章 “揖美追欧，旧邦新造”</h2><h3 id="两大历史功绩"><a href="#两大历史功绩" class="headerlink" title="两大历史功绩"></a>两大历史功绩</h3><p>“皇帝倒了，辫子割了”形象地说明了辛亥革命对政治制度和社会习俗的双重变革。</p>
+<h3 id="对比：辛亥革命-vs-历代改朝换代"><a href="#对比：辛亥革命-vs-历代改朝换代" class="headerlink" title="对比：辛亥革命 vs 历代改朝换代"></a>对比：辛亥革命 vs 历代改朝换代</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>历代改朝换代</th>
+<th>辛亥革命</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>政治体制</td>
+<td>王朝更迭</td>
+<td>推翻帝制、建立共和</td>
+</tr>
+<tr>
+<td>社会结构</td>
+<td>基本不变</td>
+<td>冲击旧等级制度</td>
+</tr>
+<tr>
+<td>思想观念</td>
+<td>皇权思想延续</td>
+<td>民主共和观念传播</td>
+</tr>
+<tr>
+<td>历史意义</td>
+<td>周期性循环</td>
+<td>越出改朝换代的旧轨</td>
+</tr>
+</tbody></table>
+<p>砍掉皇帝的脑袋容易，砍掉人们心中的帝王思维难。历史的惰性寄生于多数人之中，所以，只有多数人观念的改变才能战胜历史的惰性。</p>
+<hr>
+<h2 id="第十八章-山重水复"><a href="#第十八章-山重水复" class="headerlink" title="第十八章 山重水复"></a>第十八章 山重水复</h2><h3 id="两种复辟势力"><a href="#两种复辟势力" class="headerlink" title="两种复辟势力"></a>两种复辟势力</h3><table>
+<thead>
+<tr>
+<th>复辟</th>
+<th>时间</th>
+<th>主导者</th>
+<th>结局</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>洪宪帝制</td>
+<td>1915—1916</td>
+<td>袁世凯</td>
+<td>护国战争终结</td>
+</tr>
+<tr>
+<td>清朝复辟</td>
+<td>1917</td>
+<td>张勋</td>
+<td>迅速失败</td>
+</tr>
+</tbody></table>
+<p>袁世凯的一条辫子与大总统是等价交换。袁世凯叫张一麐编造的《戊戌日记》，蒋介石叫陈布雷编造的《西安半月记》，是戊戌政变和西安事变的伪史，却是袁世凯和蒋介石的真史。因为假象也是本质的表现。</p>
+<h3 id="对比：辛亥革命理想-vs-民国现实"><a href="#对比：辛亥革命理想-vs-民国现实" class="headerlink" title="对比：辛亥革命理想 vs 民国现实"></a>对比：辛亥革命理想 vs 民国现实</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>革命理想</th>
+<th>民国现实</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>政治</td>
+<td>民主共和</td>
+<td>帝制复辟、军阀割据</td>
+</tr>
+<tr>
+<td>思想</td>
+<td>科学民主</td>
+<td>孔教会、灵学会盛行</td>
+</tr>
+<tr>
+<td>社会</td>
+<td>平等自由</td>
+<td>旧社会心理延续</td>
+</tr>
+</tbody></table>
+<p>辛亥革命促成了旧体制的瓦解和新体制的建立。然而旧体制却留下了旧的社会心理。</p>
+<hr>
+<h2 id="第十九章-新文化运动"><a href="#第十九章-新文化运动" class="headerlink" title="第十九章 新文化运动"></a>第十九章 新文化运动</h2><h3 id="背景——巨大的落差"><a href="#背景——巨大的落差" class="headerlink" title="背景——巨大的落差"></a>背景——巨大的落差</h3><p>辛亥革命之后的巨大希望，同民国初年中国社会的黑暗产生了巨大的落差。巨大的落差就产生了巨大的浪潮，于是就有了新文化运动。</p>
+<h3 id="对比：洋务运动-vs-维新运动-vs-新文化运动"><a href="#对比：洋务运动-vs-维新运动-vs-新文化运动" class="headerlink" title="对比：洋务运动 vs 维新运动 vs 新文化运动"></a>对比：洋务运动 vs 维新运动 vs 新文化运动</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>洋务运动</th>
+<th>维新运动</th>
+<th>新文化运动</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>变革层面</td>
+<td>技术</td>
+<td>制度</td>
+<td>文化观念</td>
+</tr>
+<tr>
+<td>学习对象</td>
+<td>西方技术</td>
+<td>西方制度</td>
+<td>西方思想</td>
+</tr>
+<tr>
+<td>核心口号</td>
+<td>中体西用</td>
+<td>变法图强</td>
+<td>民主与科学</td>
+</tr>
+<tr>
+<td>对传统态度</td>
+<td>维护</td>
+<td>有限批判</td>
+<td>总体性理性批判</td>
+</tr>
+</tbody></table>
+<p>五四新文化运动出现于洋务运动、戊戌维新与辛亥革命之后，既是由前此70多年的历史呼啸而来，又是对这段曲折历史的深刻反思。不了解国情可怕，被国情俘虏更可怕。没有未来，谁去写历史？写历史都是为了现在和未来。缺乏历史知识的行为是盲目的，盲目性给个人与社会都会带来损害。</p>
+<hr>
+<h2 id="第二十章-历史的选择"><a href="#第二十章-历史的选择" class="headerlink" title="第二十章 历史的选择"></a>第二十章 历史的选择</h2><h3 id="对比：近代中国的三次学习浪潮"><a href="#对比：近代中国的三次学习浪潮" class="headerlink" title="对比：近代中国的三次学习浪潮"></a>对比：近代中国的三次学习浪潮</h3><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>学习对象</th>
+<th>核心主张</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>戊戌变法</td>
+<td>1898</td>
+<td>日俄</td>
+<td>君主立宪</td>
+</tr>
+<tr>
+<td>辛亥革命</td>
+<td>1911</td>
+<td>法美</td>
+<td>民主共和</td>
+</tr>
+<tr>
+<td>五四以后</td>
+<td>1919后</td>
+<td>苏俄</td>
+<td>社会主义</td>
+</tr>
+</tbody></table>
+<p>“整体的、不自觉地和不自主地起着作用的力量”就是历史的选择，它体现了近代社会新陈代谢的必然性。历史选择了社会主义，历史又以客观现实限制了主观愿望。在这种选择和限制的统一中形成了新民主主义革命的思想和理论。近代中国社会的发展不可能是直线的，而是伴随着许多次的后退；前进时多伴有过激，后退时亦相随反动。</p>
+<hr>
+<h2 id="全书核心对比总表"><a href="#全书核心对比总表" class="headerlink" title="全书核心对比总表"></a>全书核心对比总表</h2><h3 id="对比一：中西社会变革机制"><a href="#对比一：中西社会变革机制" class="headerlink" title="对比一：中西社会变革机制"></a>对比一：中西社会变革机制</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>西方</th>
+<th>中国</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>变革动力</td>
+<td>内部自我更新机制</td>
+<td>接踵而来的外力冲击</td>
+</tr>
+<tr>
+<td>变革路径</td>
+<td>内生性、渐进性</td>
+<td>由外而内、迂回曲折</td>
+</tr>
+<tr>
+<td>社会性质</td>
+<td>从中世纪自然过渡到近代</td>
+<td>从静态凝固到动态迅速变化</td>
+</tr>
+</tbody></table>
+<h3 id="对比二：近代中国变革的四个层面递进"><a href="#对比二：近代中国变革的四个层面递进" class="headerlink" title="对比二：近代中国变革的四个层面递进"></a>对比二：近代中国变革的四个层面递进</h3><table>
+<thead>
+<tr>
+<th>层面</th>
+<th>代表运动</th>
+<th>核心</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>技术层面</td>
+<td>洋务运动</td>
+<td>师夷长技以制夷</td>
+</tr>
+<tr>
+<td>制度层面</td>
+<td>戊戌维新、辛亥革命</td>
+<td>君主立宪、民主共和</td>
+</tr>
+<tr>
+<td>观念层面</td>
+<td>新文化运动</td>
+<td>民主与科学</td>
+</tr>
+<tr>
+<td>综合层面</td>
+<td>五四以后</td>
+<td>马克思主义中国化</td>
+</tr>
+</tbody></table>
+<h3 id="对比三：近代中国四种变革路径"><a href="#对比三：近代中国四种变革路径" class="headerlink" title="对比三：近代中国四种变革路径"></a>对比三：近代中国四种变革路径</h3><table>
+<thead>
+<tr>
+<th>路径</th>
+<th>代表</th>
+<th>特征</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>中体中用</td>
+<td>顽固派</td>
+<td>固守传统</td>
+<td>抗拒一切变革</td>
+</tr>
+<tr>
+<td>中体西用</td>
+<td>洋务派</td>
+<td>取新卫旧</td>
+<td>布新不除旧</td>
+</tr>
+<tr>
+<td>除旧布新</td>
+<td>维新派</td>
+<td>制度变革</td>
+<td>脱离群众基础</td>
+</tr>
+<tr>
+<td>全盘西化</td>
+<td>激进派</td>
+<td>彻底西化</td>
+<td>忽视传统价值</td>
+</tr>
+</tbody></table>
+<h3 id="对比四：近代中国新旧嬗替的辩证逻辑"><a href="#对比四：近代中国新旧嬗替的辩证逻辑" class="headerlink" title="对比四：近代中国新旧嬗替的辩证逻辑"></a>对比四：近代中国新旧嬗替的辩证逻辑</h3><p>陈旭麓讲“新旧如环”——不是循环的圆圈，而是新旧不断的起承转合的圆圈。“新”往往是“旧”衍生的。这一辩证史观超越了简单的“进步&#x2F;落后”二分法，揭示了近代中国社会变迁中螺旋式的新旧嬗替。</p>
+<h3 id="对比五：历史认知的辩证"><a href="#对比五：历史认知的辩证" class="headerlink" title="对比五：历史认知的辩证"></a>对比五：历史认知的辩证</h3><blockquote>
+<p>任何生命都不是永恒的，只有新陈代谢是永恒的。</p>
+<p>历史是古老的，又永远是新陈代谢的。</p>
+<p>神圣的法宝不一定都是神圣，罪恶的东西未必全是罪恶。</p>
+<p>公平是从残酷的不公平中得来的。</p>
+<p>人物隔代，思想长流。</p>
+</blockquote>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E8%BF%91%E4%BB%A3%E5%8F%B2/">#近代史</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/07/28/%E7%94%A8AI%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7-%E8%8E%B7%E5%8F%96%E6%92%AD%E5%AE%A2%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%B9%B6%E8%BD%AC%E6%88%90%E6%96%87%E5%AD%97%E7%A8%BF/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">用AI生成工具-获取播客音频文件并转成文字稿</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://my-waline.onrender.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">读</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%BC%AB%E9%95%BF%E7%9A%84%E5%B0%81%E5%BB%BA%E7%A4%BE%E4%BC%9A"><span class="nav-text">第一章 漫长的封建社会</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E4%B8%AA%E6%A0%B8%E5%BF%83%E7%89%B9%E5%BE%81"><span class="nav-text">五个核心特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E4%B8%AD%E5%9B%BD%E5%B0%81%E5%BB%BA%E7%A4%BE%E4%BC%9A-vs-%E8%A5%BF%E6%96%B9%E5%B0%81%E5%BB%BA%E7%A4%BE%E4%BC%9A"><span class="nav-text">对比一：中国封建社会 vs 西方封建社会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E4%B8%AD%E5%9B%BD%E5%B0%81%E5%BB%BA%E7%A4%BE%E4%BC%9A%E7%9A%84%E5%86%85%E9%83%A8%E5%BC%A0%E5%8A%9B"><span class="nav-text">对比二：中国封建社会的内部张力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%B8%9C%E6%96%B9%E4%B8%8E%E8%A5%BF%E6%96%B9"><span class="nav-text">第二章 东方与西方</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%9C%E8%A5%BF%E5%AF%B9%E8%A7%86%E2%80%94%E2%80%94%E2%80%9C%E9%9A%94%E9%9B%BE%E7%9C%8B%E8%8A%B1%E2%80%9D"><span class="nav-text">东西对视——“隔雾看花”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E9%83%91%E5%92%8C%E4%B8%8B%E8%A5%BF%E6%B4%8B-vs-%E8%A5%BF%E6%96%B9%E5%9C%B0%E7%90%86%E5%A4%A7%E5%8F%91%E7%8E%B0"><span class="nav-text">对比一：郑和下西洋 vs 西方地理大发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E4%B8%9C%E8%A5%BF%E6%96%B9%E5%AF%B9%E5%A4%96%E4%BA%A4%E5%BE%80%E6%A8%A1%E5%BC%8F"><span class="nav-text">对比二：东西方对外交往模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E7%94%B1%E7%9B%9B%E8%BD%AC%E8%A1%B0%E7%9A%84%E6%B8%85%E7%8E%8B%E6%9C%9D"><span class="nav-text">第三章 由盛转衰的清王朝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%B7%E4%B9%BE%E7%9B%9B%E4%B8%96%E2%80%94%E2%80%94%E2%80%9C%E6%99%9A%E7%A7%8B%E6%99%B4%E6%97%A5%E2%80%9D"><span class="nav-text">康乾盛世——“晚秋晴日”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%A4%BE%E4%BC%9A%E9%97%AE%E9%A2%98"><span class="nav-text">三大社会问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E5%BA%B7%E4%B9%BE%E7%9B%9B%E4%B8%96-vs-%E9%B8%A6%E7%89%87%E6%88%98%E4%BA%89%E5%89%8D%E5%A4%9C"><span class="nav-text">对比：康乾盛世 vs 鸦片战争前夜</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%82%AE%E5%8F%A3%E4%B8%8B%E7%9A%84%E9%9C%87%E6%92%BC"><span class="nav-text">第四章 炮口下的震撼</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%98%E4%BA%89%E6%A6%82%E5%86%B5"><span class="nav-text">战争概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E6%84%8F%E4%B9%89%E2%80%94%E2%80%94%E2%80%9C%E4%B8%80%E5%9D%97%E7%95%8C%E7%A2%91%E2%80%9D"><span class="nav-text">历史意义——“一块界碑”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E6%88%98%E5%89%8D-vs-%E6%88%98%E5%90%8E%E4%B8%AD%E5%9B%BD%E7%A4%BE%E4%BC%9A"><span class="nav-text">对比一：战前 vs 战后中国社会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E4%B8%A4%E6%AC%A1%E9%B8%A6%E7%89%87%E6%88%98%E4%BA%89%E7%9A%84%E5%86%B2%E5%87%BB%E5%B7%AE%E5%BC%82"><span class="nav-text">对比二：两次鸦片战争的冲击差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%A4%A9%E5%9B%BD%E7%9A%84%E6%82%B2%E5%96%9C%E5%89%A7"><span class="nav-text">第五章 天国的悲喜剧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%AA%E5%B9%B3%E5%A4%A9%E5%9B%BD%E4%B8%BA%E4%BD%95%E5%90%8E%E6%9D%A5%E5%B1%85%E4%B8%8A%E2%80%94%E2%80%94%E5%90%84%E8%B7%AF%E9%80%A0%E5%8F%8D%E5%8A%9B%E9%87%8F%E5%AF%B9%E6%AF%94"><span class="nav-text">太平天国为何后来居上——各路造反力量对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E5%A4%AA%E5%B9%B3%E5%A4%A9%E5%9B%BD-vs-%E5%8E%86%E4%BB%A3%E5%86%9C%E6%B0%91%E8%B5%B7%E4%B9%89"><span class="nav-text">对比一：太平天国 vs 历代农民起义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E6%B4%AA%E7%A7%80%E5%85%A8-vs-%E6%9B%BE%E5%9B%BD%E8%97%A9"><span class="nav-text">对比二：洪秀全 vs 曾国藩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%8D%81%E4%BA%8C%E5%B9%B4%E4%B9%8B%E5%90%8E"><span class="nav-text">第六章 十二年之后</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%B8%A6%E7%89%87%E6%88%98%E4%BA%89"><span class="nav-text">第二次鸦片战争</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E4%B8%A4%E6%AC%A1%E9%B8%A6%E7%89%87%E6%88%98%E4%BA%89"><span class="nav-text">对比：两次鸦片战争</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%BF%91%E4%BB%A3%E5%8C%96%E4%B8%80%E5%B0%8F%E6%AD%A5"><span class="nav-text">第七章 近代化一小步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B4%8B%E5%8A%A1%E8%BF%90%E5%8A%A8"><span class="nav-text">洋务运动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E2%80%9C%E4%B8%AD%E4%BD%93%E4%B8%AD%E7%94%A8%E2%80%9D-vs-%E2%80%9C%E4%B8%AD%E4%BD%93%E8%A5%BF%E7%94%A8%E2%80%9D-vs-%E2%80%9C%E8%A5%BF%E4%BD%93%E8%A5%BF%E7%94%A8%E2%80%9D"><span class="nav-text">对比一：“中体中用” vs “中体西用” vs “西体西用”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E6%B4%8B%E5%8A%A1%E8%BF%90%E5%8A%A8-vs-%E6%88%8A%E6%88%8C%E7%BB%B4%E6%96%B0-vs-%E6%B8%85%E6%9C%AB%E6%96%B0%E6%94%BF"><span class="nav-text">对比二：洋务运动 vs 戊戌维新 vs 清末新政</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%9F%8E%E4%B9%A1%E7%A4%BE%E4%BC%9A%E5%9C%A8%E6%BC%94%E5%8F%98"><span class="nav-text">第八章 城乡社会在演变</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%8A%9B%E9%87%8F"><span class="nav-text">新的社会力量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E4%BC%A0%E7%BB%9F%E5%9F%8E%E4%B9%A1%E7%A4%BE%E4%BC%9A-vs-%E6%BC%94%E5%8F%98%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A"><span class="nav-text">对比：传统城乡社会 vs 演变中的社会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E6%97%A5%E6%9C%AC%E5%86%B2%E6%9D%A5%E4%BA%86"><span class="nav-text">第九章 日本冲来了</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B2%E5%8D%88%E6%88%98%E4%BA%89"><span class="nav-text">甲午战争</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E7%94%B2%E5%8D%88%E6%88%98%E5%89%8D-vs-%E6%88%98%E5%90%8E"><span class="nav-text">对比一：甲午战前 vs 战后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E4%B8%89%E7%A7%8D%E5%8F%8D%E6%80%9D"><span class="nav-text">对比二：三种反思</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E7%AB%A0-%E5%8F%98%E4%B8%8E%E4%B8%8D%E5%8F%98%E7%9A%84%E5%93%B2%E5%AD%A6"><span class="nav-text">第十章 变与不变的哲学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="nav-text">核心问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E6%96%B0%E6%97%A7%E5%A6%82%E7%8E%AF%E2%80%9D%E2%80%94%E2%80%94%E8%9E%BA%E6%97%8B%E5%BC%8F%E7%9A%84%E6%96%B0%E6%97%A7%E5%AC%97%E6%9B%BF"><span class="nav-text">“新旧如环”——螺旋式的新旧嬗替</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E5%8F%98%E7%9A%84%E5%93%B2%E5%AD%A6-vs-%E4%B8%8D%E5%8F%98%E7%9A%84%E5%93%B2%E5%AD%A6"><span class="nav-text">对比：变的哲学 vs 不变的哲学</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0-%E5%BA%9A%E5%AD%90%E4%B8%8E%E8%BE%9B%E4%B8%91"><span class="nav-text">第十一章 庚子与辛丑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%89%E5%92%8C%E5%9B%A2%E7%9A%84%E7%A4%BE%E4%BC%9A%E7%9B%B8"><span class="nav-text">义和团的社会相</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E4%B9%89%E5%92%8C%E5%9B%A2-vs-%E5%A4%AA%E5%B9%B3%E5%A4%A9%E5%9B%BD"><span class="nav-text">对比一：义和团 vs 太平天国</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E5%A4%A9%E5%9C%B0%E4%BC%9A-vs-%E4%B9%89%E5%92%8C%E5%9B%A2%E7%9A%84%E7%B2%BE%E7%A5%9E%E9%A3%9F%E7%B2%AE"><span class="nav-text">对比二：天地会 vs 义和团的精神食粮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E7%AB%A0-%E6%AC%A7%E9%A3%8E%E7%BE%8E%E9%9B%A8%E9%A9%B0%E8%80%8C%E4%B8%9C"><span class="nav-text">第十二章 欧风美雨驰而东</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%95%86%E5%93%81%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="nav-text">商品的力量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E4%B8%89%E7%A7%8D%E5%BA%94%E5%AF%B9%E6%AC%A7%E9%A3%8E%E7%BE%8E%E9%9B%A8%E7%9A%84%E6%80%81%E5%BA%A6"><span class="nav-text">对比：三种应对欧风美雨的态度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E7%AB%A0-%E5%81%87%E7%BB%B4%E6%96%B0%E4%B8%AD%E7%9A%84%E7%9C%9F%E6%94%B9%E9%9D%A9"><span class="nav-text">第十三章 假维新中的真改革</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E2%80%94%E2%80%94%E2%80%9C%E6%AE%8B%E5%B1%80%E4%B8%8E%E5%8F%98%E6%B3%95%E2%80%9D"><span class="nav-text">背景——“残局与变法”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E6%88%8A%E6%88%8C%E7%BB%B4%E6%96%B0-vs-%E6%B8%85%E6%9C%AB%E6%96%B0%E6%94%BF"><span class="nav-text">对比：戊戌维新 vs 清末新政</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E7%AB%A0-%E2%80%9C%E4%B8%AD%E7%AD%89%E7%A4%BE%E4%BC%9A%E2%80%9D"><span class="nav-text">第十四章 “中等社会”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E5%86%85%E6%B6%B5"><span class="nav-text">概念内涵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9C%E4%B8%AD%E7%AD%89%E7%A4%BE%E4%BC%9A%E2%80%9D%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-text">“中等社会”的构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E4%B8%8A%E3%80%81%E4%B8%AD%E3%80%81%E4%B8%8B%E4%B8%89%E7%AD%89%E7%A4%BE%E4%BC%9A"><span class="nav-text">对比一：上、中、下三等社会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E4%B8%AD%E5%9B%BD%E4%B8%AD%E7%AD%89%E7%A4%BE%E4%BC%9A-vs-%E6%B3%95%E5%9B%BD%E7%AC%AC%E4%B8%89%E7%AD%89%E7%BA%A7"><span class="nav-text">对比二：中国中等社会 vs 法国第三等级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0-%E5%8F%98%E9%9D%A9%E4%B8%AD%E7%9A%84%E4%B8%A4%E5%A4%A7%E5%8A%A8%E5%8A%9B"><span class="nav-text">第十五章 变革中的两大动力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E5%A4%A7%E5%8A%A8%E5%8A%9B%EF%BC%9A%E6%94%B9%E8%89%AF%E6%B4%BE%E4%B8%8E%E9%9D%A9%E5%91%BD%E6%B4%BE"><span class="nav-text">两大动力：改良派与革命派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E6%94%B9%E8%89%AF%E6%B4%BE-vs-%E9%9D%A9%E5%91%BD%E6%B4%BE"><span class="nav-text">对比：改良派 vs 革命派</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E7%AB%A0-%E6%B0%91%E5%8F%98%E4%B8%8E%E9%9D%A9%E5%91%BD"><span class="nav-text">第十六章 民变与革命</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E6%B0%91%E5%8F%98-vs-%E9%9D%A9%E5%91%BD"><span class="nav-text">对比：民变 vs 革命</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E7%AB%A0-%E2%80%9C%E6%8F%96%E7%BE%8E%E8%BF%BD%E6%AC%A7%EF%BC%8C%E6%97%A7%E9%82%A6%E6%96%B0%E9%80%A0%E2%80%9D"><span class="nav-text">第十七章 “揖美追欧，旧邦新造”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E5%A4%A7%E5%8E%86%E5%8F%B2%E5%8A%9F%E7%BB%A9"><span class="nav-text">两大历史功绩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD-vs-%E5%8E%86%E4%BB%A3%E6%94%B9%E6%9C%9D%E6%8D%A2%E4%BB%A3"><span class="nav-text">对比：辛亥革命 vs 历代改朝换代</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E7%AB%A0-%E5%B1%B1%E9%87%8D%E6%B0%B4%E5%A4%8D"><span class="nav-text">第十八章 山重水复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E5%A4%8D%E8%BE%9F%E5%8A%BF%E5%8A%9B"><span class="nav-text">两种复辟势力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E8%BE%9B%E4%BA%A5%E9%9D%A9%E5%91%BD%E7%90%86%E6%83%B3-vs-%E6%B0%91%E5%9B%BD%E7%8E%B0%E5%AE%9E"><span class="nav-text">对比：辛亥革命理想 vs 民国现实</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%8D%81%E4%B9%9D%E7%AB%A0-%E6%96%B0%E6%96%87%E5%8C%96%E8%BF%90%E5%8A%A8"><span class="nav-text">第十九章 新文化运动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E2%80%94%E2%80%94%E5%B7%A8%E5%A4%A7%E7%9A%84%E8%90%BD%E5%B7%AE"><span class="nav-text">背景——巨大的落差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E6%B4%8B%E5%8A%A1%E8%BF%90%E5%8A%A8-vs-%E7%BB%B4%E6%96%B0%E8%BF%90%E5%8A%A8-vs-%E6%96%B0%E6%96%87%E5%8C%96%E8%BF%90%E5%8A%A8"><span class="nav-text">对比：洋务运动 vs 维新运动 vs 新文化运动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E5%8D%81%E7%AB%A0-%E5%8E%86%E5%8F%B2%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-text">第二十章 历史的选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%9A%84%E4%B8%89%E6%AC%A1%E5%AD%A6%E4%B9%A0%E6%B5%AA%E6%BD%AE"><span class="nav-text">对比：近代中国的三次学习浪潮</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E5%AF%B9%E6%AF%94%E6%80%BB%E8%A1%A8"><span class="nav-text">全书核心对比总表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%80%EF%BC%9A%E4%B8%AD%E8%A5%BF%E7%A4%BE%E4%BC%9A%E5%8F%98%E9%9D%A9%E6%9C%BA%E5%88%B6"><span class="nav-text">对比一：中西社会变革机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%8C%EF%BC%9A%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%8F%98%E9%9D%A9%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%B1%82%E9%9D%A2%E9%80%92%E8%BF%9B"><span class="nav-text">对比二：近代中国变革的四个层面递进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%B8%89%EF%BC%9A%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E5%9B%9B%E7%A7%8D%E5%8F%98%E9%9D%A9%E8%B7%AF%E5%BE%84"><span class="nav-text">对比三：近代中国四种变革路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E5%9B%9B%EF%BC%9A%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E6%96%B0%E6%97%A7%E5%AC%97%E6%9B%BF%E7%9A%84%E8%BE%A9%E8%AF%81%E9%80%BB%E8%BE%91"><span class="nav-text">对比四：近代中国新旧嬗替的辩证逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94%E4%BA%94%EF%BC%9A%E5%8E%86%E5%8F%B2%E8%AE%A4%E7%9F%A5%E7%9A%84%E8%BE%A9%E8%AF%81"><span class="nav-text">对比五：历史认知的辩证</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Silas</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 25 篇文章
+                    </span>
+                    
+                        <span>
+                            共 34.6k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
