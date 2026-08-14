@@ -222,9 +222,8 @@ navbar:
     #   icon: fa-regular fa-chart-bar
     About: 
        icon: fa-regular fa-user
-       Me: /about
-    #   submenus:
-    #     Me: /about
+       submenus:
+         Me: /about
     #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
     #     Blog: https://ohevan.com
     #     Friends: /friends
