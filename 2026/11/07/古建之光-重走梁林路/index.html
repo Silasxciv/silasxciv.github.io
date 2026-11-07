@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+        <meta name="description" content="吃饱就行，是不对的。">
+    
+    <meta name="author" content="Silas">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://silasxciv.github.io/2026/11/07/古建之光-重走梁林路/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        <!-- Google tag (gtag.js) -->
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-B35V9XEXF4"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-B35V9XEXF4');
+        </script>
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/favicon-100x100.png" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-100x100.png">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/favicon-100x100.png">
+    <!--- Page Info-->
+    
+    <title>
+        
+            古建之光-重走梁林路 | Silas Blog
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"silasxciv.github.io","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":false,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, open_graph."},"google_analytics":{"enable":true,"id":"G-B35V9XEXF4"}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Fullness alone is insufficient.","subtitle":{"text":[],"hitokoto":{"enable":true,"show_author":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"default","links":[{"icon":"fa-solid fa-at","url":"mailto:silasxciv@gmail.com"}],"qrs":null}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"About":{"path":"/about","icon":"fa-regular fa-user"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"info","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":false,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/8/17 11:45:14","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/8/17 11:45:14","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.i18n = {"search":"站内搜索您需要的内容...","toc":"目录","prev":"上一页","next":"下一页","prev_posts":"上一篇","next_posts":"下一篇","page":"第 %d 页","recent_posts":"最新文章","share":"分享","powered_by":"由 %s 驱动","theme":"主题","rss_feed":"RSS Feed","category":"分类","categories":"分类","tag":"标签","tags":"标签","post":"文章","posts":"文章","tagcloud":"标签云","comment":"评论","comments":"评论","top":"置顶","sticky":"置顶","go-back-home":"回到首页","masonry_loading":"照片加载中...","image_viewer":"图片查看器","close":"关闭","exif":{"title":"EXIF","cards":{"camera":"相机","lens":"镜头","exposure":"曝光","other":"其他"},"fields":{"make":"品牌","model":"机型","date_taken":"拍摄时间","lens_model":"镜头","focal_length":"焦距","focus_mode":"对焦模式","shutter":"快门","aperture":"光圈","iso":"感光度","exposure_program":"曝光程序","exposure_compensation":"曝光补偿","metering_mode":"测光模式","flash":"闪光灯","white_balance":"白平衡","latitude":"纬度","longitude":"经度","altitude":"海拔"},"status":{"loading":"加载中...","no_exif":"无 EXIF 信息","library_missing":"EXIF 库未加载","image_source_missing":"图片地址不可用","unavailable":"EXIF 不可用（可能被 CORS 阻止或缺少元数据）","flag_unavailable":"EXIF 不可用"}},"home":"首页","archive":"归档","archives":"归档","about":"关于","links":"链接","link":"链接","friends":"友情链接","friend":"友情链接","timeline":"时间轴","shuoshuo":"说说","bookmarks":"书签","site_uv":"访问人数","site_pv":"总访问量","read_more":"阅读全文","wordcount":"字","min2read":"分钟","changelog":"更新日志","status":"状态","runtime":"博客已运行","days":"天","hours":"小时","minutes":"分钟","seconds":"秒","optimized_by":"并由 Evan 进行优化","rights":"版权所有","site_posts":"共撰写了 %s 篇文章","site_wordcount":"共 %s 字","copyright":{"title":"标题","author":"作者","link":"链接","create_time":"创建于","update_time":"更新于","license_title":"版权声明","license_content":"本文章采用 %s 进行许可。","all_rights_reserved":"版权所有 &#169 %s，禁止转载。","public_domain":"本文为公有领域作品，可自由转载、引用。"},"ago":{"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"},"create_time":"创建","update_time":"更新","expired":"这篇文章最后更新于 %s 天前，内容可能已经过时。"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Silas Blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">26</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">古建之光-重走梁林路</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="/images/head1.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">Silas</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-11-07 15:58:43</span>
+        <span class="mobile">2026-11-07 15:58:43</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-11-07 22:12:31</span>
+            <span class="mobile">2026-11-07 22:12:31</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%B8%B8%E8%AE%B0/">游记</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%99%8B%E5%8C%97/">晋北</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>22.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>77 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>上周休年假，在网上找了一个山西仿古旅行团，一个人报名体验了一番，学到了很多古建知识。</p>
+<p>这趟行程的实际路线是：<strong>五台</strong>（南禅寺 → 佛光寺 → 塔院寺 → 显通寺 → 罗睺寺）→ <strong>浑源</strong>（悬空寺）→ <strong>大同</strong>（云冈石窟 → 九龙壁 → 善化寺 → 华严寺）→ <strong>应县</strong>（净土寺 → 木塔）→ <strong>朔州</strong>（崇福寺）→ <strong>太原</strong>（晋祠 → 山西博物院）。</p>
+<span id="more"></span>
+
+<p>这条线叫”<strong>重走梁林路</strong>“，大概是1933到1937年，梁思成、林徽因与营造学社同仁四赴山西，从大同的辽金木构一路测到五台的唐构，最终在1937年7月5日于佛光寺东大殿读出”唐大中十一年”的墨迹，推翻了日本学者”中国境内已无唐代木构”的断言。它本质上是一条<strong>中国木构建筑的年代剖面线</strong>。</p>
+<p>这条路线在年代上，从北魏云冈（460—524）一路排到明洪武年的九龙壁（1392），跨度约九百三十年，中间没有一个朝代缺席。</p>
+<hr>
+<h2 id="第一站：五台（台外唐构到台怀诸寺）"><a href="#第一站：五台（台外唐构到台怀诸寺）" class="headerlink" title="第一站：五台（台外唐构到台怀诸寺）"></a>第一站：五台（台外唐构到台怀诸寺）</h2><p>中国现存三座唐代木构，全部在山西，且全部是<strong>民间或地方性建筑，不是皇家工程</strong>——这一点极重要：正因为它们”级别不高、地处偏僻”，才躲过了会昌法难与历代战火。</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>建筑</th>
+<th>位置</th>
+<th>年代</th>
+<th>国保批次</th>
+<th>距今（2026）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>①</td>
+<td><strong>南禅寺大殿</strong></td>
+<td>忻州五台县阳白乡李家庄</td>
+<td>唐建中三年（782）</td>
+<td>国一（1961）</td>
+<td>1244 年</td>
+</tr>
+<tr>
+<td>②</td>
+<td><strong>广仁王庙正殿</strong></td>
+<td>运城芮城县龙泉村</td>
+<td>唐大和五年（831）</td>
+<td>国五（2001）</td>
+<td>1195 年</td>
+</tr>
+<tr>
+<td>③</td>
+<td><strong>佛光寺东大殿</strong></td>
+<td>忻州五台县豆村镇佛光山</td>
+<td>唐大中十一年（857）</td>
+<td>国一（1961）</td>
+<td>1169 年</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>⚠️ <strong>注意年代顺序</strong>：南禅寺（782）比佛光寺（857）早 75 年，是<strong>中国现存最古老的木结构建筑</strong>，也是亚洲现存最古老的木构之一。但”名气”在佛光寺——因为佛光寺是<strong>官式高等级建筑</strong>，体量大、形制完整、还带唐代题记、唐代彩塑、唐代壁画，是”能拿来当教科书”的那一座。</p>
+</blockquote>
+<blockquote>
+<p><strong>本线在五台看的是”两个层级”的唐构</strong>：南禅寺（村庙）与佛光寺（官寺）。看完这两座，”唐代的尺度”就成了基准线——后面到辽金，斗拱一小、装饰一多、昂一假，你立刻能感觉出来。</p>
+</blockquote>
+<blockquote>
+<p><strong>站内动线</strong>：南禅寺（台外，距台怀约 100 km）→ 佛光寺（台外，约 50 km）→ 回台怀，<strong>塔院寺 → 显通寺 → 罗睺寺</strong>（三寺紧邻，步行即可）。先跑远的，最后一段不折腾。</p>
+</blockquote>
+<h3 id="1-1-南禅寺"><a href="#1-1-南禅寺" class="headerlink" title="1.1 南禅寺"></a>1.1 南禅寺</h3><p><strong>唐建中三年（782）｜第一批全国重点文物保护单位</strong>——中国现存最古老的木结构建筑，原是五台县阳白乡李家庄与郭家寨两村共用的村庙。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_1.jpg"
+                      alt="插入图片" title="南禅寺"
+                ></p>
+<h4 id="形制与结构"><a href="#形制与结构" class="headerlink" title="形制与结构"></a>形制与结构</h4><ul>
+<li><p><strong>单檐歇山顶 + 抬梁式</strong>：屋顶重量全部由柱与梁架承担，墙只起围护作用，所谓”<strong>墙倒屋不塌</strong>“。这是判断抬梁式的最直观方法。</p>
+</li>
+<li><p><strong>面阔进深各三间</strong>：尺度接近民居，是唐代”村庙”级别的真实样貌。正因体量小、地处乡野，武宗会昌五年（845）灭佛时未被波及——<strong>它比佛光寺躲得快</strong>。</p>
+</li>
+<li><p><strong>斗拱</strong>：用材硕大，与柱高比例远大于后世；这是唐代建筑的共同指纹（”斗拱硕大、出檐深远、举折平缓”）。</p>
+</li>
+</ul>
+<h4 id="必看细节"><a href="#必看细节" class="headerlink" title="必看细节"></a>必看细节</h4><ol>
+<li><strong>鸱吻（屋脊两端的兽头）</strong></li>
+</ol>
+<p>   这对鸱吻是<strong>依据渤海国上京龙泉府遗址出土的唐代鸱吻复原</strong>的——渤海国是唐的藩属（群资料写”番薯”，应为”藩属”），地在今东北与俄罗斯远东一带，后为契丹所灭。也就是说，<strong>这是”地道的唐代原创形制”，但原件不是唐代原物</strong>，看的时候心里要有这个区分。</p>
+<ol start="2">
+<li><strong>殿内 14 尊唐代彩塑</strong></li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_2.jpg"
+                      alt="插入图片" title="南禅寺武将彩塑"
+                ></p>
+<ul>
+<li>原有 <strong>17 尊</strong>；1999 年 11 月 24 日晚约 7 时被盗 3 尊，主尊佛像被”开膛破肚”（盗取内藏），此案<strong>迄今未破</strong>。</li>
+</ul>
+<p>   - 现存 14 尊，是除敦煌外中国最重要的唐代彩塑群之一。</p>
+<p>   - 全国现存唐代彩塑约 <strong>82 尊</strong>——这个数字要记住，它解释了为什么每一尊都金贵。</p>
+<ol start="3">
+<li><p><strong>梁架题记</strong>：殿内梁下有墨书题记，是判定建中三年（782）的关键证据，也是”唐构”身份的证据链。</p>
+</li>
+<li><p><strong>平梁与叉手</strong>：唐构里常见的人字形叉手（斜撑），是唐代梁架的重要特征，与后世的金柱、蜀柱体系不同。</p>
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>南禅寺的可贵不在体量，在标本性。它是中国现存最古老的木结构建筑，也是三座唐构里唯一一座<strong>村庙</strong>——原本只是李家庄与郭家寨两村共用的小庙，面阔进深各三间，尺度接近民居，抬梁式构架配单檐歇山顶，斗拱用材硕大、出檐深远、屋脊平缓，唐人的做法一眼可辨。正因为级别低、地处五台县阳白的乡野，会昌五年灭佛时它没被列入清理名单，此后一千二百多年也没被”重修升级”过，于是原样留到了今天。殿内 14 尊唐代彩塑（原有 17 尊，1999 年 11 月盗失 3 尊、主尊被开膛，案件至今未破）与梁下”唐建中三年”墨书题记，是判定它身份的两条硬证；全国现存唐代彩塑不过八十余尊，这 14 尊的分量由此可知。屋顶那对鸱吻要分清：形制是依渤海国上京龙泉府遗址出土的唐鸱吻复原的，地道唐样，但物件不是唐代原物。看南禅寺，看的其实是”唐代一个普通村子能盖出什么样的房子”。</p>
+<h3 id="1-2-佛光寺东大殿"><a href="#1-2-佛光寺东大殿" class="headerlink" title="1.2 佛光寺东大殿"></a>1.2 佛光寺东大殿</h3><p><strong>唐大中十一年（857）｜第一批国保</strong>——唐代官式建筑里唯一”四绝齐全”的幸存者，梁思成称其为”中国第一国宝”。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_3.jpg"
+                      alt="插入图片" title="佛光寺"
+                ></p>
+<h4 id="“佛光寺四绝”：建筑、彩塑、壁画、题记"><a href="#“佛光寺四绝”：建筑、彩塑、壁画、题记" class="headerlink" title="“佛光寺四绝”：建筑、彩塑、壁画、题记"></a>“佛光寺四绝”：建筑、彩塑、壁画、题记</h4><p>这四样同时在东大殿里凑齐，全国仅此一处。下面按四绝拆开讲。</p>
+<h5 id="①-建筑：唐代官式建筑的标准答案"><a href="#①-建筑：唐代官式建筑的标准答案" class="headerlink" title="① 建筑：唐代官式建筑的标准答案"></a>① 建筑：唐代官式建筑的标准答案</h5><ul>
+<li><p><strong>单檐庑殿顶</strong>：屋顶等级最高的一档（庑殿 &gt; 歇山 &gt; 悬山 &gt; 硬山）。</p>
+</li>
+<li><p><strong>面阔七间、进深四间</strong>：体量在唐构中属大型。</p>
+</li>
+<li><p><strong>殿堂式结构</strong>：内柱与檐柱<strong>等高</strong>，柱头之上叠斗拱承托屋顶，结构层次复杂、规格高。</p>
+</li>
+<li><p><strong>出檐 3.96 米</strong>：这是唐代”出檐深远”的量化证据——近 4 米的屋檐，靠的是硕大斗拱层层出跳。</p>
+</li>
+<li><p><strong>柱头铺作：四跳七铺作双杪双下昂</strong>。理论上八铺作是最高等级，但<strong>现存古建中尚未发现八铺作实例</strong>，所以七铺作就是”能看到的顶配”。</p>
+</li>
+<li><p><strong>举折平缓</strong>：屋面曲线比明清平缓得多，屋脊到檐口的落差小，视觉上舒展、有唐人的从容。</p>
+</li>
+</ul>
+<h5 id="②-彩塑：35-尊里的-34-尊唐塑"><a href="#②-彩塑：35-尊里的-34-尊唐塑" class="headerlink" title="② 彩塑：35 尊里的 34 尊唐塑"></a>② 彩塑：35 尊里的 34 尊唐塑</h5><ul>
+<li><p>殿内共 <strong>35 尊</strong>彩塑：除<strong>韦陀像为明代</strong>补塑外，其余 <strong>34 尊均为唐代原塑</strong>。</p>
+</li>
+<li><p>唐代风格辨识点：<strong>体态丰满、服饰简洁、衣纹利落流畅</strong>，不作繁复装饰，气韵内敛。</p>
+</li>
+<li><p>佛像最后一次补色在 <strong>1933 年</strong>；辛亥革命后曾为佛像披龙袍，梁思成在《记五台山佛光寺建筑》中直斥其”<strong>媚俗</strong>“。这句话可以记下来——它代表了中国早期建筑史学者的审美立场：<strong>反对用后世的俗艳去覆盖唐代的克制</strong>。</p>
+</li>
+<li><p>沿大殿一周原为<strong>明代 500 罗汉彩塑</strong>，因大殿后山墙坍塌损毁，现仅存 <strong>297 尊</strong>（296 尊罗汉 + 1 尊愿诚和尚塑像）。愿诚和尚是主持重建东大殿的唐代僧人，把他塑进罗汉群，是”人入神列”的做法。</p>
+</li>
+</ul>
+<h5 id="③-壁画：三层叠压的时间"><a href="#③-壁画：三层叠压的时间" class="headerlink" title="③ 壁画：三层叠压的时间"></a>③ 壁画：三层叠压的时间</h5><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>年代</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>拱眼壁（斗拱之间的”由额”上方）</td>
+<td><strong>北宋宣和年间</strong>（群资料写”崇和”，应为”宣和”）</td>
+<td>佛教故事画，宋代重修时补绘</td>
+</tr>
+<tr>
+<td>阿弥陀佛座后</td>
+<td>推测<strong>唐代</strong></td>
+<td>高约 30 厘米、长约 80 厘米的小型壁画，被佛像遮挡，常人看不到，是 2010 年代勘察的重要发现</td>
+</tr>
+<tr>
+<td>内槽棋眼及栱腹</td>
+<td>唐—宋</td>
+<td>部分为唐代原作</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>看法</strong>：佛光寺的壁画不在”大”，而在”层”——同一面墙上有唐、宋两代的手笔，这是木构建筑”不断被修、不断被叠”的活标本。</p>
+</blockquote>
+<h5 id="④-题记：改变中国建筑史的四行墨迹"><a href="#④-题记：改变中国建筑史的四行墨迹" class="headerlink" title="④ 题记：改变中国建筑史的四行墨迹"></a>④ 题记：改变中国建筑史的四行墨迹</h5><ul>
+<li><p><strong>大殿内四根四椽栿（四椽袱）上方均有题记</strong>。</p>
+</li>
+<li><p>北侧四椽栿上写：”<strong>功德主故右军中尉王，佛殿主上都送供女弟子宁公遇</strong>“（群资料”右军中蔚王”，”蔚”应为”尉”）。</p>
+</li>
+<li><p>与殿外<strong>唐大中十一年经幢</strong>上的”女弟子宁公遇”记载完全吻合——<strong>梁架题记 + 经幢 + 造像风格</strong>，三重证据锁死年代。</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_4.jpg"
+                      alt="插入图片" title="佛光寺经幢"
+                ></p>
+<p><strong>1937 年 7 月 5 日</strong>，梁思成、林徽因第四次入晋，在佛光寺读出这行墨迹，证实东大殿建于唐大中十一年（857），<strong>打破了日本学者关野贞、常盘大定”中国境内已无唐代木构，要看唐代建筑只能去日本奈良”的定论</strong>。这一天在中国建筑史上，份量等同于一次考古大发现。</p>
+<ul>
+<li><strong>板门题记</strong>：1964 年 7 月，罗哲文先生考察时在板门背后发现大量题记，其中最早为<strong>唐咸通七年（867）</strong>，仅比大殿始建晚 9 年。据此推断：<strong>东大殿现存板门是唐代始建时的原物</strong>——这意味着你手边那两扇门，是 1169 年前的木头。</li>
+</ul>
+<h5 id="⑤-地基"><a href="#⑤-地基" class="headerlink" title="⑤ 地基"></a>⑤ 地基</h5><ul>
+<li><p><strong>东面为天然地基</strong>，<strong>西面为北魏时期的夯土地基</strong>——同一座殿，两种基础，说明建殿时借用了北魏旧寺的基址。</p>
+</li>
+<li><p>2017 年，东侧靠近山墙的天然地基下陷，导致大面积漏雨，屋顶部分结构受损严重。这也是今天东大殿部分区域限流、禁止登临的原因之一。</p>
+</li>
+</ul>
+<h4 id="文殊殿（金代）"><a href="#文殊殿（金代）" class="headerlink" title="文殊殿（金代）"></a>文殊殿（金代）</h4><ul>
+<li><p><strong>金代建筑</strong>，面阔七间、进深四间。</p>
+</li>
+<li><p>殿内墙壁有<strong>明初 500 罗汉壁画</strong>，实存 <strong>245 尊</strong>。</p>
+</li>
+<li><p>佛坛上七尊塑像，正中为”<strong>新样文殊</strong>“，具金代塑像风格，是<strong>中国现存最早的文殊七尊像</strong>。</p>
+</li>
+<li><p><strong>减柱法</strong>：梁架采用减柱造，用<strong>八字托架</strong>把屋顶重量分散到柱子上，殿内因而空旷。</p>
+</li>
+<li><p><strong>额枋长度达 14 米</strong>——单根额枋做到 14 米，在现存古建中相当罕见（木材长度是硬约束）。</p>
+</li>
+</ul>
+<blockquote>
+<p>文殊殿常被游客匆匆略过，其实它是<strong>金代”减柱 + 大额枋”技术路线的最佳标本</strong>，比东大殿更能看出”后世怎么在唐构基础上做减法”。</p>
+</blockquote>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>佛光寺东大殿是这条线上唯一的唐代官式高等级建筑：单檐庑殿顶，面阔七间、进深四间，殿堂式构架，内柱与檐柱等高，柱头叠七铺作双杪双下昂，出檐 3.96 米，屋面举折平缓——唐人的气度是结构撑起来的，不是装饰堆出来的。它无可替代之处在于”四绝同堂”：建筑本身、34 尊唐塑（第 35 尊韦陀为明塑）、北宋宣和年间拱眼壁壁画，以及写在四根四椽栿上的墨迹”功德主故右军中尉王，佛殿主上都送供女弟子宁公遇”。1937 年 7 月 5 日梁思成、林徽因读出这行字，与殿外唐大中十一年经幢互证，一举推翻日本学者”中国已无唐代木构、要看唐建只能去奈良”的断言；1964 年罗哲文又在板门背后发现唐咸通七年题记，仅晚于建殿九年，据此认定现存板门仍是唐代原物——你手边那两扇门，是 1169 年前的木头。地基也藏着层信息：东面天然地基、西面北魏夯土地基，说明建殿时借了旧寺基址；2017 年东侧下陷漏雨，屋顶受损，这也是部分区域限流的原因。台外这一趟不轻松，但它是整条线的地基：没有它作基准，到大同你就感觉不出辽金的”变小变繁”。旁边的文殊殿也值得留二十分钟——金代减柱造、八字托架、14 米整根额枋，还有中国现存最早的文殊七尊像。</p>
+<h3 id="1-3-五台山总说"><a href="#1-3-五台山总说" class="headerlink" title="1.3 五台山总说"></a>1.3 五台山总说</h3><p><strong>中国四大佛教名山之首、文殊菩萨道场</strong>，2009 年以”文化景观”列入世界遗产。台怀镇是核心，五个台顶是另一套体系。</p>
+<h4 id="四大佛教名山（对照表）"><a href="#四大佛教名山（对照表）" class="headerlink" title="四大佛教名山（对照表）"></a>四大佛教名山（对照表）</h4><table>
+<thead>
+<tr>
+<th>名山</th>
+<th>省份</th>
+<th>菩萨</th>
+<th>道场核心</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>五台山</td>
+<td>山西</td>
+<td><strong>文殊菩萨</strong>（大智）</td>
+<td>台怀镇诸寺 + 五台顶</td>
+</tr>
+<tr>
+<td>普陀山</td>
+<td>浙江</td>
+<td>观音菩萨（大悲）</td>
+<td>普济寺、不肯去观音院</td>
+</tr>
+<tr>
+<td>峨眉山</td>
+<td>四川</td>
+<td>普贤菩萨（大行）</td>
+<td>金顶、万年寺</td>
+</tr>
+<tr>
+<td>九华山</td>
+<td>安徽</td>
+<td>地藏菩萨（大愿）</td>
+<td>化城寺、肉身殿</td>
+</tr>
+</tbody></table>
+<h4 id="世界五大佛教圣地"><a href="#世界五大佛教圣地" class="headerlink" title="世界五大佛教圣地"></a>世界五大佛教圣地</h4><ol>
+<li><p><strong>蓝毗尼花园</strong>（尼泊尔）——佛陀诞生地</p>
+</li>
+<li><p><strong>鹿野苑</strong>（印度）——佛陀初转法轮、初次讲经说法地</p>
+</li>
+<li><p><strong>菩提伽耶</strong>（印度）——佛陀悟道成佛地</p>
+</li>
+<li><p><strong>拘尸那迦</strong>（印度）——佛陀涅槃地</p>
+</li>
+<li><p><strong>山西五台山</strong>——文殊菩萨道场</p>
+</li>
+</ol>
+<blockquote>
+<p>前四个是”佛陀一生的四个坐标”，第五个是<strong>唯一以菩萨道场身份入选的</strong>。这就是五台山在佛教地理中的特殊位置。</p>
+</blockquote>
+<h4 id="五个台顶（朝台必备表）"><a href="#五个台顶（朝台必备表）" class="headerlink" title="五个台顶（朝台必备表）"></a>五个台顶（朝台必备表）</h4><table>
+<thead>
+<tr>
+<th>方位</th>
+<th>台名</th>
+<th>海拔</th>
+<th>寺院</th>
+<th>供奉</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>东台</td>
+<td>望海峰</td>
+<td>约 2795 m</td>
+<td>望海寺</td>
+<td>聪明文殊</td>
+<td>观日出最佳</td>
+</tr>
+<tr>
+<td>南台</td>
+<td>锦绣峰</td>
+<td>约 2485 m</td>
+<td>普济寺</td>
+<td>智慧文殊</td>
+<td>夏季花草最盛</td>
+</tr>
+<tr>
+<td>西台</td>
+<td>挂月峰</td>
+<td>约 2773 m</td>
+<td>法雷寺</td>
+<td>狮子吼文殊</td>
+<td>赏月</td>
+</tr>
+<tr>
+<td><strong>北台</strong></td>
+<td><strong>叶斗峰</strong></td>
+<td><strong>3061.1 m</strong></td>
+<td>灵应寺</td>
+<td>无垢文殊</td>
+<td><strong>华北最高峰，”华北屋脊”</strong></td>
+</tr>
+<tr>
+<td>中台</td>
+<td>翠岩峰</td>
+<td>约 2894 m</td>
+<td>演教寺</td>
+<td>孺童文殊</td>
+<td>台顶最平阔</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“大朝台”</strong> 指徒步或乘车走遍五个台顶，需一整天、体力与好天气，<strong>汛期与冬季可能临时管控</strong>。”<strong>小朝台</strong>“指登黛螺顶（1080 级”大智路”），一殿之内拜五方文殊，是时间不够时的替代方案。</p>
+</blockquote>
+<h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><p>五台山在佛教地理里的位置很特殊：文殊菩萨道场，中国四大佛教名山之首，也是”世界五大佛教圣地”里唯一以菩萨道场、而非佛陀行迹入选的一处（另四地为蓝毗尼、鹿野苑、菩提伽耶、拘尸那迦）。它的”最早”是实的——东汉永平十一年（68）建大孚灵鹫寺，即今显通寺，是中国第一座真正具有佛教性质的寺院；”最多”也是实的——唐代鼎盛时寺院三百六十余处，现存 124 座，仍居四大名山之首；2009 年以”文化景观”列入世界遗产。台怀核心是一圈青庙与黄庙并存的寺院群，心里要有一条线：显通寺是”原点”，塔院寺是”地标”，罗睺寺是”转折”——汉传与藏传在同一座院落里完成了交接。五个台顶是另一套体系：东台望海峰望海寺供聪明文殊、南台锦绣峰普济寺供智慧文殊、西台挂月峰法雷寺供狮子吼文殊、北台叶斗峰灵应寺供无垢文殊（3061.1 米，华北最高，故称华北屋脊）、中台翠岩峰演教寺供孺童文殊。时间不够就走黛螺顶”小朝台”，一殿之内拜全五方文殊；体力与天气都许可，才谈得上”大朝台”。</p>
+<h3 id="1-4-塔院寺"><a href="#1-4-塔院寺" class="headerlink" title="1.4 塔院寺"></a>1.4 塔院寺</h3><p><strong>第二批国保</strong>，原为显通寺的塔院，明永乐五年（1407）独立成寺——整座寺院是围绕一座白塔长出来的。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_5.jpg"
+                      alt="插入图片" title="塔院寺"
+                ></p>
+<h4 id="逐殿细看"><a href="#逐殿细看" class="headerlink" title="逐殿细看"></a>逐殿细看</h4><p><strong>① 山门</strong></p>
+<ul>
+<li><p>左右四大天王，中间<strong>观音菩萨与韦陀菩萨</strong>并列。</p>
+</li>
+<li><p>这个形制<strong>比较特殊</strong>：一般寺院山门（天王殿）以弥勒居中、韦陀背立，塔院寺把观音请到正面，是它作为”塔院”独立后的自我定位。</p>
+</li>
+</ul>
+<p><strong>② 大慈延寿宝殿</strong></p>
+<ul>
+<li><p>为祈福<strong>慈圣皇太后李娘娘</strong>（明万历生母）而建——所以殿名带”延寿”。</p>
+</li>
+<li><p>正中佛龛供释迦牟尼，两侧文殊、普贤，合称”<strong>华严三圣</strong>“。</p>
+</li>
+<li><p><strong>黑文殊</strong>：这尊文殊<strong>黑胡黑须</strong>，塑像特殊，人称”黑文殊”。汉地文殊造像多作女相或童子相，留须者极少，值得特别看一眼。</p>
+</li>
+</ul>
+<p><strong>③ 大白塔（释迦牟尼舍利塔）</strong></p>
+<ul>
+<li><p>通高 <strong>75.3 米</strong>，环周 <strong>83.3 米</strong>。</p>
+</li>
+<li><p>塔身洁白，<strong>状如藻瓶</strong>（覆钵式），造型优美。</p>
+</li>
+<li><p>塔顶<strong>铜板按八卦方位安置</strong>，悬挂 <strong>252 个风铃</strong>，风吹铃动。</p>
+</li>
+<li><p>建于<strong>元大德六年（1302）</strong>，由<strong>尼泊尔匠师阿尼哥</strong>设计建造。</p>
+</li>
+</ul>
+<blockquote>
+<p>阿尼哥（Araniko）是元代最重要的外来匠师，北京妙应寺白塔也出自他的手笔。所以五台山大白塔与北京白塔是”同胞兄弟”——<strong>尼婆罗（尼泊尔）式覆钵塔</strong>在汉地的两个标准样本。</p>
+</blockquote>
+<ul>
+<li>传说塔下藏有<strong>释迦牟尼真身舍利</strong>。</li>
+</ul>
+<h4 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h4><p>塔院寺原是显通寺的塔院，明永乐五年（1407）独立成寺，整座寺院是围绕一座塔长出来的。大白塔全称释迦牟尼舍利塔，通高 75.3 米、环周 83.3 米，覆钵式塔身状如藻瓶，塔顶铜板按八卦方位安置，悬 252 个风铃；元大德六年（1302）由尼泊尔匠师阿尼哥设计建造——北京妙应寺白塔同出他手，两座塔是尼婆罗式覆钵塔在汉地的同胞样本。殿宇部分有两处别处少见：山门以观音居中、韦陀并列，不合天王殿的常规格局；大慈延寿宝殿为明万历生母慈圣皇太后李氏祈福而建，殿中那尊留黑胡黑须的文殊，人称”黑文殊”，汉地文殊多作女相或童子相，带须者极少。大白塔定的是五台山的天际线，把它放在台怀三寺第一站是合适的——先看见那座塔，再看塔属于哪座寺。</p>
+<h3 id="1-5-显通寺"><a href="#1-5-显通寺" class="headerlink" title="1.5 显通寺"></a>1.5 显通寺</h3><p><strong>第二批国保</strong>，五台山的开山祖寺：东汉永平十一年（68）建，初名大孚灵鹫寺，历史最早、规模最大。</p>
+<h4 id="逐殿细看-1"><a href="#逐殿细看-1" class="headerlink" title="逐殿细看"></a>逐殿细看</h4><p><strong>① 钟楼</strong></p>
+<ul>
+<li><p>上悬明代铸造铜钟，重 <strong>9999.5 斤</strong>。</p>
+</li>
+<li><p>传说为避明万历皇帝之”<strong>万</strong>“字讳，故意少铸半斤，取”万不到头”——这是<strong>讲解口径</strong>，属民间附会，但很有意思，可以当故事听。</p>
+</li>
+</ul>
+<p><strong>② 观音殿</strong></p>
+<ul>
+<li><p>内供”<strong>三大士</strong>“：正中观音菩萨，左文殊、右普贤。</p>
+</li>
+<li><p>上悬”<strong>霞表天城</strong>“匾，<strong>清乾隆皇帝御笔</strong>。</p>
+</li>
+<li><p><strong>不肯去观音的源头就在这</strong>：唐代日本僧人<strong>慧锷</strong>（群资料写”慧颚”，应为慧锷）从此殿请走一尊二尺高玉雕观音，欲带回日本，船至舟山群岛受阻，遂悟”观音不愿东渡”，就地供奉，建”<strong>不肯去观音院</strong>“——<strong>普陀山因此成为观音道场</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>一段”请佛未成”，改写了中国佛教四大名山的格局。这是五台山与普陀山之间最漂亮的一条历史线索。</p>
+</blockquote>
+<p><strong>③ 大文殊殿（方便朝台）</strong></p>
+<ul>
+<li><p>同时供奉<strong>东、南、西、北、中五方文殊</strong>与文殊师利本尊像。</p>
+</li>
+<li><p>因一殿即可拜全五台，故称”<strong>方便朝台</strong>“。</p>
+</li>
+</ul>
+<p><strong>④ 大雄宝殿</strong></p>
+<ul>
+<li><p><strong>纯木结构</strong>，明代<strong>重檐庑殿顶</strong>——注意：这是五台山等级最高的殿顶。</p>
+</li>
+<li><p>全殿设 <strong>108 根柱子</strong>，象征人间 108 种烦恼。</p>
+</li>
+<li><p>内供”<strong>三世佛</strong>“：正中释迦牟尼，左右药师佛、阿弥陀佛。</p>
+</li>
+</ul>
+<blockquote>
+<p>严格说，”药师—释迦—弥陀”是<strong>横三世佛</strong>（按空间&#x2F;世界分：东方净琉璃、娑婆、西方极乐），与”竖三世佛”（过去燃灯、现在释迦、未来弥勒）不同，看的时候可以留意一下匾额与方位。</p>
+</blockquote>
+<p><strong>⑤ 普光明殿（无梁殿 &#x2F; 无量殿 &#x2F; 七处九会殿）</strong></p>
+<ul>
+<li><p><strong>纯砖石垒砌</strong>，无一根木梁，故称”无梁殿”；谐音又称”无量殿”。</p>
+</li>
+<li><p>明代<strong>憨山大师</strong>设计修建。</p>
+</li>
+<li><p>内供<strong>卢舍那佛</strong>，旁有<strong>十三层八角形多宝佛木塔</strong>，高约 8 米，明代珍品。</p>
+</li>
+</ul>
+<p><strong>⑥ 千钵文殊殿</strong></p>
+<ul>
+<li><p>内供铜铸文殊：<strong>五头十三面、千手千钵千释迦</strong>文殊，同为憨山大师设计铸造。</p>
+</li>
+<li><p>“千钵”意为每钵中各现一释迦，是华严”一即一切”的图像化表达。</p>
+</li>
+</ul>
+<p><strong>⑦ 铜殿</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_6.jpg"
+                      alt="插入图片" title="显通寺"
+                ></p>
+<ul>
+<li><p><strong>重檐歇山顶，外观两层、实为一层</strong>，纯铜铸造。</p>
+</li>
+<li><p>内供佛像<strong>一万尊</strong>。</p>
+</li>
+<li><p>明代<strong>妙峰法师</strong>走遍一万户人家，化缘得铜十万斤，铸三座铜殿：</p>
+</li>
+</ul>
+<p>  - 五台山显通寺铜殿（现存）</p>
+<p>  - 峨眉山金顶铜殿（<strong>已重修</strong>）</p>
+<p>  - 南京宝华山铜殿（<strong>已毁</strong>）</p>
+<blockquote>
+<p>所以这一座是<strong>三座中的唯一原构</strong>。</p>
+</blockquote>
+<p><strong>⑧ 后高殿（藏经阁）</strong></p>
+<ul>
+<li>内供<strong>甘露文殊</strong>与十八罗汉。</li>
+</ul>
+<h4 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h4><p>显通寺是五台山的原点：东汉永平十一年（68）建，初名大孚灵鹫寺，历史最早、规模最大，第二批国保。它最值得看的是”三种材料、三座代表作”——大雄宝殿纯木构，明代重檐庑殿顶，殿内 108 根柱子对应人间 108 种烦恼，供横三世佛；普光明殿又名无梁殿、无量殿，纯砖石垒砌不用一根木梁，内有明代十三层八角多宝佛木塔，高约 8 米；铜殿纯铜铸造，重檐歇山顶，外观两层实为一层，内供万尊佛像，是明代妙峰法师化缘十万斤铜所铸三座铜殿中唯一存原构的一座（峨眉山金顶已重修，南京宝华山已毁）。还有两条线索值得记住：钟楼那口明代铜钟重 9999.5 斤，传说为避万历”万”字讳少铸半斤——属民间附会，但好听；观音殿则是”不肯去观音”的起点，唐代日本僧人慧锷从此殿请走一尊玉雕观音，舟山受阻，悟观音不愿东渡，就地供奉，普陀山因此成为观音道场。一座殿串起五台山与普陀山，这条线是整站里最漂亮的。</p>
+<h3 id="1-6-罗睺寺（黄教格鲁派）"><a href="#1-6-罗睺寺（黄教格鲁派）" class="headerlink" title="1.6 罗睺寺（黄教格鲁派）"></a>1.6 罗睺寺（黄教格鲁派）</h3><p>唐代只是大华严寺十二院之一的善住阁院，明弘治五年（1492）重建，清代由青庙改黄庙——一座院子叠了三层时间。</p>
+<h4 id="逐殿细看-2"><a href="#逐殿细看-2" class="headerlink" title="逐殿细看"></a>逐殿细看</h4><p><strong>① 天王殿（第一重殿）</strong></p>
+<ul>
+<li><p>内塑<strong>四大天王</strong>。</p>
+</li>
+<li><p>殿前一对<strong>唐代石狮</strong>——五台山地区罕见的珍品，看石狮的蹲姿与鬃毛处理，是唐狮的典型样式。</p>
+</li>
+</ul>
+<p><strong>② 文殊殿</strong></p>
+<ul>
+<li><p><strong>单檐歇山顶，四出廊</strong>。</p>
+</li>
+<li><p>内供文殊骑狮像：文殊面部<strong>乳白色</strong>，两肩伸出<strong>肩花</strong>，花上分置<strong>经书</strong>与<strong>智慧剑</strong>——这是<strong>黄教文殊造像</strong>的典型特征（青庙文殊多持如意，黄教则经、剑并持，象征般若与智慧之力）。</p>
+</li>
+<li><p>坐骑<strong>绿毛狮子狻猊</strong>，牵狮人<strong>扶林</strong>（一说为”佛陀波利”系统的于阗王形象），左为<strong>善财童子</strong>，右为<strong>于阗王</strong>。</p>
+</li>
+<li><p>殿后墙两角供<strong>宗喀巴大师</strong>像（黄教教主）。</p>
+</li>
+</ul>
+<p><strong>③ 大佛殿（第三进）</strong></p>
+<ul>
+<li><p><strong>重檐歇山顶</strong>，面阔五间 16 米、进深 16.3 米，<strong>前置抱厦</strong>；殿前两通<strong>康熙御碑</strong>。</p>
+</li>
+<li><p>内供”<strong>三世佛</strong>“：释迦牟尼、药师佛、阿弥陀佛。</p>
+</li>
+<li><p>佛前另有三尊<strong>戴尖帽</strong>的像：正中<strong>宗喀巴大师</strong>，两侧<strong>一世达赖</strong>、<strong>一世班禅</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>顶尖帽 &#x3D; 格鲁派标志（黄帽派）。看到尖帽，就知道这是黄庙的排布逻辑。</p>
+</blockquote>
+<p><strong>④ 藏经阁</strong></p>
+<ul>
+<li><p><strong>上层</strong>：藏经阁。传说佛子罗睺罗曾在此显迹，其化身形成的<strong>肉身菩萨舍利</strong>供奉在二楼。</p>
+</li>
+<li><p><strong>下层</strong>： <strong>“开花现佛”</strong></p>
+</li>
+</ul>
+<p>  - 殿内正中砌正方形高台，台上有<strong>木质圆盘</strong>，盘面刻水浪图案；</p>
+<p>  - 圆盘正中装一朵<strong>高达丈余的莲花</strong>，由<strong>八片莲瓣</strong>合围；</p>
+<p>  - 莲瓣内端坐<strong>四尊佛像</strong>；</p>
+<p>  - <strong>经人操纵机关，莲瓣可开可合</strong>，开则现佛。</p>
+<blockquote>
+<p>这是五台山最有”机关感”的一处，也是清代寺院把<strong>机械装置</strong>用于宗教叙事的绝佳案例。看的时候注意转盘下方的传动结构。</p>
+</blockquote>
+<h4 id="总结-5"><a href="#总结-5" class="headerlink" title="总结"></a>总结</h4><p>罗睺寺是”青庙改黄庙”的活标本。唐代它只是大华严寺（今显通寺）十二院之一的善住阁院，明弘治五年（1492）重建，明万历年间李彦妃为祈子拨款重修，清代改为格鲁派寺院（改宗年代有康熙、乾隆两说），寺名得于释迦牟尼十大弟子之一罗睺罗，密行第一。造像系统是黄教的：文殊殿的文殊面作乳白色，两肩伸出肩花，花上分置经书与智慧剑——青庙文殊多持如意，黄教则经、剑并持，象征般若与智慧之力；坐骑绿毛狮子狻猊，牵狮人扶林，左善财童子、右于阗王，殿后两角供宗喀巴。大佛殿三世佛前另有三尊戴尖帽的像，正中宗喀巴，两侧一世达赖、一世班禅——看到尖帽就知道是黄庙的排布逻辑。全场最有趣的是藏经阁下层的”开花现佛”：方形高台上置木圆盘，盘面刻水浪，正中一朵丈余高的莲花由八片莲瓣合围，瓣内端坐四尊佛像，靠机关操纵开合。这是清代寺院把机械装置用于宗教叙事的绝佳案例，值得弯腰看一眼转盘下方的传动结构。</p>
+<hr>
+<h2 id="第二站：浑源（悬空寺）"><a href="#第二站：浑源（悬空寺）" class="headerlink" title="第二站：浑源（悬空寺）"></a>第二站：浑源（悬空寺）</h2><p>从台怀出山，向北经砂河、大营，进恒山<strong>金龙峡</strong>。</p>
+<p>这是整条线上唯一”<strong>建筑与山体长在一起</strong>“的一处——前面看的是”房子怎么盖起来”，这里看的是”房子怎么挂上去”。悬空寺的真正看点不在险，在<strong>力学</strong>：半插飞梁、暗托岩石、膨胀螺栓原理，还有上方那把天然的岩石伞。</p>
+<h3 id="2-1-悬空寺"><a href="#2-1-悬空寺" class="headerlink" title="2.1 悬空寺"></a>2.1 悬空寺</h3><p><strong>北魏太和年间｜第二批国保</strong>——建在恒山翠屏峰半山腰的儒释道三教合一寺院，看着悬空，其实不悬。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_7.jpg"
+                      alt="插入图片" title="悬空寺"
+                ></p>
+<h4 id="为什么要修这座寺？"><a href="#为什么要修这座寺？" class="headerlink" title="为什么要修这座寺？"></a>为什么要修这座寺？</h4><p><strong>背景：北魏太武帝拓跋焘灭佛。</strong></p>
+<p>佛教寺院不纳税、僧人不服兵役，直接冲击国家财政与兵源，加上寺院形成独立政治力量、儒道与佛教的思想斗争、太武帝本人倾向道教并谋求与汉族士大夫合作——四重原因叠加，遂有 <strong>“三武一宗”法难中的第一武</strong>（太武帝）。</p>
+<p><strong>转折：孝文帝拓跋宏。</strong></p>
+<p>孝文帝遵循道长<strong>寇谦之</strong>遗训：”要建一座空中寺院，以达’<strong>上延霄客，下绝嚣浮</strong>‘“——上接天上仙人，下断人间喧嚣。悬空寺因此而生。</p>
+<blockquote>
+<p>所以悬空寺的诞生逻辑不是”炫技”，而是<strong>政治与信仰的转向纪念碑</strong>：一个皇帝灭佛、另一个皇帝用一座悬在崖上的寺，把宗教重新安放到”离天更近、离人间更远”的位置。</p>
+</blockquote>
+<h4 id="1500-年前怎么把它挂上去的？"><a href="#1500-年前怎么把它挂上去的？" class="headerlink" title="1500 年前怎么把它挂上去的？"></a>1500 年前怎么把它挂上去的？</h4><p>核心原理八个字： “<strong>半插飞梁为基，巧借岩石暗托</strong>“。</p>
+<ol>
+<li><p><strong>主体建筑每层都落在岩石上</strong>，梁尾插入岩体，靠岩石本体承托，不是”吊”在空中。</p>
+</li>
+<li><p><strong>凿洞插梁</strong>：在岩壁上凿<strong>口小肚大</strong>的洞，横梁插入后，内部用木楔撑开——<strong>原理类似膨胀螺栓</strong>，越受力越咬得紧。</p>
+</li>
+<li><p><strong>栈道连接</strong>：三部分建筑之间用横梁挑出的栈道相连，形成整体。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>结论：悬空寺并不悬空。</strong> 它是<strong>嵌入式锚固结构</strong>，不是悬索结构。这一句是可以直接拿去纠正朋友圈谣言的。</p>
+</blockquote>
+<h4 id="为什么能活-1500-年？"><a href="#为什么能活-1500-年？" class="headerlink" title="为什么能活 1500 年？"></a>为什么能活 1500 年？</h4><table>
+<thead>
+<tr>
+<th>原因</th>
+<th>具体机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① <strong>结构合理</strong></td>
+<td>半插飞梁 + 岩石暗托，受力路径清晰</td>
+</tr>
+<tr>
+<td>② <strong>选址巧妙</strong></td>
+<td>背倚翠屏峰，处<strong>石崖向内凹进处</strong>；上方凸出的岩体像一把伞，遮挡大部分雨水，避免木材腐烂；高位避洪水；四周山峦缩短日照时间，减缓木材老化</td>
+</tr>
+<tr>
+<td>③ <strong>材料优质</strong></td>
+<td>全部木构件用<strong>恒山特产铁杉木</strong>，纹理细密、抗弯强度高；木料<strong>桐油浸泡</strong>，防腐、防虫、防水，甚至抗白蚁</td>
+</tr>
+<tr>
+<td>④ <strong>人的维护</strong></td>
+<td>当地百姓自发保护 + 历代修缮</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>把这四条并排看，会发现一个规律：<strong>中国木构的长寿，通常不是单点奇迹，而是”结构 + 选址 + 材料 + 人力”四件事同时做到的結果</strong>。应县木塔、佛光寺、南禅寺，用的都是这同一套逻辑。</p>
+</blockquote>
+<h4 id="布局：三部分"><a href="#布局：三部分" class="headerlink" title="布局：三部分"></a>布局：三部分</h4><ul>
+<li><strong>南侧第一部分（二层）</strong></li>
+</ul>
+<p>  - 一层：<strong>禅房</strong></p>
+<p>  - 二层：<strong>大雄宝殿</strong></p>
+<p>  - <strong>脱纱工艺</strong>：殿内三尊佛像采用”脱纱（夹纻）”工艺，<strong>每尊仅一公斤多</strong>，为大殿极大减负。这是塑像工艺与结构力学的结合——<strong>为了不给悬崖加重量，连佛像都要减肥</strong>。</p>
+<ul>
+<li><strong>中部与北侧（各三层楼阁）</strong></li>
+</ul>
+<p>  - 中间以<strong>悬空栈道</strong>连接；</p>
+<p>  - 设<strong>雷音殿、三佛殿、三官殿</strong>等；</p>
+<p>  - <strong>北侧最高处是三教殿</strong>：同时供奉<strong>释迦牟尼（佛）、老子（道）、孔子（儒）</strong>——“<strong>三教合一</strong>“的实体表达。</p>
+<h4 id="那-30-根柱子到底受不受力？"><a href="#那-30-根柱子到底受不受力？" class="headerlink" title="那 30 根柱子到底受不受力？"></a>那 30 根柱子到底受不受力？</h4><p>民谚：”<strong>悬空寺，半山高，三根马尾空中吊</strong>。”</p>
+<ul>
+<li><p>远看像很多碗口粗的柱子撑起整座建筑，实际这 <strong>30 根细长木柱基本不受力</strong>，甚至<strong>可以用手晃动</strong>。</p>
+</li>
+<li><p>两种解释并存，都值得记：</p>
+</li>
+</ul>
+<p>  1. <strong>保险论</strong>：平时不受力，一旦主体结构变形，可起”<strong>一柱顶千斤</strong>“的应急支撑作用；</p>
+<p>  2. <strong>监测论</strong>（更有意思）：这些柱子原是<strong>竹竿</strong>，用来监测——一旦建筑整体承重失衡，柱子会弯曲，起到<strong>警示</strong>作用，相当于古代的”应变计”。</p>
+<blockquote>
+<p>第二种说法在学界并非定论，但它精准点出了中国古建的一种智慧：<strong>把安全预警做进构件本身</strong>。</p>
+</blockquote>
+<h4 id="名人到访"><a href="#名人到访" class="headerlink" title="名人到访"></a>名人到访</h4><ul>
+<li><p><strong>李白</strong>：写下”<strong>壮观</strong>“二字（今寺下岩壁刻石，”壮”字多一点，传为李白醉后所书）。<strong>注意</strong>：题字真伪学界有争议，作民间说法讲述即可。李白”<strong>危楼高百尺，手可摘星辰。不敢高声语，恐惊天上人</strong>“（《夜宿山寺》）写的正是这类空中楼阁的气象。</p>
+</li>
+<li><p><strong>徐霞客</strong>：明代大旅行家，盛赞其为”<strong>天下巨观</strong>“。</p>
+</li>
+</ul>
+<h4 id="总结-6"><a href="#总结-6" class="headerlink" title="总结"></a>总结</h4><p>悬空寺的看点是力学，不是险。它始建于北魏太和年间，儒释道三教合一，平面仅 125 平方米、建筑面积 258 平方米、阁楼四十余间，属袖珍寺庙；原距地面九十余米，因金龙峡河床堆积、地基抬高，今约六十米。核心做法八个字：”半插飞梁为基，巧借岩石暗托”——主体建筑每层都落在岩石上，横梁插入口小肚大的岩洞，内部以木楔撑开，原理类似膨胀螺栓，越受力咬得越紧。所以<strong>它并不悬空</strong>，这是嵌入式锚固，不是悬索结构。能活一千五百年，靠四件事同时成立：结构合理；选址巧妙（背倚翠屏峰、处于崖壁内凹处，上方凸岩如伞遮雨，高位避洪水，四周山峦缩短日照）；材料优质（恒山铁杉木经桐油浸泡，防腐防虫防水）；历代百姓自发维护。布局三段：南段二层为禅房与大雄宝殿，殿内三尊脱纱佛像每尊仅一公斤多，是为悬崖减负；中段与北段各三层，以悬空栈道相连，最高处三教殿同奉释迦牟尼、老子、孔子。寺下那 30 根碗口粗的柱子基本不受力、可用手晃动，两种解释并存——保险论说它”一柱顶千斤”，监测论说它原是竹竿、弯曲即预警；后者虽非定论，却点出了中国古建把安全预警做进构件本身的智慧。李白”壮观”二字真伪学界有争议，徐霞客”天下巨观”则是确凿的。</p>
+<hr>
+<h2 id="第三站：大同（云冈到华严寺）"><a href="#第三站：大同（云冈到华严寺）" class="headerlink" title="第三站：大同（云冈到华严寺）"></a>第三站：大同（云冈到华严寺）</h2><p>大同在辽代为”<strong>西京</strong>“，金代沿袭。所以城内的华严寺、善化寺都是<strong>辽金皇家&#x2F;官式级别</strong>，与五台山的民间寺院完全不是一个量级。</p>
+<p>城内四处，顺序是 <strong>云冈石窟（北魏石刻）→ 九龙壁（明代琉璃）→ 善化寺（辽金木构）→ 华严寺（辽金最大佛殿）</strong>——一条”<strong>石 → 琉璃 → 木</strong>“的材料线，也是一条”从北魏走到金代”的时间线。</p>
+<h3 id="3-1-云冈石窟"><a href="#3-1-云冈石窟" class="headerlink" title="3.1 云冈石窟"></a>3.1 云冈石窟</h3><p><strong>北魏开凿｜第一批国保｜2001 年列入世界遗产</strong>——东西绵延约一公里，现存窟龛 254 个、主要洞窟 45 座、造像 59000 余尊。</p>
+<h4 id="修建背景：一部”灭佛—兴佛”的完整剧本"><a href="#修建背景：一部”灭佛—兴佛”的完整剧本" class="headerlink" title="修建背景：一部”灭佛—兴佛”的完整剧本"></a>修建背景：一部”灭佛—兴佛”的完整剧本</h4><ol>
+<li><p><strong>佛教东汉传入</strong>，先在民间信奉；</p>
+</li>
+<li><p><strong>五胡十六国</strong>时期迅速发展；</p>
+</li>
+<li><p><strong>北魏</strong>时期国家推崇，佛教上升为国教级力量；</p>
+</li>
+<li><p><strong>太武帝灭佛</strong>（四大原因）：</p>
+</li>
+</ol>
+<p>   - <strong>经济</strong>：寺院经济膨胀，与中央集权的封建王朝经济利益冲突；</p>
+<p>   - <strong>政治</strong>：拥有雄厚经济力量的寺院形成相当的政治力量，危及国家政权；</p>
+<p>   - <strong>思想</strong>：儒、道文化与佛教思想的斗争；</p>
+<p>   - <strong>民族</strong>：太武帝弃佛信道，谋求与汉族士大夫的合作。</p>
+<ol start="5">
+<li><strong>文成帝复兴佛法</strong>，任命<strong>沙门统昙曜</strong>主持开凿云冈石窟。</li>
+</ol>
+<blockquote>
+<p><strong>“昙曜五窟”（16—20 窟）就是这次复兴的政治宣言</strong>。《魏书·释老志》载文成帝”诏有司为石像，令如帝身”——五尊大佛被认为分别对应北魏五帝，<strong>把皇权直接铸进山崖</strong>。第 20 窟露天大佛（高约 13.7 米）是云冈的封面。</p>
+</blockquote>
+<h4 id="石窟寺在中国的传播路线"><a href="#石窟寺在中国的传播路线" class="headerlink" title="石窟寺在中国的传播路线"></a>石窟寺在中国的传播路线</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">古印度（石窟寺最早出现）</span><br><span class="line">   ↓</span><br><span class="line">犍陀罗地区（今巴基斯坦白沙瓦谷地）—— 佛像最早诞生地</span><br><span class="line">   ↓</span><br><span class="line">新疆 → 河西走廊 → 关陇</span><br><span class="line">   ↓</span><br><span class="line">5 世纪：云冈石窟开凿 → 达到鼎盛</span><br><span class="line">   ↓</span><br><span class="line">流布中华（龙门、麦积山、敦煌、大足……）</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>核心判断：<strong>佛像不是”印度造像”直接搬来的，是在犍陀罗（希腊化佛教艺术）熔过一次，再沿河西走廊一站站汉化的</strong>。云冈正是这条链上”汉化正在发生”的关键一站。</p>
+</blockquote>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_8.jpg"
+                      alt="插入图片" title="云岗石窟1"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_9.jpg"
+                      alt="插入图片" title="云岗石窟2"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_10.jpg"
+                      alt="插入图片" title="云岗石窟3"
+                ></p>
+<h4 id="云冈三期：一部可以”看出来”的风格演化史"><a href="#云冈三期：一部可以”看出来”的风格演化史" class="headerlink" title="云冈三期：一部可以”看出来”的风格演化史"></a>云冈三期：一部可以”看出来”的风格演化史</h4><h5 id="早期（460—465）｜代表-16—20-窟（昙曜五窟）"><a href="#早期（460—465）｜代表-16—20-窟（昙曜五窟）" class="headerlink" title="早期（460—465）｜代表 16—20 窟（昙曜五窟）"></a>早期（460—465）｜代表 16—20 窟（昙曜五窟）</h5><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>窟形</strong></td>
+<td>平面呈<strong>马蹄形</strong>，顶部为<strong>穹窿状</strong>；每窟<strong>一门一窗，窗在上、门在下</strong></td>
+</tr>
+<tr>
+<td><strong>雕像</strong></td>
+<td>各窟主尊为<strong>三世佛</strong>，主佛居中，身躯高大；<strong>袈裟厚重、肉髻高耸、高鼻深目、眉眼细长、嘴角上翘、大耳垂肩</strong>，身躯健硕，神情威严</td>
+</tr>
+<tr>
+<td><strong>风格</strong></td>
+<td>造像<strong>雄浑伟大、旷世无双</strong>的气势</td>
+</tr>
+<tr>
+<td><strong>宗教意义</strong></td>
+<td>体现”<strong>佛法流传不息、世代长存</strong>“的思想</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>关键词：<strong>雄浑、外来、皇家</strong>。这一期的佛像是”印度—中亚面孔 + 北魏体魄”。</p>
+</blockquote>
+<h5 id="中期（465—494）｜代表-1、2-窟，5、6-窟，7、8-窟，9、10-窟，11、12、13-窟，及未完成的-3-窟"><a href="#中期（465—494）｜代表-1、2-窟，5、6-窟，7、8-窟，9、10-窟，11、12、13-窟，及未完成的-3-窟" class="headerlink" title="中期（465—494）｜代表 1、2 窟，5、6 窟，7、8 窟，9、10 窟，11、12、13 窟，及未完成的 3 窟"></a>中期（465—494）｜代表 1、2 窟，5、6 窟，7、8 窟，9、10 窟，11、12、13 窟，及未完成的 3 窟</h5><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>窟形</strong></td>
+<td>除穹窿形（多在大像窟）外，出现<strong>方形中心塔柱窟（支提窟）</strong>与<strong>前后室殿堂式洞窟（佛殿窟）</strong>；<strong>平面方形洞窟大量出现</strong></td>
+</tr>
+<tr>
+<td><strong>雕像</strong></td>
+<td>部分佛像开始<strong>清秀</strong>，面相适中；佛衣除<strong>右袒式、通肩式</strong>袈裟外，出现”<strong>褒衣博带</strong>“样式</td>
+</tr>
+<tr>
+<td><strong>风格</strong></td>
+<td>雕刻面积大幅增加，内容与形式更丰富；佛龛造型多样，<strong>窟顶多用平棋藻井</strong>；佛、菩萨、飞天、金刚、伎乐天、供养天千姿百态</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>关键词：<strong>繁丽、汉化开始</strong>。”褒衣博带”是汉式士大夫衣冠，佛穿上它，就是佛教穿上中原的衣服。</p>
+</blockquote>
+<blockquote>
+<p><strong>第9—13窟俗称”五华洞”</strong> ；<strong>第 12 窟因乐器雕刻极丰富，被称为音乐窟</strong>——这一窟值得单独留 20 分钟。</p>
+</blockquote>
+<h5 id="晚期（494—524）｜代表-21—45-窟"><a href="#晚期（494—524）｜代表-21—45-窟" class="headerlink" title="晚期（494—524）｜代表 21—45 窟"></a>晚期（494—524）｜代表 21—45 窟</h5><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>窟形</strong></td>
+<td>中小型洞窟，类型复杂、式样多变；造像内容趋于<strong>模式化、简单化</strong></td>
+</tr>
+<tr>
+<td><strong>雕像</strong></td>
+<td>佛像一律<strong>褒衣博带</strong>，<strong>面容消瘦、细颈削肩</strong>，神情虚无飘渺；菩萨身材修长、帔帛交叉、表情孤傲</td>
+</tr>
+<tr>
+<td><strong>风格</strong></td>
+<td>汉化风格明显， <strong>“秀骨清像”</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>关键词：<strong>清瘦、彻底汉化</strong>。孝文帝迁都洛阳（494）后，云冈的皇家工程停摆，民间继续开凿，风格随之”南朝化”。</p>
+</blockquote>
+<h4 id="云冈飞天三变（最直观的一条演化线）"><a href="#云冈飞天三变（最直观的一条演化线）" class="headerlink" title="云冈飞天三变（最直观的一条演化线）"></a>云冈飞天三变（最直观的一条演化线）</h4><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>代号</th>
+<th>外貌</th>
+<th>服饰与动态</th>
+<th>代表窟</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一</td>
+<td>西域”<strong>壮汉</strong>“风</td>
+<td>身材健硕、体格粗短、肩宽胸厚，有明显男性特征（甚至腹肌）；脸型浑圆、高鼻深目，浓浓印度—中亚范儿</td>
+<td><strong>上身袒露</strong>，斜披饰物，下身穿<strong>紧身长裙</strong>，赤足；飞行动作笨拙，靠四肢摆动与身体扭曲表现动感，<strong>飘带尚不常见</strong></td>
+<td><strong>第 20 窟</strong>大佛背光上的飞天</td>
+</tr>
+<tr>
+<td>二</td>
+<td>胡汉融合的”<strong>舞蹈家</strong>“</td>
+<td>身材匀称舒展，脸型仍圆润但线条更柔和</td>
+<td>开始穿中原式<strong>褒衣博带</strong>，<strong>长飘带出现</strong>，随身体舞动形成”<strong>之</strong>“字形或”<strong>曲别针</strong>“状的优美线条，动感极强</td>
+<td><strong>第 6、7、8 窟</strong></td>
+</tr>
+<tr>
+<td>三</td>
+<td>飘逸的”<strong>中原仙女</strong>“</td>
+<td>“<strong>秀骨清像</strong>“，纤细苗条、面容清秀，<strong>完全女性化</strong>，气质温婉</td>
+<td>身着<strong>宽袍大袖汉服</strong>，长飘带几乎遮住双脚，完全依靠衣裙舞带在空中翱翔，<strong>失去体量感</strong>，更像剪影或剪纸，极具装饰性</td>
+<td>西部诸窟，及早期洞窟中后期补刻的龛像</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>一句话串起来</strong>：飞天的体重一路在减——从”有腹肌的壮汉”到”飘带遮脚的仙女”。<strong>减掉的不是肉，是外来性。</strong></p>
+</blockquote>
+<h4 id="总结-7"><a href="#总结-7" class="headerlink" title="总结"></a>总结</h4><p>云冈是刻在石头上的汉化史。北魏太武帝灭佛之后，文成帝复兴佛法，任沙门统昙曜主持开凿，早期五窟（16—20 窟，460—465）马蹄形平面、穹窿顶、一门一窗，主尊三世佛身躯高大、袈裟厚重、高鼻深目，是”印度—中亚面孔 + 北魏体魄”；第 20 窟露天大佛高约 13.7 米，是云冈的封面。中期（465—494）出现方形中心塔柱窟与前后室佛殿窟，佛像转清秀，佛衣出现”褒衣博带”，窟顶多用平棋藻井，第 9—13 窟俗称五华洞、第 12 窟因乐器雕刻极丰称音乐窟。晚期（494—524）以中小窟为主，一律褒衣博带、面容消瘦、细颈削肩，即”秀骨清像”。飞天的三变最直观：从有腹肌、飘带罕见的西域壮汉，到褒衣博带、飘带成”之”字形或曲别针状的胡汉融合舞蹈家（第 6、7、8 窟），再到宽袍大袖、飘带遮脚、近乎剪影的中原仙女——体重一路在减，减掉的是外来性。往上追，这条线的源头是犍陀罗（今巴基斯坦白沙瓦谷地）的佛像诞生，经新疆、河西走廊、关陇东传，五世纪因云冈开凿而达到鼎盛，再流布中华。现存窟龛 254 个、主要洞窟 45 座、造像 59000 余尊。</p>
+<h3 id="3-2-九龙壁"><a href="#3-2-九龙壁" class="headerlink" title="3.2 九龙壁"></a>3.2 九龙壁</h3><p><strong>明洪武二十五年（1392）｜第五批国保</strong>——代王朱桂府邸的照壁，府邸毁于兵火而壁独存，1954 年依原状南移 28 米。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_11.jpg"
+                      alt="插入图片" title="九龙壁"
+                ></p>
+<h4 id="细看"><a href="#细看" class="headerlink" title="细看"></a>细看</h4><ol>
+<li><p><strong>下部</strong>：<strong>琉璃贴面须弥基座</strong>，束腰部分雕刻狮、象、麒麟、鹿、飞马等动物图案。</p>
+</li>
+<li><p><strong>壁身</strong>：正面雕刻<strong>九条巨龙</strong>翻腾于云海之中。</p>
+</li>
+<li><p><strong>用材</strong>：全部壁面由 <strong>426 块</strong>黄、绿、白、赭、紫、蓝色<strong>琉璃构件</strong>拼砌而成。</p>
+</li>
+<li><p><strong>顶部</strong>：<strong>仿木构庑殿顶</strong>，檐上勾滴、瓦垄、脊兽、戗兽俱全；正脊上雕刻行龙、莲花等图案。</p>
+</li>
+</ol>
+<blockquote>
+<p>这是琉璃照壁最容易被忽略的一点：<strong>它的屋顶是假的木构</strong>——用琉璃把真实的梁架、瓦作、脊兽全部仿制出来，等于给建筑做了一次”材质替换实验”。</p>
+</blockquote>
+<ol start="5">
+<li><strong>壁前水池</strong>：长 35 米、宽 4.75 米，中有<strong>双孔石桥</strong>，四周石栏杆，望柱上雕石榴、动物等。</li>
+</ol>
+<blockquote>
+<p>池水是<strong>为了倒影</strong>——龙壁 + 水面，才是完整的构图。看九龙壁要走到池对岸回望。</p>
+</blockquote>
+<h4 id="总结-8"><a href="#总结-8" class="headerlink" title="总结"></a>总结</h4><p>九龙壁是明洪武二十五年（1392）代王朱桂府邸的照壁，府邸明末毁于兵火，唯壁幸存。壁体长 45.5 米、高 8 米、厚 2 米，全部壁面由 426 块黄、绿、白、赭、紫、蓝琉璃构件拼砌，下部为琉璃贴面须弥基座，束腰雕狮、象、麒麟、鹿、飞马，壁身正面九条巨龙翻腾云海，顶部是<strong>仿木构庑殿顶</strong>，勾滴、瓦垄、脊兽、戗兽俱全，正脊另雕行龙与莲花。最容易被忽略的一点正在这个屋顶：用琉璃把一座木殿的梁架瓦作完整”抄”了一遍，等于做了一次材质替换实验。壁前水池长 35 米、宽 4.75 米，中有双孔石桥，四周石栏杆，望柱雕石榴与动物——池水是为倒影而设，看九龙壁要走到池对岸回望，龙壁加水才是完整构图。</p>
+<h3 id="3-3-善化寺"><a href="#3-3-善化寺" class="headerlink" title="3.3 善化寺"></a>3.3 善化寺</h3><p><strong>第一批国保</strong>，俗称南寺：唐开元年间始建，金代圆满和尚重修重建，明正统十年（1445）英宗赐名——辽金寺院里布局最完整的一处。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_12.jpg"
+                      alt="插入图片" title="善化寺"
+                ></p>
+<h4 id="①-山门（天王殿）"><a href="#①-山门（天王殿）" class="headerlink" title="① 山门（天王殿）"></a>① 山门（天王殿）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年代</td>
+<td><strong>金代</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td>外观<strong>单檐庑殿顶</strong>，面阔五间、进深两间</td>
+</tr>
+<tr>
+<td>斗拱</td>
+<td><strong>屋檐下通铺斗拱</strong>（各间均设）</td>
+</tr>
+<tr>
+<td>时代特征</td>
+<td>相比唐代建筑，<strong>阑额上新增了普拍枋</strong>（群资料写”普牌坊”，应为”<strong>普拍枋</strong>“）</td>
+</tr>
+<tr>
+<td>殿内</td>
+<td>供<strong>四大天王</strong>：西方广目天王、东方持国天王、南方增长天王、北方多闻天王；<strong>明末塑像</strong>，表现手法夸张、情绪表达直接</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>普拍枋</strong>是个关键断代标志：唐构基本不用普拍枋（阑额直接压在柱头），辽金开始普遍在阑额上加一条横向扁木（普拍枋）来承托斗拱。<strong>看到普拍枋，年代就往后推。</strong></p>
+</blockquote>
+<h4 id="②-三圣殿"><a href="#②-三圣殿" class="headerlink" title="② 三圣殿"></a>② 三圣殿</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年代</td>
+<td><strong>金代</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td>面阔五间、进深四间</td>
+</tr>
+<tr>
+<td>移柱法</td>
+<td>当心间柱间距 <strong>7.68 米</strong>——用<strong>移柱法</strong>把柱子挪开，换来一个超宽的开间</td>
+</tr>
+<tr>
+<td>斗拱</td>
+<td>屋檐下有<strong>一组最大的补间斗拱</strong>，<strong>出斜拱</strong>，补间双铺作，<strong>真假昂交替出现</strong></td>
+</tr>
+<tr>
+<td>梁架</td>
+<td>用<strong>减柱法</strong>，中间内柱把六椽栿分为”四椽栿 + 乳栿”，佛背后还有后乳栿，共<strong>八椽</strong>；侧面用<strong>移柱法</strong>，变为”五椽 + 三椽”</td>
+</tr>
+<tr>
+<td>塑像</td>
+<td>法坛供<strong>一佛二菩萨</strong>（华严三圣）；塑像年代有<strong>明代说</strong>与<strong>金代说</strong>，待考</td>
+</tr>
+<tr>
+<td>碑刻</td>
+<td><strong>朱弁碑</strong>（见下）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“真假昂交替”<strong>：昂是斗拱中斜向伸出的构件，真昂是结构性的，假昂是装饰性的（只做出昂的形状而实际由华拱挑出）。金代大量使用</strong>假昂</strong>，是”结构让位于装饰”的开端——<strong>这是判断建筑”是否开始走下坡”的一个技术指标</strong>。</p>
+</blockquote>
+<h4 id="朱弁碑（《大金西京大普恩寺重修大殿记》）"><a href="#朱弁碑（《大金西京大普恩寺重修大殿记》）" class="headerlink" title="朱弁碑（《大金西京大普恩寺重修大殿记》）"></a>朱弁碑（《大金西京大普恩寺重修大殿记》）</h4><ul>
+<li><p><strong>内容</strong>：金代<strong>朱弁</strong>撰文，<strong>孔固</strong>正书，<strong>丁暐仁</strong>篆额，<strong>解遵一</strong>刊石。</p>
+</li>
+<li><p><strong>年代</strong>：群资料记”1176 年”；按碑文落款”<strong>皇统三年二月丁卯</strong>“，应为<strong>金皇统三年（1143）</strong>。</p>
+</li>
+<li><p><strong>作者</strong>：朱弁（1085—1144），字少章，<strong>徽州婺源</strong>人（碑末自称”江东朱弁”）。南宋建炎二年（1128）出使金国被扣，<strong>羁留云中（大同）十四年</strong>，在善化寺（时称大普恩寺）设馆授徒，与寺僧圆满交往十四年。碑文即应圆满之请而作。</p>
+</li>
+<li><p><strong>价值</strong>：文章、书法、刻工俱佳，被称为”<strong>金碑之冠</strong>“，是研究善化寺沿革与金代大同社会的一等史料。</p>
+</li>
+</ul>
+<h4 id="③-大雄宝殿"><a href="#③-大雄宝殿" class="headerlink" title="③ 大雄宝殿"></a>③ 大雄宝殿</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年代</td>
+<td><strong>辽代</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>单檐庑殿顶，面阔七间、进深五间</strong></td>
+</tr>
+<tr>
+<td>稀缺性</td>
+<td><strong>全国现存辽代木构仅 8 座</strong>，此为其中之一</td>
+</tr>
+<tr>
+<td>梁架</td>
+<td><strong>减柱法</strong>，殿内空间极开阔</td>
+</tr>
+<tr>
+<td>屋顶</td>
+<td><strong>彻上露明造</strong>（无天花板，梁架全部外露），正中设<strong>平棋藻井 + 斗八藻井</strong></td>
+</tr>
+<tr>
+<td>佛坛</td>
+<td><strong>五方佛</strong>：正中释迦牟尼，左东方药师佛、南方宝生佛，右西方阿弥陀佛、北方不空成就佛；佛两侧<strong>迦叶、阿难</strong>，另有两尊<strong>胁侍菩萨</strong></td>
+</tr>
+<tr>
+<td>二十四诸天</td>
+<td>佛教护法，<strong>主流观点为金代塑像</strong>，<strong>色彩明代补过</strong>，通高 <strong>3.8 米</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“彻上露明造”</strong> 是辽金建筑常见做法：不做天花，把梁架、槎头、托脚全露出来。好处是显得高大、便于检修，坏处是易积尘、梁架受温湿度影响更直接。看的时候抬头数一数梁架的层次——<strong>这是最便宜的结构课</strong>。</p>
+</blockquote>
+<h4 id="总结-9"><a href="#总结-9" class="headerlink" title="总结"></a>总结</h4><p>善化寺的价值在”整组”。它始建于唐开元年间，称开元寺，五代后晋改大普恩寺，金代圆满和尚主持重修重建，明正统十年（1445）英宗赐名善化寺；一座金代山门、一座金代三圣殿、一座辽代大雄宝殿沿中轴一字排开，四百年不断档，是中国现存辽金寺院中布局最完整的一处。断代的关键细节是山门阑额上新加的<strong>普拍枋</strong>——唐构基本不用，辽金开始普遍加这条横向扁木承托斗拱，看见它，年代就往后推。三圣殿用移柱法把当心间柱距拉到 7.68 米，斗拱出一组最大的补间斜拱，真假昂交替，正是”结构让位于装饰”的开端；梁架用减柱法把六椽栿拆成四椽栿加乳栿，共八椽。大雄宝殿为辽构八座之一，面阔七间、进深五间，彻上露明造无天花板，正中设平棋与斗八藻井，佛坛五方佛，两侧二十四诸天通高 3.8 米、金塑明彩。殿前那通朱弁碑（1143）文章、书法、刻工俱佳，被称”金碑之冠”，作者是南宋使臣朱弁——他被扣云中十四年，就在这座寺里设馆授徒；碑文末段用铜钟款识推断寺名沿革，方法与梁思成读题记定年代如出一辙。</p>
+<h3 id="3-4-华严寺"><a href="#3-4-华严寺" class="headerlink" title="3.4 华严寺"></a>3.4 华严寺</h3><p><strong>第一批国保</strong>，华严宗寺院，占地 66000 平方米——上寺看体量，下寺看精品。</p>
+<h4 id="普光明殿（新建）"><a href="#普光明殿（新建）" class="headerlink" title="普光明殿（新建）"></a>普光明殿（新建）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>形制</td>
+<td>主殿<strong>重檐歇山顶</strong>，前出抱厦为单檐歇山顶，四周设回廊，<strong>副阶周匝</strong></td>
+</tr>
+<tr>
+<td>塑像</td>
+<td>正中供<strong>华严三圣</strong>：<strong>毗卢遮那佛</strong>居中，左文殊、右普贤（辽代塑像风格）</td>
+</tr>
+<tr>
+<td>壁画</td>
+<td>四周一圈绘《<strong>善财童子五十三参</strong>》，2009 年由中央美术学院<strong>孙景波、王颖生</strong>教授带领博士生 150 余人绘制，历时 3 年；颜料用<strong>珍贵矿石颜料 + 沥粉贴金</strong></td>
+</tr>
+<tr>
+<td>背屏</td>
+<td>背后<strong>自在观音</strong>壁画，仿北京<strong>法海寺《水月观音》</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>这是”新塑 + 古法”的组合：<strong>用明代法海寺的技法，画当代的壁画</strong>。看的时候可以把它当”当代人怎么理解辽代”的一个样本。</p>
+</blockquote>
+<h4 id="大雄宝殿（上寺主殿）"><a href="#大雄宝殿（上寺主殿）" class="headerlink" title="大雄宝殿（上寺主殿）"></a>大雄宝殿（上寺主殿）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>始建</td>
+<td>辽清宁八年（1062），毁于战火</td>
+</tr>
+<tr>
+<td>重建</td>
+<td><strong>金天眷三年（1140）</strong></td>
+</tr>
+<tr>
+<td>朝向</td>
+<td><strong>坐西向东</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>单檐歇山顶，面阔九间、进深五间</strong></td>
+</tr>
+<tr>
+<td>地位</td>
+<td><strong>现存木结构建筑中规模最大的单体建筑</strong>（辽金佛殿之最）</td>
+</tr>
+<tr>
+<td>鸱吻</td>
+<td>高 <strong>4.5 米</strong>，<strong>一为明代、一为金代</strong>，是<strong>中国现存最大的一对鸱吻</strong></td>
+</tr>
+</tbody></table>
+<p><strong>殿内三看：</strong></p>
+<ol>
+<li><p><strong>平棋藻井 1024 块</strong>，通铺殿顶，<strong>无一雷同</strong>。抬头看天花，是这座殿最震撼的一刻。</p>
+</li>
+<li><p><strong>五方佛</strong>（明代塑像精品）：</p>
+</li>
+</ol>
+<p>   - 正中：释迦牟尼</p>
+<p>   - 左侧：东方药师佛、南方宝生佛</p>
+<p>   - 右侧：西方阿弥陀佛、北方不空成就佛</p>
+<p>   - <strong>中间三尊为木雕，最外侧两尊为泥塑</strong>——材质不同，是因为明代补配时按”可及性”取材。</p>
+<ol start="3">
+<li><strong>壁画</strong>：清光绪十一年（1885），画师<strong>董安</strong>依据金代遗留的一小部分<strong>补绘</strong>。</li>
+</ol>
+<blockquote>
+<p>所以华严寺大雄宝殿的壁画是”<strong>清代人临摹金代残迹</strong>“，不能当金画看，但能看出清末画师对金代的理解。</p>
+</blockquote>
+<h4 id="薄伽教藏殿（下寺）"><a href="#薄伽教藏殿（下寺）" class="headerlink" title="薄伽教藏殿（下寺）"></a>薄伽教藏殿（下寺）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>定位</td>
+<td>辽代<strong>藏经阁</strong>（”薄伽”即薄伽梵，佛的尊号）</td>
+</tr>
+<tr>
+<td>四辽</td>
+<td><strong>辽代地基、辽代建筑、辽代彩塑、辽代藏经柜</strong>——四位一体，全国罕见</td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>单檐歇山顶，面阔五间、进深四间</strong></td>
+</tr>
+<tr>
+<td>鸱吻</td>
+<td>现为<strong>复制品</strong>，原件在<strong>大同市博物馆</strong></td>
+</tr>
+</tbody></table>
+<p><strong>殿内二看：</strong></p>
+<ol>
+<li><strong>29 尊辽代泥质彩塑</strong></li>
+</ol>
+<p>   - 辽代彩塑的精品群。</p>
+<p>   - <strong>合掌露齿菩萨</strong>最具代表性——露齿而笑，在佛像造像中极为罕见（佛教造像多讲”含而不露”），被称为”<strong>东方维纳斯</strong>“；群资料称”全国唯二”。</p>
+<blockquote>
+<p>这一尊的笑，是辽代造像”人间化”倾向的极端案例：<strong>神也会笑出声来</strong>。</p>
+</blockquote>
+<ol start="2">
+<li><strong>天宫楼阁（小木作藏经柜）</strong></li>
+</ol>
+<p>   - 靠墙环殿一周，为<strong>小木作</strong>（按比例缩小的建筑模型）。</p>
+<p>   - 梁思成叹为”<strong>海内孤品</strong>“。</p>
+<p>   - 它把辽代建筑的<strong>真实形制</strong>按比例完整雕刻下来——<strong>在辽代木构只存八座的今天，这圈柜子等于一份辽代建筑的图纸档案</strong>。</p>
+<h4 id="总结-10"><a href="#总结-10" class="headerlink" title="总结"></a>总结</h4><p>华严寺要按三步看。第一步看朝向：全寺坐西向东，因契丹人拜日，这与汉地寺院坐北朝南的惯例截然不同——先明白”这是契丹人的寺”，后面就都顺了；它是华严宗寺院。第二步看体量：上寺大雄宝殿始建于辽清宁八年（1062），金天眷三年（1140）重建，单檐歇山顶、面阔九间进深五间，是现存木构中规模最大的单体建筑；屋顶那对鸱吻高 4.5 米，一金一明，是中国现存最大的一对；殿内平棋藻井 1024 块无一雷同，五方佛为明代精品（中间三尊木雕、外侧两尊泥塑），壁画则是清光绪十一年画师董安依金代残迹补绘，不能当金画看，却能看出清末画师对金代的理解。第三步看下寺薄伽教藏殿：辽代地基、辽代建筑、辽代彩塑、辽代藏经柜四位一体，29 尊辽塑中以合掌露齿菩萨最著名——露齿而笑在佛教造像里极罕见，是辽代造像”人间化”的极端案例；靠墙环殿一周的小木作”天宫楼阁”被梁思成叹为”海内孤品”，在辽代木构只存八座的今天，这圈柜子等于一份辽代建筑的图纸档案。</p>
+<hr>
+<h2 id="第四站：应县（净土寺到木塔）"><a href="#第四站：应县（净土寺到木塔）" class="headerlink" title="第四站：应县（净土寺到木塔）"></a>第四站：应县（净土寺到木塔）</h2><p>应县是这条线上”<strong>密度最高</strong>“的一站：一座金代小殿（净土寺）与一座辽代巨塔（木塔）相距不到一公里，步行可达。</p>
+<p><strong>先看小的，再看大的</strong>——净土寺的九眼藻井是”精微”，木塔的 67.31 米是”宏大”。先精微后宏大，观感有落差，印象更深；反过来先看木塔，再看藻井，容易”看不进去”。</p>
+<h3 id="4-1-净土寺大雄宝殿"><a href="#4-1-净土寺大雄宝殿" class="headerlink" title="4.1 净土寺大雄宝殿"></a>4.1 净土寺大雄宝殿</h3><p><strong>金天会二年（1124）｜第六批国保</strong>——一座三间小殿，头顶却是金代小木作的天花板级精品。</p>
+<h4 id="细看-1"><a href="#细看-1" class="headerlink" title="细看"></a>细看</h4><ol>
+<li><p><strong>屋顶</strong>：四角翘檐舒展，曲线缓和优美；<strong>绿琉璃剪边</strong>（瓦面用灰瓦、檐口一圈用绿琉璃）是金代常见做法，等级感立刻出来。</p>
+</li>
+<li><p><strong>殿内清代壁画</strong>：构图与技法有<strong>民间传统画风</strong>——与金代藻井形成”上下两个时代”的对照。</p>
+</li>
+<li><p><strong>天宫楼阁藻井（全场核心）</strong></p>
+</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_13.jpg"
+                      alt="插入图片" title="净土寺天宫楼阁藻井"
+                ></p>
+<p>   - 顶部木雕天宫楼阁藻井，<strong>基本为金代原物</strong>；</p>
+<p>   - 分作<strong>九眼藻井</strong>（九个藻井单元），精雕细刻，极尽华美；</p>
+<p>   - 形式有<strong>八角、六角、菱形</strong>；</p>
+<p>   - 是”<strong>我国模仿木构建筑形式而雕刻的最为精美的小木作实物精品</strong>“。</p>
+<h4 id="梁思成的”应县三宝”"><a href="#梁思成的”应县三宝”" class="headerlink" title="梁思成的”应县三宝”"></a>梁思成的”应县三宝”</h4><p>1933 年梁思成到应县，说应县有<strong>三宝</strong>：  </p>
+<ol>
+<li><p><strong>佛宫寺释迦塔</strong>（应县木塔）</p>
+</li>
+<li><p><strong>净土寺天宫楼阁藻井</strong></p>
+</li>
+<li><p><strong>净土寺山门前”披头散发”的一对石狮</strong></p>
+</li>
+</ol>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_14.jpg"
+                      alt="插入图片" title="净土寺披头散发的狮子"
+                ></p>
+<blockquote>
+<p>第三宝特别容易被忽略——那对石狮的鬃毛与须发作”披散”状，与明清石狮的卷毛程式完全不同，是<strong>金代石雕的罕见样式</strong>。去净土寺，别忘了回头看山门。</p>
+</blockquote>
+<h4 id="总结-11"><a href="#总结-11" class="headerlink" title="总结"></a>总结</h4><p>净土寺大雄宝殿建于金天会二年（1124），第六批国保，面阔进深各三间，平面近方，单檐歇山顶，四角翘檐舒展、曲线缓和，屋面灰瓦配绿琉璃剪边、戗脊有骑凤仙人，是金代小殿里的精品。核心看头顶：天宫楼阁藻井基本为金代原物，分作九眼，形式有八角、六角、菱形，精雕细刻，是我国模仿木构建筑形式雕刻得最精美的小木作实物。殿内壁画为清代作品、民间画风，正好与头顶形成”上金下清”的对照。梁思成 1933 年到应县说”应县三宝”：佛宫寺释迦塔、净土寺天宫楼阁藻井、净土寺山门前”披头散发”的一对石狮——第三宝最易错过，那对石狮鬃毛须发作披散状，与明清石狮的卷毛程式完全不同，是金代石雕的罕见样式。它离木塔不到一公里，二十分钟就够，却把”精微”这一层补上了。</p>
+<h3 id="4-2-应县木塔（佛宫寺释迦塔）"><a href="#4-2-应县木塔（佛宫寺释迦塔）" class="headerlink" title="4.2 应县木塔（佛宫寺释迦塔）"></a>4.2 应县木塔（佛宫寺释迦塔）</h3><p><strong>辽清宁二年（1056）｜第一批国保</strong>——高 67.31 米，世界现存最高、最古的纯木结构建筑。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_15.jpg"
+                      alt="插入图片" title="应县木塔"
+                ></p>
+<h4 id="数据资料"><a href="#数据资料" class="headerlink" title="数据资料"></a>数据资料</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>数据</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高度</td>
+<td><strong>67.31 米</strong></td>
+</tr>
+<tr>
+<td>底层直径</td>
+<td><strong>30.27 米</strong></td>
+</tr>
+<tr>
+<td>木材用料</td>
+<td>原木约 <strong>7400 立方米</strong>，实际净用约 <strong>3000 立方米</strong></td>
+</tr>
+<tr>
+<td>重量</td>
+<td>约 <strong>2600 吨</strong>（群资料口径；另有”总重 7400 余吨”的通行说法，口径不同，见附录 D）</td>
+</tr>
+<tr>
+<td>工期</td>
+<td>历时约 <strong>140 年</strong>（辽代始建，增修至金代完成）</td>
+</tr>
+<tr>
+<td>斗拱</td>
+<td><strong>54 种形制、252 组斗拱</strong>（另有”59 种”一说）——“<strong>斗拱博物馆</strong>“</td>
+</tr>
+<tr>
+<td>层数</td>
+<td>外观 <strong>5 层</strong>，实为 <strong>9 层</strong>（明五暗四：五层明层 + 四个暗层）</td>
+</tr>
+<tr>
+<td>平面</td>
+<td><strong>八边形</strong>——中国<strong>第一座八角形木塔</strong></td>
+</tr>
+<tr>
+<td>材料</td>
+<td>主体<strong>华北落叶松</strong>；斗拱<strong>榆木</strong></td>
+</tr>
+<tr>
+<td>牌匾</td>
+<td>塔身悬挂 <strong>54 块</strong>，现存 <strong>51 块</strong>（丢 2 块、1 块维修）</td>
+</tr>
+<tr>
+<td>名匾</td>
+<td>“<strong>峻极神工</strong>“——明成祖<strong>朱棣</strong>题；”<strong>天下奇观</strong>“——明武宗<strong>朱厚照</strong>题</td>
+</tr>
+</tbody></table>
+<h4 id="突破建塔史的三个”第一”"><a href="#突破建塔史的三个”第一”" class="headerlink" title="突破建塔史的三个”第一”"></a>突破建塔史的三个”第一”</h4><ol>
+<li><p><strong>第一次使用八边形双套筒结构</strong>——内外两圈柱子（外柱 24 根、内柱 8 根）组成”<strong>筒中筒</strong>“，是现代高层筒体结构的先声。</p>
+</li>
+<li><p><strong>地基直径突破 30 米</strong>（30.27 米），塔基规模空前。</p>
+</li>
+<li><p><strong>“十塔九歪”的主动倾斜</strong>——相传建塔时特意向<strong>西北</strong>方向倾斜，借当地主导风向与自然力长期作用把塔”扶正”；今天实测塔身已<strong>向东北倾斜</strong>。</p>
+</li>
+</ol>
+<blockquote>
+<p>第 3 条属<strong>讲解口径</strong>，学界对”主动预倾”说法有争议，实际倾斜主因是二层结构被改动（见下）。听的时候当”民间智慧”记，别当定论。</p>
+</blockquote>
+<h4 id="木塔为什么歪了？——一个人为事故"><a href="#木塔为什么歪了？——一个人为事故" class="headerlink" title="木塔为什么歪了？——一个人为事故"></a>木塔为什么歪了？——一个人为事故</h4><ul>
+<li><p><strong>原状</strong>：二层内外槽之间原有<strong>夹泥墙</strong>，起<strong>斜撑</strong>作用，是结构体系的一部分。</p>
+</li>
+<li><p><strong>改动</strong>：<strong>1930 年代</strong>（群资料记 1931 年当地县令下令；通说为 1926—1935 年间地方人士拆改）认为泥墙”不好看”，将其拆除，<strong>改成全部格扇门板</strong>。</p>
+</li>
+<li><p><strong>后果</strong>：<strong>斜撑层被破坏</strong>，二层刚度骤降，日积月累，木塔<strong>严重歪斜</strong>（二层歪斜最为明显）。</p>
+</li>
+</ul>
+<blockquote>
+<p>这是中国文物保护史上最著名的一次”<strong>好心办坏事</strong>“：为了”好看”，拆掉了承重构件。它也是今天”<strong>最小干预原则</strong>“最有力的反面教材。</p>
+</blockquote>
+<h4 id="近千年不倒的原因"><a href="#近千年不倒的原因" class="headerlink" title="近千年不倒的原因"></a>近千年不倒的原因</h4><table>
+<thead>
+<tr>
+<th>原因</th>
+<th>机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>① <strong>干燥少雨</strong></td>
+<td>应县气候干燥，木材不易腐朽</td>
+</tr>
+<tr>
+<td>② <strong>用料讲究</strong></td>
+<td>华北落叶松经<strong>反复浸泡桐油</strong>，韧性强，防腐、防潮、防虫蛀</td>
+</tr>
+<tr>
+<td>③ <strong>结构稳定</strong></td>
+<td><strong>双层套筒 + 叉柱造</strong>（上层柱脚叉在下层斗拱上，逐层内收），防风抗震；<strong>斗拱 + 全榫卯</strong>，以”柔”耗能，减小地震冲击</td>
+</tr>
+<tr>
+<td>④ <strong>生物防线</strong></td>
+<td>相传<strong>麻雁</strong>（一种鸟）在塔上筑巢，捕食蛀虫，被称为木塔的”守护神”</td>
+</tr>
+<tr>
+<td>⑤ <strong>无钉</strong></td>
+<td>全塔<strong>不用一颗铁钉</strong>，全靠榫卯咬合——避免铁件锈胀劈裂木材</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>把这几条和悬空寺、佛光寺对照，会发现同一套逻辑：<strong>干燥气候 + 桐油处理 + 柔性榫卯结构 + 生物&#x2F;人为维护</strong>。这就是”山西古建为什么能留这么多”的微观版本。</p>
+</blockquote>
+<h4 id="一层塑像与壁画"><a href="#一层塑像与壁画" class="headerlink" title="一层塑像与壁画"></a>一层塑像与壁画</h4><p><strong>① 释迦牟尼彩塑，高 11 米</strong></p>
+<ul>
+<li><p>脸型丰满宽圆，神态亲切安详；</p>
+</li>
+<li><p><strong>石绿色眉毛</strong>犹如新月，双目微启；</p>
+</li>
+<li><p>两眉间有<strong>白毫相</strong>；</p>
+</li>
+<li><p>唇边有<strong>石绿色卷曲胡须</strong>，颜色与眉毛一致；</p>
+</li>
+<li><p>两耳垂肩，<strong>明显戴着耳环</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>这是辽代契丹男子的审美</strong>：契丹男子以<strong>蓄须</strong>为美，且习惯<strong>戴耳环</strong>。所以这尊佛像的脸，其实是一张”契丹贵族的脸”——<strong>佛像的地方化，从长相开始</strong>。</p>
+</blockquote>
+<p><strong>② 壁画约 260 平方米</strong></p>
+<ul>
+<li><p>大部分集中于<strong>一层内槽墙壁</strong>；</p>
+</li>
+<li><p>有<strong>辽代原作</strong>，也有历代修补重绘或覆盖重画的，基本保存完好；</p>
+</li>
+<li><p><strong>一层内槽南北门额上绘有六个供养人：南为三女像，北为三男像</strong>；</p>
+</li>
+<li><p>内槽上壁绘<strong>六幅巨大佛像</strong>，据专家考证为<strong>建塔时的原作</strong>。</p>
+</li>
+</ul>
+<h4 id="总结-12"><a href="#总结-12" class="headerlink" title="总结"></a>总结</h4><p>应县木塔（佛宫寺释迦塔）建于辽清宁二年（1056），高 67.31 米，底层直径 30.27 米，外观五层实为九层（明五暗四），是中国第一座八角形木塔，底层直径 30.27 米，与比萨斜塔、埃菲尔铁塔并称”世界三大奇塔”。技术账要算清：54 种形制、252 组斗拱，”斗拱博物馆”不是虚名；内外两圈柱列（外 24 根、内 8 根）构成筒中筒，配合叉柱造逐层内收，是现代高层筒体结构的先声；主体用华北落叶松、斗拱用榆木，反复桐油浸泡，全塔不用一颗铁钉，靠榫卯咬合，地震时以柔耗能。它能近千年不倒，是干燥气候、材料处理、柔性结构与生物防线（传说麻雁捕虫）四件事同时成立。但它今天歪了，原因不是天灾：二层原有起斜撑作用的夹泥墙，1930 年代被地方人士嫌”不好看”拆改为格扇门板，刚度骤降，日积月累塔身严重倾斜——这是中国文物保护史上最著名的一次”好心办坏事”，也是”最小干预原则”最有力的反面教材。一层那尊 11 米高的释迦牟尼彩塑，石绿眉毛配石绿卷曲胡须、明显戴耳环，正是辽代契丹男子蓄须佩环的审美；内槽壁画约 260 平方米，南三女北三男共六个供养人，上壁六幅大佛据考为建塔时原作。</p>
+<hr>
+<h2 id="第五站：朔州（崇福寺）"><a href="#第五站：朔州（崇福寺）" class="headerlink" title="第五站：朔州（崇福寺）"></a>第五站：朔州（崇福寺）</h2><p>崇福寺是金代建筑在这条线上的”<strong>收官</strong>“：弥陀殿（1143）与观音殿（金晚期）把”<strong>减柱、移柱、鸳鸯拱、真假昂</strong>“这些技术全部演示了一遍。</p>
+<p>看完它再回看应县与大同，金代的轮廓就完整了——<strong>大同看金代的”大”（华严寺大雄宝殿），应县看金代的”精”（净土寺藻井），朔州看金代的”巧”（弥陀殿的棂花与鸳鸯拱）</strong>。</p>
+<h3 id="5-1-崇福寺"><a href="#5-1-崇福寺" class="headerlink" title="5.1 崇福寺"></a>5.1 崇福寺</h3><p><strong>第三批国保</strong>，占地 23400 平方米，前后五进院落——现存弥陀殿、观音殿为金代遗构，其余皆明清。</p>
+<h4 id="朝代更迭（一条清晰的时间线）"><a href="#朝代更迭（一条清晰的时间线）" class="headerlink" title="朝代更迭（一条清晰的时间线）"></a>朝代更迭（一条清晰的时间线）</h4><table>
+<thead>
+<tr>
+<th>年代</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>唐高宗<strong>麟德二年（665）</strong></td>
+<td>由<strong>鄂国公尉迟敬德</strong>奉敕监造</td>
+</tr>
+<tr>
+<td>辽代</td>
+<td>官府占居，称<strong>林衙署</strong>；后改为僧舍，名<strong>林衙院&#x2F;林衙寺</strong></td>
+</tr>
+<tr>
+<td>金<strong>皇统三年（1143）</strong></td>
+<td>金熙宗崇佛，敕命开国侯<strong>翟昭度</strong>主持增建<strong>弥陀殿、观音殿</strong>，改寺为<strong>净土宗佛刹</strong></td>
+</tr>
+<tr>
+<td>金<strong>天德二年（1150）</strong></td>
+<td>海陵王完颜亮赐额”<strong>崇福禅寺</strong>“</td>
+</tr>
+<tr>
+<td>元、明、清</td>
+<td>历代重修，始成现有规模</td>
+</tr>
+</tbody></table>
+<h4 id="①-金刚殿（天王殿）"><a href="#①-金刚殿（天王殿）" class="headerlink" title="① 金刚殿（天王殿）"></a>① 金刚殿（天王殿）</h4><ul>
+<li><p>始建于<strong>唐代</strong>，<strong>清代重建</strong>。</p>
+</li>
+<li><p>中间供<strong>三大士</strong>；一圈壁画为<strong>二十四诸天</strong>，均新绘。</p>
+</li>
+</ul>
+<h4 id="②-千佛阁"><a href="#②-千佛阁" class="headerlink" title="② 千佛阁"></a>② 千佛阁</h4><ul>
+<li><p>原名<strong>藏经楼</strong>，建于<strong>明洪武年间</strong>；因存元代御赐《<strong>大藏尊经</strong>》得名。</p>
+</li>
+<li><p><strong>两层重檐歇山式</strong>屋顶；一层屋檐做<strong>庑门</strong>形式，屋檐下<strong>弱化了斗拱结构</strong>。</p>
+</li>
+<li><p>内供<strong>大度弥勒佛</strong>——明代<strong>千斤铜像</strong>。</p>
+</li>
+<li><p>上有<strong>三层小阁楼，高 4.5 米</strong>；<strong>拱眼壁有凤凰，立柱上有飞龙，凤凰在上、龙在下</strong>——这是<strong>唐代风格</strong>（凤高于龙，武则天以后一度成为定制），<strong>明代仿唐</strong>的做法。</p>
+</li>
+</ul>
+<blockquote>
+<p>一个”<strong>凤上龙下</strong>“的细节，就把唐、明两代的礼制观念串起来了。这种小地方最见功夫。</p>
+</blockquote>
+<h4 id="③-大雄宝殿（三宝殿）"><a href="#③-大雄宝殿（三宝殿）" class="headerlink" title="③ 大雄宝殿（三宝殿）"></a>③ 大雄宝殿（三宝殿）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年代</td>
+<td><strong>明成化年间</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>单檐歇山顶，面阔五间、进深四间</strong>；屋顶正脊较长，<strong>坡度平缓</strong>；有<strong>月台</strong>，门前有<strong>抱鼓石</strong></td>
+</tr>
+<tr>
+<td>梁架</td>
+<td>次间屋顶 <strong>8 椽</strong>；当心间<strong>四椽栿前移</strong>，做成”四椽栿 + 后乳栿 + 劄牵”的形式——<strong>明清建筑有了更多纵向连接</strong></td>
+</tr>
+<tr>
+<td>塑像</td>
+<td><strong>三世佛</strong>贴金彩塑坐像；背后塑<strong>韦驮菩萨</strong>贴金像（明代）</td>
+</tr>
+<tr>
+<td>壁画</td>
+<td>东西壁各十列，共<strong>千尊小佛</strong></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“纵向连接增多”<strong>是明清梁架与辽金梁架的关键差别：辽金靠”减柱”做空间，明清靠”加构件”求稳定——</strong>前者做减法，后者做加法</strong>。</p>
+</blockquote>
+<h4 id="④-弥陀殿（全场核心）"><a href="#④-弥陀殿（全场核心）" class="headerlink" title="④ 弥陀殿（全场核心）"></a>④ 弥陀殿（全场核心）</h4><p><strong>建筑</strong></p>
+<ul>
+<li><p><strong>金代</strong>，<strong>单檐歇山顶，面阔七间</strong>。</p>
+</li>
+<li><p><strong>前檐五间装格扇门</strong>，上置横披棂花；<strong>后檐明间与两梢间设板门三道</strong>，前后可穿行，其余皆为墙壁。</p>
+</li>
+<li><p>殿身坐落在<strong>高 2.4 米的台基</strong>上，台前有宽敞<strong>月台</strong>。</p>
+</li>
+<li><p><strong>屋顶琉璃瓦为 1980 年代重新加</strong>：持续 <strong>10 年</strong>的修复工程，由<strong>柴泽俊</strong>先生主持。</p>
+</li>
+<li><p><strong>斗拱</strong>：<strong>柱头铺作复杂、补间铺作简单</strong>，出现”<strong>鸳鸯拱</strong>“（同一建筑中不同形制的拱混用）。</p>
+</li>
+</ul>
+<blockquote>
+<p>一般规律是”柱头简单、补间复杂”（如善化寺三圣殿），弥陀殿反其道而行——<strong>这就是”鸳鸯拱”的可看之处</strong>。</p>
+</blockquote>
+<p><strong>门窗</strong></p>
+<ul>
+<li><p>材质：<strong>红松木</strong>。</p>
+</li>
+<li><p>前檐进间、次间、梢间各有 <strong>5 种</strong>形式的窗花，共 <strong>15 种</strong>棂花图案；其中”<strong>六交十二碗</strong>“最复杂。</p>
+</li>
+</ul>
+<blockquote>
+<p>金代小木作的门窗棂花，是”<strong>用木条画画</strong>“。站在殿前把 15 种花样数一遍，值 20 分钟。</p>
+</blockquote>
+<p><strong>殿内塑像</strong></p>
+<ul>
+<li><p>佛坛供<strong>西方三圣</strong>（阿弥陀佛、观世音、大势至），身高均在 <strong>9 米以上</strong>。</p>
+</li>
+<li><p><strong>四尊胁侍菩萨</strong>塑像水平最高，高约 <strong>4.5 米</strong>，表情生动，姿态优美。</p>
+</li>
+<li><p><strong>哼哈二将</strong>：脸部很亮，<strong>身体倾斜约 12—19 度</strong>（前倾，使仰视者看到正面）。</p>
+</li>
+<li><p><strong>背光</strong>：高 <strong>14 米</strong>、宽 <strong>6 米</strong>；做法是<strong>木骨架 → 藤条编织 → 泥做缠织 → 镂空泥塑</strong>，镂空能<strong>有效防虫蛀</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>14 米高的背光靠”藤编 + 泥塑”做轻量化，与悬空寺”脱纱佛像减重”是同一思路：<strong>大件必须轻</strong>。</p>
+</blockquote>
+<p><strong>壁画（真正的王牌）</strong></p>
+<ul>
+<li><strong>东西两壁主体</strong>：原各三铺巨幅<strong>说法图</strong>，现存<strong>五铺</strong>。</li>
+</ul>
+<p>  - 主佛<strong>结跏趺坐</strong>，两侧胁侍菩萨，上方祥云飞天。</p>
+<p>  - <strong>菩萨一大看点：带胡须</strong>——延续唐、辽<strong>古相</strong>，不是后世的柔美女相。</p>
+<p>  - 手中各持<strong>香炉、经卷、宝盘、珊瑚、莲花</strong>，各不重复。</p>
+<p>  - <strong>火焰背光</strong>，<strong>铁线描</strong>力道极强。</p>
+<ul>
+<li><strong>南壁西侧（王牌中的王牌）</strong>：<strong>千手千眼十一面观音</strong></li>
+</ul>
+<p>  - <strong>国内现存最高的金代千手观音壁画，高约 4.68 米</strong>；</p>
+<p>  - 头顶<strong>叠五层佛面</strong>，身后千百只手臂<strong>如孔雀开屏</strong>，<strong>每掌一眼</strong>，<strong>密教风格</strong>，震撼度最高；</p>
+<p>  - 旁配<strong>吉祥天</strong>、<strong>辩才天</strong>。</p>
+<h4 id="⑤-观音殿"><a href="#⑤-观音殿" class="headerlink" title="⑤ 观音殿"></a>⑤ 观音殿</h4><ul>
+<li><p><strong>金代晚期</strong>，面阔五间、进深三间，<strong>斗拱巨大</strong>，<strong>单檐歇山顶</strong>。</p>
+</li>
+<li><p>内塑”<strong>三大士</strong>“贴金坐像：观音居中，左右文殊、普贤。</p>
+</li>
+<li><p><strong>梁架</strong>：将<strong>前槽金柱全部减去</strong>，梁架采用<strong>双重人字形叉手</strong>，构件相互连接得当，<strong>堪称我国建筑史上的典范</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>观音殿是”<strong>减柱法</strong>“的教科书案例：为了一个完整的礼佛空间，把整排金柱拿掉，再用双重叉手把荷载”抄”到两侧。<strong>结构为了空间让步，还要保证安全</strong>——这就是中国木构最迷人的地方。</p>
+</blockquote>
+<h4 id="总结-13"><a href="#总结-13" class="headerlink" title="总结"></a>总结</h4><p>崇福寺是一座院子里放了三代：唐麟德二年（665）尉迟敬德奉敕监造，辽代官府占为林衙署、后改僧舍，金皇统三年（1143）翟昭度主持增建弥陀殿与观音殿并改宗净土，天德二年（1150）海陵王赐额”崇福禅寺”；现存弥陀殿、观音殿为金代遗构，余皆明清。弥陀殿是核心：面阔七间，单檐歇山顶，台基高 2.4 米；柱头铺作复杂、补间铺作简单，出现”鸳鸯拱”，与常见的”柱头简、补间繁”正好相反；前檐五间装格扇门，棂花十五种，”六交十二碗”最复杂；殿内西方三圣身高均逾九米，四尊胁侍菩萨高约 4.5 米，哼哈二将脸部很亮、身体前倾 12—19 度以便仰视；佛像背光高 14 米宽 6 米，木骨—藤编—泥塑镂空，防虫蛀也减重。壁画是真正的王牌：东西壁原各三铺说法图，今存五铺，菩萨带胡须，延续唐辽古相而非后世柔美女相，手中香炉、经卷、宝盘、珊瑚、莲花各不重复，火焰背光铁线描力道极强；南壁西侧千手千眼十一面观音高约 4.68 米，是国内现存最高的金代千手观音壁画，头顶叠五层佛面，身后千臂如孔雀开屏、每掌一眼，密教风格，震撼度最高。观音殿为金代晚期，前槽金柱全部减去，梁架用双重人字形叉手，是减柱法的教科书案例；千佛阁”凤上龙下”的拱眼壁与立柱飞龙，则是明代仿唐的礼制表达。</p>
+<hr>
+<h2 id="第六站：太原（晋祠到山西博物院）"><a href="#第六站：太原（晋祠到山西博物院）" class="headerlink" title="第六站：太原（晋祠到山西博物院）"></a>第六站：太原（晋祠到山西博物院）</h2><p>从金代一下跳回<strong>北宋</strong>，气质完全不同。</p>
+<p>晋祠是<strong>园林式祠庙</strong>：前面五站看的是”结构的力度”，这里看的是”<strong>人的表情</strong>“——33 尊宋代侍女，各有各的心事。</p>
+<p>山西博物院则把”<strong>晋</strong>“这个字的来历补齐：桐叶封弟 → 燮父改唐为晋 → 九代晋侯世系，一只<strong>晋侯鸟尊</strong>就是”晋”的出生证明。<strong>一条线从建筑起，到器物与文献收。</strong></p>
+<h3 id="6-1-晋祠"><a href="#6-1-晋祠" class="headerlink" title="6.1 晋祠"></a>6.1 晋祠</h3><p><strong>第一批国保</strong>，原名唐叔虞祠，园林式祠庙建筑群——为纪念晋国首任诸侯唐叔虞而建，最少一千五百年历史。</p>
+<h4 id="晋祠”三绝”与”三大国宝建筑”"><a href="#晋祠”三绝”与”三大国宝建筑”" class="headerlink" title="晋祠”三绝”与”三大国宝建筑”"></a>晋祠”三绝”与”三大国宝建筑”</h4><table>
+<thead>
+<tr>
+<th>三绝</th>
+<th>三大国宝建筑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>宋代侍女像</strong></td>
+<td><strong>献殿</strong></td>
+</tr>
+<tr>
+<td><strong>难老泉</strong></td>
+<td><strong>鱼沼飞梁</strong></td>
+</tr>
+<tr>
+<td><strong>周柏隋槐</strong></td>
+<td><strong>圣母殿</strong></td>
+</tr>
+</tbody></table>
+<h4 id="①-水镜台（入口第一眼）"><a href="#①-水镜台（入口第一眼）" class="headerlink" title="① 水镜台（入口第一眼）"></a>① 水镜台（入口第一眼）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td><strong>戏台</strong>（酬神演戏）</td>
+</tr>
+<tr>
+<td>修缮</td>
+<td>1954 年大修</td>
+</tr>
+<tr>
+<td>形制</td>
+<td>巧妙融合<strong>楼、台、殿、阁</strong>四种样式：<strong>前为单檐卷棚顶，后为重檐歇山顶</strong></td>
+</tr>
+<tr>
+<td>附属</td>
+<td>殿背后有一对<strong>明万历年间铁狮子</strong></td>
+</tr>
+<tr>
+<td>名字</td>
+<td>《汉书》：”<strong>清水明镜不可以形逃</strong>“——人世间的善恶忠奸尽人皆知；戏剧中好人坏人画上脸谱，观众一目了然，故名”水镜”</td>
+</tr>
+<tr>
+<td><strong>扩音</strong></td>
+<td>戏台<strong>四角埋藏两两相对的八口大瓮</strong>，形成<strong>空心音响</strong>，把声音反射、共振送到台下</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>八口大瓮是最值得记住的”古代声学设计”：<strong>不用电，用腔体共振</strong>。站在台下正中说一句话，能听到回声。</p>
+</blockquote>
+<h4 id="②-金人台"><a href="#②-金人台" class="headerlink" title="② 金人台"></a>② 金人台</h4><ul>
+<li><p><strong>铁属五金，金镇水</strong>——晋祠以前常年有洪涝，故建金人台<strong>镇水</strong>。</p>
+</li>
+<li><p>四角铁人铸造年代：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方位</th>
+<th>年代</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>东南角</td>
+<td><strong>1089 年</strong>（宋元祐四年）</td>
+</tr>
+<tr>
+<td>东北角</td>
+<td><strong>1090 年</strong>（现存为 <strong>1926 年</strong>民国十五年补铸）</td>
+</tr>
+<tr>
+<td>西南角</td>
+<td><strong>1097 年</strong>（宋绍圣四年）</td>
+</tr>
+<tr>
+<td>西北角</td>
+<td><strong>1098 年</strong>（宋元符元年）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>四尊铁人三个朝代：北宋三尊 + 民国一尊。<strong>看铁人的”补铸”痕迹，就是看一部修缮史。</strong></p>
+</blockquote>
+<h4 id="③-献殿"><a href="#③-献殿" class="headerlink" title="③ 献殿"></a>③ 献殿</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>给圣母邑姜<strong>供奉祭品的享堂</strong></td>
+</tr>
+<tr>
+<td>年代</td>
+<td>始建于<strong>金大定八年（1168）</strong>，明万历年间重修，<strong>1955 年依原样翻修</strong></td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>面阔三间、进深三间，单檐歇山顶</strong>，出檐深远；殿顶布青瓦</td>
+</tr>
+<tr>
+<td>梁架</td>
+<td>既省料又坚固：只在<strong>四椽栿上放一层平梁</strong>，上立<strong>驼峰、蜀柱</strong>，平梁两端用<strong>驼峰</strong>架在四椽栿上</td>
+</tr>
+<tr>
+<td>观感</td>
+<td><strong>体量确为殿堂，外观又好似一座凉亭</strong>，玲珑而稳定</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>献殿是”<strong>结构做减法</strong>“的极致：整座殿只用了极少的梁架层次，却撑起了殿的体量。它和金代”减柱造”是同一种审美——<strong>能省一根是一根</strong>。</p>
+</blockquote>
+<h4 id="④-鱼沼飞梁"><a href="#④-鱼沼飞梁" class="headerlink" title="④ 鱼沼飞梁"></a>④ 鱼沼飞梁</h4><ul>
+<li><p><strong>鱼沼</strong>：古人以<strong>圆形为池、方形为沼</strong>，且水中多鱼，故名”鱼沼”。</p>
+</li>
+<li><p><strong>飞梁</strong>：沼上<strong>十字形桥梁</strong>。古人云”<strong>飞梁石磴，陵跨水道</strong>“，”<strong>架虚为桥，若飞也</strong>“，故名”飞梁”。</p>
+</li>
+<li><p><strong>中国现存唯一的十字形桥梁</strong>（现存桥体为北宋遗构，与圣母殿同期）。</p>
+</li>
+</ul>
+<blockquote>
+<p>十字形桥，在梁思成看来是”<strong>世界上最早的水陆立交</strong>“。站在桥中心，四个方向都是通路——这是宋代人对”连接”的理解。</p>
+</blockquote>
+<h4 id="⑤-圣母殿（晋祠主体）"><a href="#⑤-圣母殿（晋祠主体）" class="headerlink" title="⑤ 圣母殿（晋祠主体）"></a>⑤ 圣母殿（晋祠主体）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>奉祀唐叔虞之母<strong>邑姜</strong></td>
+</tr>
+<tr>
+<td>创建</td>
+<td>北宋<strong>太平兴国九年（984）</strong>（群资料口径）；现存主体常被定为<strong>天圣年间（1023—1032）</strong>重建，<strong>崇宁元年（1102）</strong>重修</td>
+</tr>
+<tr>
+<td>形制</td>
+<td><strong>重檐歇山顶，总高 19 米，面阔七间、进深六间</strong>，平面近似方形</td>
+</tr>
+<tr>
+<td>副阶周匝</td>
+<td><strong>中国现存古代建筑中最早的”副阶周匝”实例</strong>（殿身四周加一圈外廊）</td>
+</tr>
+<tr>
+<td>梁架</td>
+<td><strong>乳栿对六椽栿用三柱</strong>——中国现存古建中<strong>少有符合宋《营造法式》殿堂式构架形式的孤例</strong></td>
+</tr>
+<tr>
+<td>减柱</td>
+<td><strong>殿内无一根明柱</strong>，只在殿身四周设廊柱与檐柱承托屋架——即”<strong>减柱营造法</strong>“</td>
+</tr>
+<tr>
+<td>侧角</td>
+<td>四周 <strong>26 根柱子皆微微内倾</strong>，制成”<strong>侧角</strong>“</td>
+</tr>
+<tr>
+<td>升起</td>
+<td><strong>平柱至角柱逐渐升高</strong>，造成”<strong>升起</strong>“</td>
+</tr>
+<tr>
+<td>效果</td>
+<td>既增加造型稳固力，又使<strong>翼角翘起</strong>，显出曲线之美</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>“侧角 + 升起”</strong> 是宋代木构的两大高级手法，也是最容易在现场验证的：</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>侧角</strong>：站在殿正面看柱子的垂直线，会发现檐柱微微向内倒（像人稍稍含胸），这叫”侧脚”，让建筑显得”稳而不僵”；</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>升起</strong>：从明间往角柱看，柱头一根比一根高一点，所以屋檐两端自然翘起，不需要额外做假曲线。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>这两条，就是宋代建筑”用结构做曲线”的秘密。</strong></p>
+</blockquote>
+<p><strong>⑥ 木雕盘龙柱</strong></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_16.jpg"
+                      alt="插入图片" title="木雕盘龙柱"
+                ></p>
+<ul>
+<li><p>前檐廊柱上饰有 <strong>8 条</strong>蜿蜒欲动的<strong>木雕盘龙</strong>，是<strong>中国现存最早的木雕盘龙柱</strong>。</p>
+</li>
+<li><p>其中 <strong>6 条制于宋元祐二年（1087）</strong>，<strong>2 条为宋崇宁元年（1102）增加</strong>。</p>
+</li>
+<li><p>八条龙各抱一根大柱，怒目利爪，栩栩如生。</p>
+</li>
+<li><p>圣母殿正面台基两侧还有两条<strong>无角的石雕螭首</strong>。</p>
+</li>
+</ul>
+<h4 id="⑦-宋代侍女像（三绝之首）"><a href="#⑦-宋代侍女像（三绝之首）" class="headerlink" title="⑦ 宋代侍女像（三绝之首）"></a>⑦ 宋代侍女像（三绝之首）</h4><ul>
+<li><p>圣母殿内共 <strong>43 尊</strong>泥塑彩绘人像。除龛内二小像系后补外，其余多为<strong>北宋原塑</strong>。</p>
+</li>
+<li><p>主像<strong>圣母邑姜</strong>设于大殿正中神龛内：<strong>曲膝盘坐</strong>在饰凤头的木靠椅上，<strong>凤冠蟒袍，霞帔珠璎</strong>，面目端庄——显示统治者的尊贵与奢华。</p>
+</li>
+<li><p>其余 <strong>42 尊侍从像</strong>对称分列龛外两侧，其中：</p>
+</li>
+</ul>
+<p>  - <strong>宦官像 5 尊</strong></p>
+<p>  - <strong>着男服的女官像 4 尊</strong></p>
+<p>  - <strong>侍女像 33 尊</strong></p>
+<ul>
+<li><p>42 尊侍从”<strong>手中各有所奉</strong>“，为帝后服种种劳役。</p>
+</li>
+<li><p>侍女像为精品中的精品：</p>
+</li>
+</ul>
+<p>  - 肢体身材比例适度，服饰美观大方，衣纹明快流畅；</p>
+<p>  - <strong>年龄或长或少，身段或丰满或苗条，面庞或圆润或清秀，神态或幽怨或天真</strong>；</p>
+<p>  - 一个个性格鲜明，表情自然，高度与真人相仿，栩栩如生；</p>
+<p>  - <strong>完美体现了宫廷《六尚》制度</strong>（尚宫、尚仪、尚服、尚食、尚寝、尚功——宫廷女官六大职掌）。</p>
+<blockquote>
+<p><strong>为什么这 33 尊是”三绝之首”？</strong></p>
+</blockquote>
+<blockquote>
+<p>因为中国雕塑史上，<strong>宋塑是”人”的觉醒</strong>：唐塑塑神，宋塑塑人。这 33 尊侍女各有各的心事——有的得意、有的委屈、有的麻木、有的还在偷偷打量。<strong>她们不是”侍女的类型”，是 33 个具体的人。</strong> 站在殿前找一尊”看起来最不开心的”，你会记住整个晋祠。</p>
+</blockquote>
+<h4 id="⑧-周柏与难老泉"><a href="#⑧-周柏与难老泉" class="headerlink" title="⑧ 周柏与难老泉"></a>⑧ 周柏与难老泉</h4><ul>
+<li><p><strong>周柏</strong>：周代柏树，<strong>3000 多年</strong>历史（与隋槐并称”周柏隋槐”）。</p>
+</li>
+<li><p><strong>难老泉</strong>：俗称”<strong>南海眼</strong>“，出自断岩层，<strong>终年涌水，生生不息</strong>；北齐时有人据《诗经·鲁颂》”<strong>永锡难老</strong>“之句命名”难老泉”；匾额为<strong>傅山</strong>所题。</p>
+</li>
+</ul>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_17.jpg"
+                      alt="插入图片" title="难老泉"
+                ></p>
+<blockquote>
+<p>“永锡难老”——永远赐予你不老。一眼泉，被命名成了一句祝福。<strong>这就是晋祠的气质：把自然写成人情。</strong></p>
+</blockquote>
+<h4 id="⑨-唐碑（贞观宝翰亭）"><a href="#⑨-唐碑（贞观宝翰亭）" class="headerlink" title="⑨ 唐碑（贞观宝翰亭）"></a>⑨ 唐碑（贞观宝翰亭）</h4><ul>
+<li><p>亭内陈列<strong>唐太宗李世民手书碑刻《晋祠之铭并序》</strong>。</p>
+</li>
+<li><p>全碑 <strong>1200 余字</strong>，<strong>行草</strong>书法，骨骼雄健，笔力奇逸含蓄，有<strong>王羲之书法神韵</strong>，是书法艺术的珍品。</p>
+</li>
+</ul>
+<blockquote>
+<p>唐太宗存世的行书碑刻极少，这一通是<strong>李世民唯一传世的行书碑</strong>之一，也是晋祠”国宝”之外的另一重价值。</p>
+</blockquote>
+<h4 id="总结-14"><a href="#总结-14" class="headerlink" title="总结"></a>总结</h4><p>晋祠原是唐叔虞祠，园林式祠庙建筑群，最少一千五百年历史，看的就两件：三绝（宋代侍女像、难老泉、周柏隋槐）与三大国宝建筑（献殿、鱼沼飞梁、圣母殿）。圣母殿是主体，北宋创建（984 年一说，现存主体多定为天圣年间重建），重檐歇山顶、总高 19 米、面阔七间进深六间；副阶周匝是中国现存最早的实例，梁架”乳栿对六椽栿用三柱”是少有符合《营造法式》殿堂式构架的孤例；殿内无一根明柱，全赖四周廊柱檐柱承托，即减柱营造法；26 根柱子微微内倾成”侧角”，平柱至角柱逐渐升高成”升起”，凭这两手，屋檐两端自然翘起，不必另做假曲线——宋代建筑用结构做曲线的秘密就在这里。前檐八条木雕盘龙柱是中国现存最早的，六条制于宋元祐二年，两条为崇宁元年增。殿内 43 尊宋塑，圣母邑姜凤冠蟒袍居中，其余 42 尊侍从里有宦官 5、着男服女官 4、侍女 33，年龄身段面相神态各不相同，正对应宫廷《六尚》制度——唐塑塑神，宋塑塑人，这 33 尊就是”人”的觉醒。其余几处各有巧思：献殿（金大定八年）只在四椽栿上放平梁、立驼峰蜀柱，省料到极致；鱼沼飞梁是现存唯一的十字形桥；水镜台戏台四角埋八口大瓮作空心音响，不用电也有回声；金人台四尊铁人跨三个朝代（北宋三尊，东北角现存为 1926 年补铸），看补铸痕迹就是看一部修缮史；唐碑《晋祠之铭并序》是李世民传世行书，一千二百余字。</p>
+<h3 id="6-2-山西博物院·四件重器"><a href="#6-2-山西博物院·四件重器" class="headerlink" title="6.2 山西博物院·四件重器"></a>6.2 山西博物院·四件重器</h3><p><strong>首批国家一级博物馆</strong>——前面看的是”建筑怎么盖”，这里看的是”晋怎么来的”。</p>
+<h4 id="①-晋侯鸟尊（镇馆之宝）"><a href="#①-晋侯鸟尊（镇馆之宝）" class="headerlink" title="① 晋侯鸟尊（镇馆之宝）"></a>① 晋侯鸟尊（镇馆之宝）</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出土时间</td>
+<td><strong>2000 年</strong></td>
+</tr>
+<tr>
+<td>出土地点</td>
+<td>山西<strong>曲沃县北赵村</strong>晋侯墓地 <strong>114 号墓</strong></td>
+</tr>
+<tr>
+<td>年代</td>
+<td><strong>西周</strong></td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>高 <strong>39 厘米</strong>，长 <strong>30.5 厘米</strong>，宽 <strong>17.5 厘米</strong></td>
+</tr>
+</tbody></table>
+<p><strong>造型</strong></p>
+<ul>
+<li><p>主体为<strong>伫立回首的凤鸟</strong>：凤鸟头微昂，圆睛凝视，<strong>高冠直立</strong>。</p>
+</li>
+<li><p>禽体丰满，<strong>两翼上卷</strong>；鸟背依形设盖，<strong>盖钮为小鸟形</strong>，与凤鸟对望。</p>
+</li>
+<li><p>双腿粗壮，爪尖略蜷。</p>
+</li>
+<li><p><strong>凤尾下有一象首</strong>，象鼻内卷上扬，与凤鸟双腿形成<strong>稳定的三点支撑</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>这个”三点支撑”是鸟尊最精妙的设计：<strong>一只鸟，靠一条象鼻站住了</strong>。功能与造型在此完全合一。</p>
+</blockquote>
+<p><strong>纹饰</strong></p>
+<ul>
+<li><p>颈部、前腹、背部及器盖：<strong>羽片纹</strong></p>
+</li>
+<li><p>翅膀及腿：<strong>云纹</strong></p>
+</li>
+<li><p>器盖与翅膀之间：<strong>雷纹为底</strong>，装饰<strong>立羽纹</strong></p>
+</li>
+<li><p>尾部：<strong>羽翎纹</strong></p>
+</li>
+</ul>
+<p><strong>铭文</strong></p>
+<ul>
+<li><p>器盖内壁与器腹内底部有相同的<strong>九字铭文</strong>：”<strong>晋侯作向太室宝尊彝</strong>“。</p>
+</li>
+<li><p>大意：晋侯（<strong>燮父</strong>）作此青铜器，供奉于太室（晋侯宗庙），为祭祀礼器。</p>
+</li>
+</ul>
+<p><strong>出土与三次修复（一段国宝抢救史）</strong></p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>经过</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1998</td>
+<td>114 号墓被盗墓分子<strong>炸开</strong></td>
+</tr>
+<tr>
+<td>2000 年底</td>
+<td>北大考古队抢救性发掘清理时，鸟尊<strong>已被炸成 100 多片</strong>碎片</td>
+</tr>
+<tr>
+<td>第一次</td>
+<td>碎片整体提取，当晚运往<strong>北京大学</strong>，初步修复。<strong>象鼻中间关键一段缺失</strong>，无法判断外翻还是内卷，散落的象鼻前端<strong>未能接上</strong></td>
+</tr>
+<tr>
+<td>第二次</td>
+<td><strong>2002 年</strong>在上海博物馆展出期间，修复专家多方研究，最终确定为<strong>内卷</strong>，用<strong>环氧树脂</strong>做出匹配的素面象鼻</td>
+</tr>
+<tr>
+<td>第三次</td>
+<td><strong>2018 年</strong>北大清理当年 114 号墓青铜碎片时，发现<strong>疑似鸟尊尾部残片</strong>，比对证实；<strong>2019 年</strong>在山西博物院完成第三次修复</td>
+</tr>
+</tbody></table>
+<ul>
+<li>现陈列于《<strong>晋国霸业</strong>》展厅，为山西博物院”<strong>镇馆之宝</strong>“。</li>
+</ul>
+<p><strong>墓主与考古意义</strong></p>
+<ul>
+<li><p>114 号墓一般认为是<strong>首位晋侯燮父</strong>（改”唐”为”晋”的那一位）的墓葬。</p>
+</li>
+<li><p>晋侯墓地位于<strong>北赵村遗址</strong>核心地带：</p>
+</li>
+</ul>
+<p>  - <strong>1991 年</strong>遗址多处被盗，<strong>1992 年</strong>开始保护性发掘；</p>
+<p>  - 至 <strong>1994 年</strong>共进行<strong>五次</strong>大规模发掘；</p>
+<p>  - <strong>1998 年</strong>再次发生盗墓案；</p>
+<p>  - <strong>2000 年 10 月—2001 年 1 月</strong>进行<strong>第六次</strong>发掘，发现 <strong>9 组 19 座</strong>晋侯及其夫人墓葬，另有对应车马坑。</p>
+<ul>
+<li><p>出土大批铸有晋侯名号的青铜器，考古学家排列出<strong>从燮父到晋文侯共九代晋侯的清晰世序</strong>，<strong>澄清了晋国始封地问题</strong>，弥补了晋国早期编年与史实的空白。</p>
+</li>
+<li><p>晋侯墓地考古被评为”<strong>20 世纪中国百项考古重大发现</strong>“之一。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>为什么一只鸟这么重要</strong>：它把”桐叶封弟—燮父改唐为晋—九代晋侯世系”这条<strong>只存在于文献里的线索</strong>，变成了可以拿在手上的实物。<strong>这是”晋”这个字的出生证明。</strong></p>
+</blockquote>
+<hr>
+<h4 id="②-北齐娄睿墓《鞍马出行图》"><a href="#②-北齐娄睿墓《鞍马出行图》" class="headerlink" title="② 北齐娄睿墓《鞍马出行图》"></a>② 北齐娄睿墓《鞍马出行图》</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出土时间</td>
+<td><strong>1979 年</strong>（发掘持续至 1981 年）</td>
+</tr>
+<tr>
+<td>出土地点</td>
+<td>太原<strong>王郭村</strong></td>
+</tr>
+<tr>
+<td>年代</td>
+<td><strong>北齐</strong></td>
+</tr>
+<tr>
+<td>墓主</td>
+<td><strong>娄睿</strong>（北齐外戚、重臣，封东安王）</td>
+</tr>
+<tr>
+<td>规模</td>
+<td>壁画 <strong>400 余平方米</strong>，绘马 <strong>200 余匹</strong>，<strong>无一雷同</strong></td>
+</tr>
+</tbody></table>
+<p><strong>壁画三部分</strong></p>
+<ol>
+<li><strong>鞍马导引图（前）</strong></li>
+</ol>
+<p>   - 导骑二人。前者骑<strong>枣红色鞍马</strong>，安详凝视，纵辔缓行；</p>
+<p>   - 后者<strong>勒马回首</strong>，马头高昂，前腿止步，<strong>重心落于左后腿</strong>，尾巴高高扬起，<strong>粪便颗颗落下</strong>。</p>
+<blockquote>
+<p>这个细节是北齐壁画的”签名”：<strong>连马粪都画出来了</strong>。它说明画家不是在画”马的图式”，而是在画<strong>他亲眼看见的一匹具体的马</strong>。</p>
+</blockquote>
+<ol start="2">
+<li><strong>鞍马游骑图（中）</strong></li>
+</ol>
+<p>   - 共<strong>八人三马</strong>。马均体态丰满，络头齐全，鞍靴俱备，<strong>马鞍下铺有障泥</strong>，佩带马镫。</p>
+<p>   - 技法：<strong>单层墨线勾画 + 平涂浓淡色彩 + 明暗映衬</strong>，表现马的健壮体型，<strong>颇有立体感</strong>；尤其<strong>马的眼神</strong>处理恰到好处。</p>
+<ol start="3">
+<li><strong>鞍马导引图（后）</strong></li>
+</ol>
+<p>   - 导骑二人。前者<strong>策马扬鞭</strong>，全神注意前方；</p>
+<p>   - 后者的坐骑枣红马<strong>猛然受惊而后缩</strong>：马头高扬、前蹄飞跃、后腿下蹲，骑者<strong>躬身俯伏在马背</strong>，双手紧勒缰绳，脚踩马镫。</p>
+<blockquote>
+<p><strong>看点在”动态”</strong> ：北齐壁画最厉害的是”<strong>瞬间捕捉</strong>“——惊马、回首、扬鞭，都是运动中的一帧。这种能力，要到一千多年后的摄影术才被普及。</p>
+</blockquote>
+<blockquote>
+<p>娄睿墓壁画与<strong>太原徐显秀墓壁画</strong>并称北朝壁画双璧，是研究北齐绘画（尤其是杨子华画风）的第一等材料。</p>
+</blockquote>
+<hr>
+<h4 id="③-龙形觥"><a href="#③-龙形觥" class="headerlink" title="③ 龙形觥"></a>③ 龙形觥</h4><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/assets/images/261117_18.jpg"
+                      alt="插入图片" title="难老泉"
+                ></p>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出土时间</td>
+<td><strong>1959 年</strong></td>
+</tr>
+<tr>
+<td>出土地点</td>
+<td>山西<strong>石楼县桃花者村</strong></td>
+</tr>
+<tr>
+<td>年代</td>
+<td><strong>商代</strong>（晚期）</td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>高 <strong>19 cm</strong>，长 <strong>43 cm</strong>，宽 <strong>13.4 cm</strong>，重 <strong>8.6 公斤</strong></td>
+</tr>
+</tbody></table>
+<p><strong>造型</strong></p>
+<ul>
+<li><p>长腹弧鼓，<strong>后端截平</strong>；背部为弧曲形长盖，内有<strong>横榫</strong>与器腹扣合；盖中央有<strong>蘑菇形钮</strong>。</p>
+</li>
+<li><p>器身口沿外附有<strong>两对贯耳</strong>，用来<strong>把龙形觥吊起加热酒</strong>；另一端<strong>没有封口</strong>，用来<strong>散水蒸气</strong>。</p>
+</li>
+<li><p>底部有长方形<strong>矮圈足</strong>，放置平稳。</p>
+</li>
+</ul>
+<p><strong>纹饰</strong></p>
+<ul>
+<li><p>盖面饰<strong>龙纹</strong>，与器物前端的<strong>龙头</strong>相衔接，两侧衬以<strong>漩涡纹</strong>和<strong>云纹</strong>；</p>
+</li>
+<li><p>器身两侧有<strong>夔龙纹</strong>和<strong>鼍（tuó，即扬子鳄）纹</strong>——这是<strong>目前为止商周青铜器上的孤例</strong>。</p>
+</li>
+</ul>
+<p><strong>出土过程与”鬼方”猜想</strong></p>
+<ul>
+<li><p>1959 年，桃花者村农民种地时发现一座墓葬，出土 <strong>16 件</strong>青铜礼器（鼎、簋、斝、盘、壶、卣、爵等），另有玉器、铜兵器和大量<strong>海贝</strong>，表明这是<strong>殷商时代的高等级墓</strong>。</p>
+</li>
+<li><p>墓中还出土<strong>金器</strong>和几件<strong>不同于殷墟风格</strong>的青铜器，表明这是一个<strong>与商文化密切但又不同于商的方国</strong>。</p>
+</li>
+</ul>
+<p>  - “<strong>方国</strong>“即少数民族建立的氏族部落，与商王朝<strong>时战时和</strong>。</p>
+<ul>
+<li><p>龙形觥出土地点推测可能是商代”<strong>鬼方</strong>“所在地。《周易》载：”<strong>高宗伐鬼方，三年克之</strong>“——商王武丁征讨鬼方，打了三年才打赢。</p>
+</li>
+<li><p>因此，龙形觥<strong>不是中原文化的器型</strong>，很可能是一件<strong>鬼方贵族的酒器</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>一句话价值</strong>：它是”<strong>商朝地图之外</strong>“的一件青铜器——证明在殷墟的礼制圈之外，还有另一个会喝酒、会铸铜、会和商王朝打三年仗的政权。</p>
+</blockquote>
+<hr>
+<h4 id="④-彩绘蟠龙纹陶盘"><a href="#④-彩绘蟠龙纹陶盘" class="headerlink" title="④ 彩绘蟠龙纹陶盘"></a>④ 彩绘蟠龙纹陶盘</h4><table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>出土时间</td>
+<td><strong>1980 年</strong></td>
+</tr>
+<tr>
+<td>出土地点</td>
+<td>山西<strong>襄汾陶寺遗址 第 3072 号墓</strong></td>
+</tr>
+<tr>
+<td>年代</td>
+<td><strong>新石器时代晚期（龙山文化）</strong></td>
+</tr>
+<tr>
+<td>尺寸</td>
+<td>高 <strong>9 cm</strong>（另有 8.8 cm 数据），直径 <strong>40.7 cm</strong>，深 <strong>7.8 cm</strong></td>
+</tr>
+</tbody></table>
+<p><strong>造型与纹饰</strong></p>
+<ul>
+<li><p><strong>褐色泥质陶</strong>，内壁大面积<strong>涂黑</strong>，再以<strong>红色颜料</strong>绘出<strong>蟠龙纹</strong>。</p>
+</li>
+<li><p>蟠龙<strong>头有两角，口中有两排锯齿</strong>，<strong>衔着一根枝杈状物体</strong>，<strong>尾部模糊不清</strong>，身上呈现<strong>两排鳞纹</strong>。</p>
+</li>
+</ul>
+<p><strong>出土背景</strong></p>
+<ul>
+<li><p>出土于陶寺遗址的”<strong>王族</strong>“墓葬区。<strong>四个墓葬里各出土了一件</strong>，内壁的蟠龙纹<strong>在细节上各有不同</strong>。</p>
+</li>
+<li><p>因是彩绘，历经漫长岁月大多局部脱落，<strong>这一件上的蟠龙纹保存最清晰、完整</strong>。</p>
+</li>
+</ul>
+<p><strong>陶寺遗址</strong></p>
+<ul>
+<li><p>发现于 <strong>1958 年</strong>；<strong>1978—1985 年</strong>进行第一阶段大规模发掘，主要发掘<strong>生活区与墓葬区</strong>；</p>
+</li>
+<li><p>上世纪末至今又经多次勘探发掘，发现<strong>宫城、仓库、手工作坊区、天坛、地坛、观象台</strong>等遗址。</p>
+</li>
+<li><p>考古专家认为陶寺是<strong>史前古城</strong>，<strong>有可能是尧舜时代的都城</strong>，活跃于距今 <strong>4300—3900 年</strong>；之后被废弃，其衰落可能与北面的<strong>石峁文化</strong>有关。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>为什么这只盘子重要</strong>：龙纹、朱绘、王族墓、观象台——<strong>最早的中国的几个要素，在陶寺这个盘子上第一次凑到一起</strong>。它比商周的青铜龙早了一千多年。</p>
+</blockquote>
+<h4 id="总结-15"><a href="#总结-15" class="headerlink" title="总结"></a>总结</h4><p>省博是整条线的落点：前面看的都是”建筑怎么盖”，这里看的是”晋怎么来的”。馆的前身是 1919 年的山西教育图书博物馆，新馆 2005 年开放，馆藏 65 万余件、一级文物 1650 余件；建筑外形如斗似鼎、四翼舒展，取自《诗经》”如鸟斯革，如翚斯飞”，拿过鲁班奖。四件重器各有分量：晋侯鸟尊（西周，高 39 厘米）以伫立回首的凤鸟为主体，鸟背设盖、盖钮为小鸟与凤鸟对望，凤尾下有一象首与双腿形成三点支撑，盖内九字铭文”晋侯作向太室宝尊彝”，墓主一般认为是首位晋侯燮父——它把”桐叶封弟—燮父改唐为晋—九代晋侯世系”这条只存在于文献里的线索，变成了可以拿在手上的实物；1998 年墓被盗墓者炸开，鸟尊碎成百余片，历经 2000 年北大初修、2002 年上海确定象鼻内卷、2019 年第三次修复，才成今天的样子。北齐娄睿墓《鞍马出行图》最厉害的是瞬间捕捉——惊马、回首、扬鞭，连马粪都画了出来，说明画家画的是亲眼见过的一匹具体的马；全墓四百余平方米壁画绘马二百余匹无一雷同。龙形觥（商代，石楼桃花者村）两侧夔龙纹与鼍纹是商周青铜器上的孤例，出土地推测为商代鬼方，《周易》”高宗伐鬼方，三年克之”，它不是中原器型，是”商朝地图之外”的一件酒器。彩绘蟠龙纹陶盘（陶寺 3072 号墓，龙山文化）朱绘蟠龙衔枝、身有两排鳞纹，同出四墓各一件而细节不同；陶寺有可能是尧舜时代的都城——龙纹、朱绘、王族墓、观象台，”最早的中国”的几个要素在这个盘子上第一次凑到一起。</p>
+<hr>
+<h2 id="附：参观总结"><a href="#附：参观总结" class="headerlink" title="附：参观总结"></a>附：参观总结</h2><ol>
+<li><p><strong>看古建，先看结构，再看装饰</strong>。斗拱、梁架、减柱、侧角升起——这些才是中国建筑真正的”语言”；彩塑壁画是这套语言上的”诗”。</p>
+</li>
+<li><p><strong>每一座幸存者，都是”被忽略”的受益者</strong>。南禅寺因为是村庙、佛光寺因为太远、应县木塔因为太偏——<strong>偏僻是它们活下来的原因</strong>，也是我们今天还能看到唐代的原因。</p>
+</li>
+<li><p><strong>文物最大的敌人不是时间，是我觉得这样更好看</strong>。应县木塔的夹泥墙、佛光寺的龙袍、清末重绘的壁画，都在提醒这一点。</p>
+</li>
+</ol>
+<hr>
+<h2 id="附：后记"><a href="#附：后记" class="headerlink" title="附：后记"></a>附：后记</h2><p>上面的资料非常详实，这趟人文团的行程总体而言非常开心，某种程度上颠覆了我对旅行报团的刻板印象，已经不是我刚毕业参加的那种形式了。当然这个团的价格贵于普通的旅行团，只是我在搜索人文旅游团的时候，这个已经是偏便宜的了，并且日常当牛马已然非常辛苦了，花钱买好的体验，还是非常值得的。</p>
+<p>这趟团里一共有18个人，3男15女，上海广州的偏多，只是没想到我居然是团里年纪最小的。</p>
+<p>行程里经常一期吃饭的有6个人，都是独自出来旅游的，居然恰好能吃到一起，一路气氛非常好。</p>
+<p>有一个宾馆拼房同住的湛江大哥，爱好摄影、徒步和意见发表，没带行李箱，背着两个大背包，还带了相机和猫粮，寺庙里碰到野生猫咪还会去投喂，在点菜的时候经常发表事后意见，惹得一桌的其他姐姐一阵吐槽；</p>
+<p>有一个大巴车上同排同侧坐的美国大姐，祖籍上海，宾馆早餐蔬菜杀手，年轻的时候去美国生活，巧合的是在美国和一个湛江的男人结婚，一路上用的是护照，还是有一些不便之处，爱好历史和各种艺术作品，也看过陈丹青的《局部》，喜欢看壁画，心态和行动上非常年轻；</p>
+<p>有一个短发干练的贵州姐姐，也是徒步爱好者，也是背包客，不带行李箱，干脆利落，吃饭的时候通常都是由她付账，其他人再扫码给她，我跟她抄了一手火锅的贵州蘸料，味道很赞，以后抛弃芝麻酱打底，但我现在有点忘了怎么调的了；</p>
+<p>有一个深圳工作的姐姐，还有着能问餐馆服务员店里的果汁是不是有添加剂的质朴的好奇心，有着园林专业的背景，是贵州姐姐的同住者。只有我和她尝试了太原独特的食物“头脑”，一个山药泥里搁着羊肉、山药片、藕片和黄酒的浓粥，没什么味道，不难入口；</p>
+<p>有一个川渝地区的姐姐，个头小，但已经是孩子妈了，爽快干脆，自我介绍环节积极的介绍自己的家乡，临时写的，又读出来，很有特点，但我忘记具体是哪儿了，吃饭看到贵州姐姐的料碗也可以直接要走，还经常吐槽湛江大哥点菜的事后意见，也是文创产品爱好者，买了好多文创周边；</p>
+<p>有一个上海上班的姐姐，黑龙江人，只比我大一岁，团队第二小，是川渝地区姐姐的同住者，据说每天早上6点起来要去健身房锻炼，这点能看出来有很强大的自制力，通常安安静静的跟着团队，听导游的讲解。</p>
+<p>可惜时间总是有限的，天下没有不散的宴席，团散之后，大家也要奔向各自的工作和生活了，大概也就永别了，以后的旅途中再碰到的几率微乎其微，湛江大哥参团很多年了，他也没碰到过第二面的团友。</p>
+<p>总之，这趟旅途，除了古建知识和人文体验之外，因为团费的筛选，大家的质量很都高，我从其他人身上也见识到了一些可经验性的东西，很好的体验。</p>
+
+		</div>
+
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%99%8B%E5%8C%97/">#晋北</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2026/08/13/%E8%AF%BB%E3%80%8C%E8%BF%91%E4%BB%A3%E4%B8%AD%E5%9B%BD%E7%A4%BE%E4%BC%9A%E7%9A%84%E6%96%B0%E9%99%88%E4%BB%A3%E8%B0%A2%E3%80%8D/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">读「近代中国社会的新陈代谢」</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://my-waline.onrender.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">古建之光-重走梁林路</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%99%EF%BC%9A%E4%BA%94%E5%8F%B0%EF%BC%88%E5%8F%B0%E5%A4%96%E5%94%90%E6%9E%84%E5%88%B0%E5%8F%B0%E6%80%80%E8%AF%B8%E5%AF%BA%EF%BC%89"><span class="nav-text">第一站：五台（台外唐构到台怀诸寺）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%8D%97%E7%A6%85%E5%AF%BA"><span class="nav-text">1.1 南禅寺</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E4%BD%9B%E5%85%89%E5%AF%BA%E4%B8%9C%E5%A4%A7%E6%AE%BF"><span class="nav-text">1.2 佛光寺东大殿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E4%BA%94%E5%8F%B0%E5%B1%B1%E6%80%BB%E8%AF%B4"><span class="nav-text">1.3 五台山总说</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%A1%94%E9%99%A2%E5%AF%BA"><span class="nav-text">1.4 塔院寺</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%98%BE%E9%80%9A%E5%AF%BA"><span class="nav-text">1.5 显通寺</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E7%BD%97%E7%9D%BA%E5%AF%BA%EF%BC%88%E9%BB%84%E6%95%99%E6%A0%BC%E9%B2%81%E6%B4%BE%EF%BC%89"><span class="nav-text">1.6 罗睺寺（黄教格鲁派）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%99%EF%BC%9A%E6%B5%91%E6%BA%90%EF%BC%88%E6%82%AC%E7%A9%BA%E5%AF%BA%EF%BC%89"><span class="nav-text">第二站：浑源（悬空寺）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%82%AC%E7%A9%BA%E5%AF%BA"><span class="nav-text">2.1 悬空寺</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%99%EF%BC%9A%E5%A4%A7%E5%90%8C%EF%BC%88%E4%BA%91%E5%86%88%E5%88%B0%E5%8D%8E%E4%B8%A5%E5%AF%BA%EF%BC%89"><span class="nav-text">第三站：大同（云冈到华严寺）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%BA%91%E5%86%88%E7%9F%B3%E7%AA%9F"><span class="nav-text">3.1 云冈石窟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%B9%9D%E9%BE%99%E5%A3%81"><span class="nav-text">3.2 九龙壁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%96%84%E5%8C%96%E5%AF%BA"><span class="nav-text">3.3 善化寺</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%8D%8E%E4%B8%A5%E5%AF%BA"><span class="nav-text">3.4 华严寺</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%99%EF%BC%9A%E5%BA%94%E5%8E%BF%EF%BC%88%E5%87%80%E5%9C%9F%E5%AF%BA%E5%88%B0%E6%9C%A8%E5%A1%94%EF%BC%89"><span class="nav-text">第四站：应县（净土寺到木塔）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%87%80%E5%9C%9F%E5%AF%BA%E5%A4%A7%E9%9B%84%E5%AE%9D%E6%AE%BF"><span class="nav-text">4.1 净土寺大雄宝殿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%BA%94%E5%8E%BF%E6%9C%A8%E5%A1%94%EF%BC%88%E4%BD%9B%E5%AE%AB%E5%AF%BA%E9%87%8A%E8%BF%A6%E5%A1%94%EF%BC%89"><span class="nav-text">4.2 应县木塔（佛宫寺释迦塔）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%99%EF%BC%9A%E6%9C%94%E5%B7%9E%EF%BC%88%E5%B4%87%E7%A6%8F%E5%AF%BA%EF%BC%89"><span class="nav-text">第五站：朔州（崇福寺）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%B4%87%E7%A6%8F%E5%AF%BA"><span class="nav-text">5.1 崇福寺</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%99%EF%BC%9A%E5%A4%AA%E5%8E%9F%EF%BC%88%E6%99%8B%E7%A5%A0%E5%88%B0%E5%B1%B1%E8%A5%BF%E5%8D%9A%E7%89%A9%E9%99%A2%EF%BC%89"><span class="nav-text">第六站：太原（晋祠到山西博物院）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%99%8B%E7%A5%A0"><span class="nav-text">6.1 晋祠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%B1%B1%E8%A5%BF%E5%8D%9A%E7%89%A9%E9%99%A2%C2%B7%E5%9B%9B%E4%BB%B6%E9%87%8D%E5%99%A8"><span class="nav-text">6.2 山西博物院·四件重器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%EF%BC%9A%E5%8F%82%E8%A7%82%E6%80%BB%E7%BB%93"><span class="nav-text">附：参观总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%EF%BC%9A%E5%90%8E%E8%AE%B0"><span class="nav-text">附：后记</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Silas</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 26 篇文章
+                    </span>
+                    
+                        <span>
+                            共 57.4k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="图片查看器">
+	<button class="image-viewer-close" type="button" aria-label="关闭">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="上一页">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="关闭">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="下一页">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+  
+<script src="/js/build/libs/Typed.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
